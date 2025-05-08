@@ -7,12 +7,12 @@
 ###################################
 
 from mmcif_io import GetInputInformation
+from utility import get_hierarchy_from_model, NA
 import pandas as pd
 import logging
 import ihm
 import numpy as np
 from pathlib import Path
-from collections import defaultdict
 from bokeh.plotting import save
 from bokeh.layouts import gridplot
 from bokeh.models import Range1d
@@ -21,55 +21,24 @@ from bokeh.resources import CDN
 import iqplot
 import json
 from bokeh.embed import json_item
+from bokeh.io import export_svgs
+import requests
+import pickle
+import pyhmmer
+import time
+import utility
+import xml.etree.ElementTree as ET
 
 pd.options.mode.chained_assignment = None
-NA = 'Not available'
-
-
-# asym_id, seq_id, atom_id
-def get_hierarchy_from_atoms(atoms):
-    def infinite_defaultdict(): return defaultdict(infinite_defaultdict)
-    root = infinite_defaultdict()
-
-    for a in atoms:
-        root[a.asym_unit.id][a.seq_id][a.atom_id] = a
-
-    return root
-
-
-# asym_id, seq_id, atom_id
-def get_hierarchy_from_model(model):
-    def infinite_defaultdict(): return defaultdict(infinite_defaultdict)
-    root = infinite_defaultdict()
-
-    for a in model.get_atoms():
-        root[a.asym_unit.id][a.seq_id][a.atom_id] = a
-
-    for r in model.representation:
-        if r.granularity == 'by-residue':
-            for i in range(r.asym_unit.seq_id_range[0],
-                           r.asym_unit.seq_id_range[1] + 1):
-                root[r.asym_unit.asym.id][i]['CA'] = None
-
-    for s in model.get_spheres():
-        # Consider only by-residue spheres
-        seq_ids = list(set(s.seq_id_range))
-        if len(seq_ids) != 1:
-            continue
-
-        seq_id = seq_ids[0]
-
-        if root[s.asym_unit.id][seq_id]['CA'] is None:
-            root[s.asym_unit.id][seq_id]['CA'] = s
-
-    return root
 
 
 class CxValidation(GetInputInformation):
-    def __init__(self, mmcif_file):
+    ID = None
+    driver = None
+
+    def __init__(self, mmcif_file, cache):
         super().__init__(mmcif_file)
-        self.ID = self.get_id()
-        self.ID_f = self.get_file_id()
+        self.cache = cache
         self.nos = self.get_number_of_models()
         self.dataset = self.get_dataset_comp()
         # Only atomic structures are supported so far
@@ -122,8 +91,13 @@ class CxValidation(GetInputInformation):
                 exl = xl.experimental_cross_link
 
                 # Extract residue names from atoms
-                r1n = exl.residue1.comp.id
-                r2n = exl.residue2.comp.id
+                try:
+                    r1n = exl.residue1.comp.id
+                    r2n = exl.residue2.comp.id
+                except IndexError as e:
+                    logging.error('Missing residue')
+                    logging.error(e)
+                    continue
 
                 # Select atoms
                 if xl.granularity == 'by-atom':
@@ -135,12 +109,20 @@ class CxValidation(GetInputInformation):
                     # represented by the alpha carbon atom
                     a1n = 'CA'
                     a2n = 'CA'
+                elif xl.granularity == 'by-feature':
+                    a1n = 'coarse-grained'
+                    a2n = 'coarse-grained'
                 else:
                     logging.debug(Exception('Unsupported xl granularity'))
                     continue
 
-                r1 = xl.asym1.residue(exl.residue1.seq_id)
-                r2 = xl.asym2.residue(exl.residue2.seq_id)
+                try:
+                    r1 = xl.asym1.residue(exl.residue1.seq_id)
+                    r2 = xl.asym2.residue(exl.residue2.seq_id)
+                except IndexError as e:
+                    logging.error('Missing residue')
+                    logging.error(e)
+                    continue
 
                 intra_chain = False
                 if xl.asym1.id == xl.asym2.id:
@@ -287,6 +269,7 @@ class CxValidation(GetInputInformation):
                     for im, m in enumerate(mg):
                         gim += 1
                         m_ = self.models[gim]
+                        logging.info(f'Assessing crosslinking-MS for MODEL {gim}')
                         for index, row in self.raw_restraints.iterrows():
                             d = self.measure_restraint(m_, row)
 
@@ -310,16 +293,18 @@ class CxValidation(GetInputInformation):
     def measure_restraint(self, model, row):
         allowed_particle_types = (ihm.model.Atom, ihm.model.Sphere)
         # Check that we have all necessary atoms
+        rid = row['restraint_id']
+        gid = row['group_id']
         chid = row['chain1']
         rid = row['resnum1']
         an = row['name1']
 
         a1 = model[chid][rid][an]
 
-        if type(a1) not in allowed_particle_types:
+        if not isinstance(a1, allowed_particle_types):
             a1 = None
         if a1 is None:
-            logging.debug(f'Atom {chid} {rid} {an} is empty')
+            logging.warning(f'Restraint {rid}: Atom {chid} {rid} {an} is empty')
 
         chid = row['chain2']
         rid = row['resnum2']
@@ -327,14 +312,29 @@ class CxValidation(GetInputInformation):
 
         a2 = model[chid][rid][an]
 
-        if type(a2) not in allowed_particle_types:
+        if not isinstance(a2, allowed_particle_types):
             a2 = None
         if a2 is None:
-            logging.debug(f'Atom {chid} {rid} {an} is empty')
+            logging.warning(f'Restraint {rid}: Atom {chid} {rid} {an} is empty')
 
         if a1 is None or a2 is None:
             d = None
+        elif row['name1'] == 'coarse-grained' or row['name2'] == 'coarse-grained':
+
+            if row['name1'] == row['name2'] == 'coarse-grained':
+                # Calculate distance between spheres
+                a1_ = np.array([a1.x, a1.y, a1.z])
+                r1_ = a1.radius
+                a2_ = np.array([a2.x, a2.y, a2.z])
+                r2_ = a2.radius
+                # In case spheres overlap
+                d = max(0, np.linalg.norm(a2_ - a1_) - (r1_ + r2_))
+
+            else:
+                logging.warning(r'Incompatible crosslinking-MS granularities')
+                d = None
         else:
+            # Assume atomic distances
             # Calculate distance
             a1_ = np.array([a1.x, a1.y, a1.z])
             a2_ = np.array([a2.x, a2.y, a2.z])
@@ -368,7 +368,7 @@ class CxValidation(GetInputInformation):
         return nrg
 
     def get_cx_data(self) -> (pd.DataFrame, pd.DataFrame):
-        """Extract CX-MS data from mmcif file"""
+        """Extract crosslinking-MS data from mmcif file"""
 
         output = (None, None)
         raw_restraints = self.get_raw_restraints()
@@ -533,9 +533,17 @@ class CxValidation(GetInputInformation):
                 cmp = (ed - threshold) >= 0
             # Check with Ben
             elif rtype == 'harmonic':
+                atol = 1e-08
+
+                tol_keys = ['sigma1', 'sigma2']
+
+                for k in tol_keys:
+                    if row[k] is not None:
+                        atol += row[k]
+
                 cmp = np.isclose(
                     ed, threshold,
-                    rtol=row['psi'] + row['sigma1'] + row['sigma2']
+                    atol=atol
                 )
 
             satisfied_restraints[i] = cmp
@@ -731,6 +739,8 @@ class CxValidation(GetInputInformation):
                 marker_kwargs=dict(alpha=0.5, size=7)
             )
 
+            p.output_backend = "svg"
+
             p.x_range = Range1d(xmin, xmax)
             p.xaxis.axis_label = 'Satisfaction rate, %'
 
@@ -778,7 +788,7 @@ class CxValidation(GetInputInformation):
                     out_stats = pd.DataFrame(out_stats_)
 
                     p = scatter_plot(out_stats)
-                    title = f'{self.ID}\\nSatisfaction rates in model group {gimg}'
+                    title = f'Satisfaction rates in Model Group {gimg}'
                     p.title.text = title
 
                     p.title.text_font_size = "12pt"
@@ -786,12 +796,16 @@ class CxValidation(GetInputInformation):
                     p.yaxis.axis_label_text_font_size = "14pt"
                     p.xaxis.major_label_text_font_size = "14pt"
                     p.yaxis.major_label_text_font_size = "14pt"
+                    p.yaxis.major_label_text_align = 'right'
+                    p.yaxis.group_text_align = 'right'
+                    p.yaxis.subgroup_text_align = 'right'
+                    p.min_border_bottom = 75
 
                     col = gridplot(
                         [p], ncols=1, toolbar_location='right',
                         # sizing_mode='scale_width'
                     )
-                    tab = Panel(child=col, title=f'Model group {gimg}')
+                    tab = Panel(child=col, title=f'Model Group {gimg}')
                     tabs_.append(tab)
 
         tabs = Tabs(tabs=tabs_)
@@ -824,17 +838,21 @@ class CxValidation(GetInputInformation):
                     data=data_, q='Crosslinks', density=False,
                     bins=bins,
                     style="step_filled",
-                    frame_width=400, frame_height=100,
+                    frame_width=500, frame_height=100,
                     # sizing_mode='scale_width',
                 )
+                p.yaxis.ticker.desired_num_ticks = 3
 
-                title = f'{self.ID}\\n{lt}: {rt}, {d:.1f} Å'
+                p.output_backend = "svg"
+
+                title = f"Model Group {gimg}; {lt}: {rt}, {d:.1f} Å"
 
                 p.title.text_font_size = "12pt"
                 p.xaxis.axis_label_text_font_size = "14pt"
                 p.yaxis.axis_label_text_font_size = "14pt"
                 p.xaxis.major_label_text_font_size = "14pt"
                 p.yaxis.major_label_text_font_size = "14pt"
+                p.yaxis.major_label_text_align = 'right'
 
                 p.ray(
                     x=d, y=0,
@@ -844,6 +862,7 @@ class CxValidation(GetInputInformation):
                 p.xaxis.axis_label = 'Euclidean distance, Å'
                 p.yaxis.axis_label = 'Count'
                 p.title.text = title
+                p.min_border_bottom = 75
                 plots.append(p)
 
             col = gridplot(
@@ -851,7 +870,7 @@ class CxValidation(GetInputInformation):
                 # sizing_mode='scale_width'
             )
             tab = Panel(
-                child=col, title=f'Model group {gimg}',)
+                child=col, title=f'Model Group {gimg}',)
             tabs_.append(tab)
 
         tabs = Tabs(tabs=tabs_,
@@ -862,20 +881,399 @@ class CxValidation(GetInputInformation):
         return self.save_plots(tabs, title, imgDirname)
 
     def save_plots(self, plot, title, imgDirname='.'):
+        stem = f'{self.ID_f}_{title}'
+
         imgpath = Path(
             imgDirname,
-            f'{self.ID_f}_{title}.html')
+            f'{stem}.html')
         save(
             plot, imgpath,
             resources=CDN,
-            title='Satisfaction rates per ensemble',
+            title=title,
         )
 
         imgpath_json = Path(
             imgDirname,
-            f'{self.ID_f}_{title}.json')
+            f'{stem}.json')
 
         with open(imgpath_json, 'w') as f:
             json.dump(json_item(plot, title), f)
 
-        return (imgpath, imgpath_json)
+        imgpath_svg = Path(
+            imgDirname,
+            f'{stem}.svg')
+
+        svgs = export_svgs(plot, filename=imgpath_svg,
+                   webdriver=self.driver, timeout=15)
+
+        svgs = [Path(x).name for x in svgs]
+
+        return (imgpath, imgpath_json, svgs)
+
+    @staticmethod
+    def request_pride(url: str) -> dict:
+        ''' pull data from PRIDE using crosslinking PDB-IHM API '''
+        result = None
+        r = requests.get(url)
+
+        if not r.ok:
+            # Wait until cold request completes and go to DB cache
+            logging.info(f'Retrying pulling {url} from PRIDE')
+            time.sleep(60)
+            r = requests.get(url)
+
+        if r.ok:
+            try:
+                result = r.json()
+            except JSONDecodeError:
+                pass
+
+        return result
+
+    def get_sequences_pride(self, pid: str) -> dict:
+        '''get sequences from PRIDE entry'''
+        result = None
+        url = f"https://www.ebi.ac.uk/pride/ws/archive/crosslinking/v2/pdbdev/projects/{pid}/sequences"
+        result = self.request_pride(url)
+        return result
+
+    def get_residue_pairs_pride(self, pid: str, page_size: int = 99) -> dict:
+        '''get sequences from PRIDE entry'''
+        url = f"https://www.ebi.ac.uk/pride/ws/archive/crosslinking/v2/pdbdev/projects/{pid}/residue-pairs/based-on-reported-psm-level/passing"
+        page = 1
+        url_ = f"{url}?page={page}&page_size={page_size}"
+        result = self.request_pride(url_)
+
+        rps = []
+        if result is not None and 'page' in result:
+            session = requests.Session()
+
+            max_page = int(result['page']["total_pages"])
+            page_size = int(result['page']["page_size"])
+
+            rps = []
+            for i in range(1, max_page + 1):
+                url_ = f"{url}?page={i}&page_size={page_size}"
+                rps_ = session.get(url_).json()['data']
+                rps.extend(rps_)
+
+        return rps
+
+    def get_pride_data(self, code):
+        '''
+        get data from PRIDE
+        '''
+        cache_fn = Path(self.cache, f'{code}.pkl')
+        data = None
+
+        # Check if we already requested the data
+        if Path(cache_fn).is_file():
+            logging.info(f'Found {code} in cache! {cache_fn}')
+            with open(cache_fn, 'rb') as f:
+                data = pickle.load(f)
+        elif not Path(cache_fn).is_file():
+            ms_seqs = self.get_sequences_pride(code)
+            ms_res_pairs = self.get_residue_pairs_pride(code)
+
+            if ms_seqs is not None and len(ms_res_pairs) > 0:
+                data = {
+                    'pride_id': code,
+                    'sequences': ms_seqs,
+                    'residue_pairs': ms_res_pairs
+                }
+
+                with open(cache_fn, 'wb') as f:
+                    pickle.dump(data, f)
+
+            else:
+                logging.info(f'PRIDE data for {code} is incomplete')
+
+        return data
+
+    def get_pride_ids(self) -> list:
+        '''
+        get a list of all PRIDE ids from entry
+        '''
+        ids = []
+        for i, d in enumerate(self.system.orphan_datasets):
+            if isinstance(d, ihm.dataset.CXMSDataset):
+                if isinstance(d.location, ihm.location.PRIDELocation) or \
+                        isinstance(d.location, ihm.location.ProteomeXchangeLocation):
+                    try:
+                        pid = d.location.access_code
+                        ids.append(pid)
+                    except AttributeError:
+                        pass
+                # Try to automatically convert jPOST ids to PRIDE ids
+                if isinstance(d.location, ihm.location.JPOSTLocation):
+                    try:
+                        pid_ = d.location.access_code
+                        r = requests.get(f'https://repository.jpostdb.org/xml/{pid_}.0.xml')
+                        xml = ET.fromstring(r.content)
+                        pid = xml.find('Project').attrib['pxid']
+                        ids.append(pid)
+                        logging.info(f'Found PRIDE ID {pid} for JPOST ID {pid_}')
+                    # blanket catch because there are too many
+                    # potential network exceptions
+                    except Exception as e:
+                        logging.error(e)
+                        pass
+
+        return ids
+
+    def validate_pride_data(self, data: dict) -> tuple :
+        """Match sequences, residues pairs and return stats"""
+        out = (None, None, None)
+
+        # Unpack pride data
+        pid = data['pride_id']
+        ms_res_pairs = data['residue_pairs']
+        ms_seqs_ = data['sequences']
+
+        if len(ms_seqs_) == 0 or len(ms_res_pairs) == 0:
+            return out
+
+        # Get sequences from mmcif entry
+        mmcif_seqs = {}
+        mmcif_seqs_descriptions = {}
+
+        for e in self.system.entities:
+            if e.is_polymeric:
+                seq = ''.join([x.code_canonical for x in e.sequence])
+                desc = e.description
+                seq_ = pyhmmer.easel.TextSequence(
+                            sequence=seq,
+                            name=e._id.encode('utf-8'),
+                            description=desc.encode('utf-8')
+                            ).digitize(pyhmmer.easel.Alphabet.amino())
+
+                mmcif_seqs[e._id] = seq_
+                mmcif_seqs_descriptions[e._id] = desc
+
+        # Get sequences from crosslinking-MS data
+        ms_seqs = [
+            pyhmmer.easel.TextSequence(
+                sequence=x['sequence'],
+                name=x['id'].encode('utf-8'),
+                source=x['file'].encode('utf-8')
+            ).digitize(pyhmmer.easel.Alphabet.amino()) for x in ms_seqs_
+        ]
+
+        # Match sequences using pyHMMER
+        # select only 1st best match
+        matched_seqs = {}
+        matched_seqs_mapping = {}
+        matched_seqs_ids = {}
+
+        for k, v in mmcif_seqs.items():
+            matches_ = list(pyhmmer.hmmer.phmmer(v, ms_seqs))[0]
+            if len(matches_) > 0:
+                best_hit = list(pyhmmer.hmmer.phmmer(v, ms_seqs))[0][0]
+                matched_seqs[k] = best_hit
+                mapping_, _ = self.pyhmmer_alignment_to_map(best_hit)
+                matched_seqs_mapping[k] = mapping_
+                matched_seqs_ids[k] = best_hit.best_domain.hit.name.decode("utf-8")
+            else:
+                logging.warning(f"Couldn't match mmCIF entity {k} to any entities in {pid}")
+                matched_seqs[k] = None
+                matched_seqs_ids[k] = None
+
+        matched_mmcif_entities = list(matched_seqs_ids.keys())
+        matched_ms_seqs = list(matched_seqs_ids.values())
+
+        # Filter residue pairs from MS data
+        ms_rps_filtered = []
+        for r in ms_res_pairs:
+            eid1 = r['prot1']
+            rid1 = r['pos1']
+            eid2 = r['prot2']
+            rid2 = r['pos2']
+            sxl = tuple(sorted(((eid1, rid1), (eid2, rid2))))
+            ms_rps_filtered.append(sxl)
+
+        ms_rps_filtered = set(ms_rps_filtered)
+
+        # Select MS residue pairs from matched sequences
+        ms_rps_mmcif_entities = 0
+        sxls = []
+        for r in ms_rps_filtered:
+            (eid1, rid1), (eid2, rid2) = r
+
+            if eid1 in matched_ms_seqs and eid2 in matched_ms_seqs:
+                sxls.append(r)
+
+        sxls = set(sxls)
+        ms_rps_mmcif_entities = len(sxls)
+
+        # Select residue pairs from the entry
+        exls = []
+
+        for restr_ in self.system.restraints:
+            # We are interested only in Chemical crosslinks
+            if type(restr_) != ihm.restraint.CrossLinkRestraint:
+                continue
+
+            # Iterate over all crosslinks in the dataset
+            for xl in restr_.cross_links:
+                eid1 = xl.experimental_cross_link.residue1.entity._id
+                rid1 = xl.experimental_cross_link.residue1.seq_id
+                eid2 = xl.experimental_cross_link.residue2.entity._id
+                rid2 = xl.experimental_cross_link.residue2.seq_id
+
+                exl = tuple(sorted(((eid1, rid1), (eid2, rid2))))
+                exls.append(exl)
+
+        exls = list(set(exls))
+
+        # Find corresponding entry - MS data crosslinks
+        mmcif_rps_ms_entities = 0
+
+        rps_mapping = []
+        emxls = []
+        for rps in exls:
+            (eid1, rid1), (eid2, rid2) = rps
+
+            if eid1 in matched_mmcif_entities and eid2 in matched_mmcif_entities:
+                mmcif_rps_ms_entities += 1
+                eid1_ = matched_seqs_ids[eid1]
+                eid2_ = matched_seqs_ids[eid2]
+
+                try:
+                    rid1_ = matched_seqs_mapping[eid1][rid1]
+                except KeyError:
+                    logging.debug(f"Can't map residue {eid1} {rid1} to {eid1_}")
+                    continue
+
+                try:
+                    rid2_ = matched_seqs_mapping[eid2][rid2]
+                except KeyError:
+                    logging.debug(f"Can't map residue {eid2} {rid2} to {eid2_}")
+                    continue
+
+                if eid1_ is None or eid2_ is None:
+                    continue
+
+                exl = tuple(sorted(((eid1_, rid1_), (eid2_, rid2_))))
+                if exl in sxls:
+                    # Good matching crosslinks
+                    rps_mapping.append((rps, exl))
+                else:
+                    # Residue pairs unique to the entry
+                    rps_mapping.append((rps, None))
+
+                emxls.append(exl)
+
+        emxls = set(emxls)
+
+        # Add non-mapped residue pairs from MS data
+        for exl in list(sxls):
+            if exl not in emxls:
+                rps_mapping.append((None, exl))
+
+        # Calculate some stats
+        rps_both = len(set(emxls) & set(sxls))
+        mmcif_rps = len(exls)
+        ms_rps = len(ms_rps_filtered)
+
+        # Prepare output
+
+        out = {
+            'pride_id': pid,
+            'entities_ms': len(ms_seqs),
+            'entities': len(mmcif_seqs),
+            'matches': [],
+            'stats': {
+                'entry': {
+                    'total': mmcif_rps,
+                    'mapped_entities': mmcif_rps_ms_entities,
+                    'mapped_entities_pct': mmcif_rps_ms_entities / mmcif_rps * 100.,
+                    'matched': rps_both,
+                    'matched_pct': rps_both / mmcif_rps * 100.,
+                },
+                'ms': {
+                    'total': ms_rps,
+                    'mapped_entities': ms_rps_mmcif_entities,
+                    'mapped_entities_pct': ms_rps_mmcif_entities / ms_rps * 100.,
+                    'matched': rps_both,
+                    'matched_pct': rps_both / ms_rps * 100.,
+                }
+            }
+        }
+
+        # Add stats about matches
+        for k, v in matched_seqs.items():
+            if v is not None:
+                match_ =  {
+                    'entity': k,
+                    'entity_desc': mmcif_seqs_descriptions[k],
+                    'entity_ms': v.best_domain.hit.name.decode("utf-8"),
+                    'e-value': v.best_domain.c_evalue,
+                    'exact_match': v.best_domain.alignment.target_sequence == v.best_domain.alignment.hmm_sequence.upper(),
+                }
+
+            else:
+                match_ =  {
+                    'entity': k,
+                    'entity_desc': mmcif_seqs_descriptions[k],
+                    'entity_ms': utility.NA,
+                    'e-value': utility.NA,
+                    'exact_match': utility.NA,
+                }
+
+
+            out['matches'].append(match_)
+
+        return (out, matched_seqs, rps_mapping)
+
+    def validate_all_pride_data(self) -> list:
+        '''perform data quality validation for all crosslinking-MS datasets'''
+
+        codes = self.get_pride_ids()
+        outs = []
+        for code in codes:
+            data = self.get_pride_data(code)
+            if data is not None:
+                out, _, __ = self.validate_pride_data(data)
+                if out is not None:
+                    outs.append(out)
+
+        return outs
+
+    @staticmethod
+    def get_pyhmmer_version():
+        """return pyhmmer version"""
+        return pyhmmer.__version__
+
+    @staticmethod
+    def pyhmmer_alignment_to_map(hit) -> (dict, list):
+        """Convert HMMER alignment into residue map"""
+
+        # gaps in HMMER text format
+        GAPS = set(['-', '.'])
+
+        mapping_raw = []
+        mapping_short = {}
+        aln = hit.best_domain.alignment
+        mmcif_start = aln.hmm_from
+        mmcif_seq = aln.hmm_sequence
+        db_start = aln.target_from
+        db_seq = aln.target_sequence
+
+        ii = mmcif_start - 1
+        ij = db_start - 1
+
+        # iterate over alignment
+        # residue indices start from 1
+        for i, (aai, aaj) in enumerate(zip(mmcif_seq.upper(), db_seq.upper())):
+            if aai not in GAPS:
+                ii += 1
+
+            if aaj not in GAPS:
+                ij += 1
+
+            if len(set([aai, aaj]) & GAPS) == 0:
+                mapping_raw.append(((ii, aai), (ij, aaj)))
+                mapping_short[ii] = ij
+
+        # return dict to map residue indices and raw mapping data
+        return mapping_short, mapping_raw

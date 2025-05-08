@@ -1,4 +1,5 @@
 {% extends "validation_report_layout.html" %}
+{% from "macro.html" import insert_json_plot with context %}
 {% block body %}
 <!-- start overall card body for front page -->
 <div class="card-body border-success" style="border-color: solid black;">
@@ -50,6 +51,7 @@
               <td style="text-align:center; vertical-align: middle; white-space:nowrap;">Structure Authors</td>
               <td style="text-align:center; vertical-align: middle;">{{ Authors }}</td>
             </tr>
+            <!--
             {% if Citation_Title is not none %}
               <tr>
                 <td style="text-align:center; vertical-align: middle; white-space:nowrap;">Publication Title</td>
@@ -59,7 +61,12 @@
                 <td style="text-align:center; vertical-align: middle; white-space:nowrap;">Authors</td>
                 <td style="text-align:center; vertical-align: middle;">{{ Citation_Authors }}</td>
               </tr>
-          {% endif %}
+            {% endif %}
+            -->
+            <tr>
+              <td style="text-align:center; vertical-align: middle; white-space:nowrap;">Deposited on</td>
+              <td style="text-align:center; vertical-align: middle;">{{ deposition_date }}</td>
+            </tr>
           </table>
         </div>
       </div>
@@ -105,17 +112,17 @@
   
         <div class="container">
           <ul class="nav nav-tabs">
-            {% if disclaimer %}
-              <li>
-                <a class="nav-link disabled " data-toggle="tab" href="#home">Model Quality</a>
-              </li>
-            {% else %}
+            {% if glance_plots["MQ"] %}
               <li>
                 <a class="nav-link " data-toggle="tab" href="#home">Model Quality</a>
               </li>
+            {% else %}
+              <li>
+                <a class="nav-link disabled " data-toggle="tab" href="#home">Model Quality</a>
+              </li>
             {% endif %}
           
-            {%- if sas %}
+            {% if glance_plots["DQ"] %}
               <li>
                 <a class="nav-link" data-toggle="tab" href="#menu1">Data Quality</a>
               </li>
@@ -125,7 +132,7 @@
               </li>
             {%- endif %}
           
-            {% if ('SAS DATA' in Data) and (number_of_fits > 0) and (sasdb_sascif|length > 0) %}
+            {% if glance_plots["FQ"]  %}
               <li>
                 <a class="nav-link " data-toggle="tab" href="#menu2">Fit to Data Used for Modeling</a>
               </li>
@@ -143,22 +150,23 @@
           <div class="tab-content">
             <div id="home" class="tab-pane active">
               <div class="box text-center container-fluid no-padding" align='center'>
-                {% if not disclaimer %}
-                  <iframe src=../images/{{ ID_f }}_quality_at_glance_MQ.html frameborder=0 scrolling=yes width=90% align=center text-align: center style="position:relative; min-height:470px; max-height:2048px;">
-                  </iframe>
+                {% if glance_plots["MQ"] %}
+                  {{ insert_json_plot("quality_at_glance_MQ") }}
                 {% endif %}
               </div>
             </div>
             <div id="menu1" class="tab-pane fade">
               <div class="box text-center container-fluid no-padding" align='center'>
-                <iframe src=../images/{{ ID_f }}_quality_at_glance_DQ.html frameborder=0 scrolling=yes width=90% height=500vh align=center text-align: center style=position:relative>
-                </iframe>
+                {% if glance_plots["DQ"] %}
+                  {{ insert_json_plot("quality_at_glance_DQ") }}
+                {% endif %}
               </div>
             </div>
             <div id="menu2" class="tab-pane fade">
               <div class="box text-center container-fluid no-padding" align='center'>
-                <iframe src=../images/{{ ID_f }}_quality_at_glance_FQ.html frameborder=0 scrolling=yes width=90% align=center text-align: center style="position:relative; min-height:470px; max-height:2048px;">
-                </iframe>
+              {% if glance_plots["FQ"] %}
+                {{ insert_json_plot("quality_at_glance_FQ") }}
+              {% endif %}
               </div>
             </div>
             <div id="menu3" class="tab-pane fade">
@@ -169,36 +177,9 @@
         </div>
       </div>
       <!-- end card-header -->
-      <div class="mt-2" />
-      </div>
-      <p align="justify"> <em>Acknowledgements</em> </p>
-      <ul style="list-style-type:none;">
-        <li>
-          <p align="justify"><em>Development of integrative model validation metrics, implementation of a model validation pipeline, and creation of a validation report for integrative structures, are funded by NSF ABI awards (DBI-1756248, DBI-2112966, DBI-2112967, DBI-2112968, and DBI-1756250). The <a href='/about.html'>PDB-IHM team</a> and members of <a href='https://www.salilab.org/'>Sali lab </a>contributed model validation metrics and software packages. </em></p>
-        </li>
-        <li>
-          <p align="justify"><em>Implementation of validation methods for SAS data and SAS-based models are funded by <a href='https://www.rcsb.org/'>RCSB PDB </a> (grant number DBI-1832184). Dr. Stephen Burley, Dr. John Westbrook, and Dr. Jasmine Young from <a href='https://www.rcsb.org/'>RCSB PDB</a>,  Dr. Jill Trewhella, Dr. Helen M. Berman, Dr. Dina Schneidman, and members of <a href='https://www.sasbdb.org/'>SASBDB </a> repository are acknowledged for their advice and support in implementing SAS validation methods. </em></p>
-        </li>
-        <li>
-          <p align="justify"><em>Members of the <a href='https://www.wwpdb.org/task/hybrid'>wwPDB Integrative/Hybrid Methods Task Force</a> provided recommendations and community support for the project. </em> </p>
-        </li>
-      </ul>
+      {% include 'validation_software.j2' %}
       <p style=margin-bottom:1cm;> </p>
-      <p align="justify">The following software was used in the production of this report.</p>
-      <ul style="list-style-type:none;">
-        
-        <li><em><a href='https://github.com/ihmwg/python-ihm'>Python-IHM</a> Version {{ python_ihm_version }}</em></li>
-        
-        {% if molprobity_version is not none %}
-          <li><em><a href='http://molprobity.biochem.duke.edu/'>MolProbity</a> Version {{ molprobity_version }}</em></li>
-        {% endif %}
-
-        {% if sas|length > 0 and sasdb_sascif|length > 0 %}
-          <li><em><a href='https://www.embl-hamburg.de/biosaxs/software.html'>ATSAS</a> Version {{ atsas_version }}</em></li>
-        {% endif %}
-        
-        <li><em><a href='https://github.com/salilab/IHMValidation'>Integrative Modeling Validation</a> Version {{ report_version }}</em></li>
-      </ul>
+      {% include 'acknowledgments.j2' %}
     </div>
     <!-- end column -->
   </div>

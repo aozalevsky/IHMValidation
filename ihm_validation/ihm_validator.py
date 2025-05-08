@@ -84,8 +84,10 @@ parser.add_argument('-res', type=list, default=['Rigid bodies: 1 residue per bea
 
 parser.add_argument('--enable-sas', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run SAS validation")
-parser.add_argument('--enable-cx', default=False, type=lambda x: bool(strtobool(x)),
+parser.add_argument('--enable-cx', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run crosslinking-MS validation")
+parser.add_argument('--enable-prism', default=True, type=lambda x: bool(strtobool(x)),
+                        help="Run PrISM precision analysis")
 
 
 #############################################################################################################################
@@ -133,8 +135,8 @@ template_flask = [
 #    "validation_help.html",
 ]
 
-# Get the UTC time from ruser
-d = pytz.utc.localize(datetime.datetime.utcnow())
+# Get the UTC time from user
+d = datetime.datetime.now(datetime.timezone.utc)
 # Set UCSF's timezone
 timezone = pytz.timezone("America/Los_Angeles")
 d_format = d.astimezone(timezone)
@@ -152,6 +154,12 @@ Template_Dict['date'] = timestamp
 # Jinja scripts
 #############################################################################################################################
 
+def load_json_plot(fname):
+    with open(fname, 'r') as f:
+        plot = json.dumps(json.load(f, strict=False))
+    return plot
+
+templateEnv.filters['load_json_plot'] = load_json_plot
 
 def createdirs(dirNames: dict):
     for name in list(dirNames.values()):
@@ -165,7 +173,7 @@ def createdirs(dirNames: dict):
 def write_html(prefix: str, template_dict: dict, template_list: list, dirName: str):
     for template_file in template_list:
         template = templateEnv.get_template(template_file)
-        outputText = template.render(template_dict)
+        outputText = template.render(template_dict, HTMLDIR=dirName)
 
         with open(os.path.join(os.path.join(dirName, template_file)), "w") as fh:
                 fh.write(outputText)
@@ -233,7 +241,11 @@ if __name__ == "__main__":
     report = WriteReport(args.f,
                          db=args.databases_root,
                          cache=args.cache_root,
-                         nocache=args.nocache)
+                         nocache=args.nocache,
+                         enable_sas=args.enable_sas,
+                         enable_cx=args.enable_cx,
+                         enable_prism=args.enable_prism
+                         )
 
     logging.info("Entry composition")
     template_dict = report.run_entry_composition(Template_Dict)
@@ -260,7 +272,7 @@ if __name__ == "__main__":
     dirNames.update(
         {
             'images':  str(Path(dirNames['root_html'], 'images')),
-            'csv':  str(Path(dirNames['root_html'], 'csv')),
+            # 'csv':  str(Path(dirNames['root_html'], 'csv')),
             'pdf':  str(Path(dirNames['root_html'], 'pdf')),
             # 'json': str(Path(output_path, 'json')),
         }
@@ -286,7 +298,7 @@ if __name__ == "__main__":
 
     logging.info("Model quality")
     template_dict, molprobity_dict, exv_data = report.run_model_quality(
-        template_dict, csvDirName=dirNames['csv'], htmlDirName=dirNames['html'])
+        template_dict, csvDirName=None, htmlDirName=dirNames['html'])
 
     template_dict['enable_sas'] = args.enable_sas
     if args.enable_sas:
@@ -306,7 +318,8 @@ if __name__ == "__main__":
     if args.enable_cx:
         logging.info("CX validation")
         template_dict, cx_data, cx_ertypes = report.run_cx_validation(template_dict)
-        cx_fit = None
+        cx_fit = template_dict['cx_stats']
+        cx_data_quality = template_dict['cx_data_quality']
 
         logging.info("CX validation plots")
         report.run_cx_validation_plots(template_dict,
@@ -314,10 +327,23 @@ if __name__ == "__main__":
 
     else:
         cx_fit = None
+        cx_data_quality = None
+
+    if args.enable_prism:
+        logging.info('PrISM precision analysis')
+        template_dict['enable_prism'] = args.enable_prism
+        report.run_prism(template_dict, imageDirName=dirNames['images'])
 
     logging.info("Quality at a glance")
-    report.run_quality_glance(
-        molprobity_dict, exv_data, sas_data, sas_fit, cx_fit, imageDirName=dirNames['images'])
+    glance_plots = report.run_quality_glance(
+        molprobity_dict, exv_data,
+        sas_data, sas_fit,
+        cx_data_quality, cx_fit,
+        imageDirName=dirNames['images']
+    )
+    template_dict['glance_plots'] = glance_plots
+
+    template_dict['current_task'] = 'pdf'
 
     logging.info("Write PDF")
     output_pdf = write_pdf(template_dict['ID_f'], template_dict, template_pdf,
@@ -329,15 +355,15 @@ if __name__ == "__main__":
 
     logging.info("Supplementary table")
     template_dict = report.run_supplementary_table(template_dict,
-                                                   location=args.ls,
-                                                   physics=physics,
-                                                   method_details=args.m,
-                                                   sampling_validation=None,
-                                                   validation_input=args.v1,
-                                                   cross_validation=args.v2,
-                                                   Data_quality=args.dv,
-                                                   clustering=None,
-                                                   )
+                                                  location=args.ls,
+                                                  physics=physics,
+                                                  method_details=args.m,
+                                                  sampling_validation=None,
+                                                  validation_input=args.v1,
+                                                  cross_validation=args.v2,
+                                                  Data_quality=args.dv,
+                                                  clustering=None,
+                                                  )
     output_pdf = write_supplementary_table(
         template_dict['ID_f'], template_dict, template_file_supp, dirNames['pdf'], dirNames['pdf'])
     output_pdf_ext = Path(str(output_path), utility.get_supp_file_pdf(output_prefix))
@@ -347,6 +373,9 @@ if __name__ == "__main__":
 
     # logging.info("Write JSON")
     # write_json(args.f, template_dict, dirNames['json'], dirNames['json'])
+
+
+    template_dict['current_task'] = 'html'
 
     logging.info("Write HTML")
     # set html mode

@@ -20,7 +20,16 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-gl-2.4.3.min.js"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-2.4.3.min.js"
+        crossorigin="anonymous"></script>
     <script type="text/javascript">
       Bokeh.set_log_level("info");
     </script>
@@ -42,14 +51,14 @@
             <div class=" col-sm-9" style="margin-left: 0px;">
               <a href="/">
                 {% if html_mode == 'local' %}
-                  <img src="static/images/logon.png" class="float-left" alt="PDBDEV.org" height="100" width="110" style="margin-top: 0px; margin-bottom: 0px" />
+                  <img src="static/images/logon.png" class="float-left" alt="PDBIHM.org" height="100" width="110" style="margin-top: 0px; margin-bottom: 0px" />
                 {% else %}
-                  <img src="/images/logon.png" class="float-left" alt="PDBDEV.org" height="100" width="110" style="margin-top: 0px; margin-bottom: 0px" />
+                  <img src="/images/logon.png" class="float-left" alt="PDBIHM.org" height="100" width="110" style="margin-top: 0px; margin-bottom: 0px" />
                 {% endif %}
                 <p>
                   <h1 style="margin-left: 0px; color: #003366;">PDB-IHM</h1>
                   <h5 class="float-left" style="color: #003366;">
-                  Prototype Archiving System for Integrative Structures
+                    System for Archiving Integrative Structures
                   </h5>
                 </p>
               </a>
