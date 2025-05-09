@@ -21,7 +21,7 @@ from pathlib import Path
 import utility
 from report import WriteReport
 from distutils.util import strtobool
-
+import format_checker
 # from validation.WKhtmlToPdf import  wkhtmltopdf
 # import utility
 
@@ -237,6 +237,9 @@ if __name__ == "__main__":
 
     logging.info("Clean up temporary files")
     utility.clean_all()
+
+    logging.info("Checking file format")
+    format_checker.check_file_log(args.f)
 
     report = WriteReport(args.f,
                          db=args.databases_root,
