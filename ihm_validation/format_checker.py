@@ -70,7 +70,9 @@ def check_all_exception(system: ihm.System):
 
 def check_all_log(system: ihm.System) -> int:
     """Perform all checks. Throw a message in the log if a check fails and return a non-zero exit code"""
-    checks = [check_entities_histidines, check_models]
+    # Disable atom check until python-ihm fixes
+    # checks = [check_entities_histidines, check_models]
+    checks = [check_entities_histidines]
     exit_code = 0
     for check in checks:
         try:
