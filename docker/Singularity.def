@@ -41,7 +41,7 @@ Stage: spython-base
     REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 
     # Install Python packages and other dependencies needed by IHMValidation
-    apt-get update -y && apt-get install -y xvfb libasound2 libdbus-glib-1-2 libgtk-3-0 pymol && mamba install -y pip requests numpy=1.26.2 pandas scikit-learn matplotlib "bokeh<3.0" selenium pyvirtualdisplay firefox geckodriver jinja2 ipython imp pyrmsd -c salilab && pip install -U iqplot pdfkit "ihm==1.8" pyhmmer mendeleev && curl -L -O https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb && apt install -y ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb && rm -rf wkhtmltox_0.12.6.1-2.jammy_amd64.deb
+    apt-get update -y && apt-get install -y xvfb libasound2 libdbus-glib-1-2 libgtk-3-0 pymol && mamba install -y pip requests numpy=1.26.2 pandas scikit-learn matplotlib "bokeh<3.0" selenium pyvirtualdisplay firefox geckodriver jinja2 ipython imp pyrmsd -c salilab && pip install -U iqplot pdfkit "ihm==2.5" pyhmmer mendeleev && curl -L -O https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb && apt install -y ./wkhtmltox_0.12.6.1-2.jammy_amd64.deb && rm -rf wkhtmltox_0.12.6.1-2.jammy_amd64.deb
 
     # PRISM dependencies 
     pip install "numpy==1.26.2" "matplotlib>=3.4.0" "scipy>=1.6.1" "networkx>=2.6.2" wget jenkspy pandas biopython

@@ -65,7 +65,11 @@
       -
     {% endif %}
   {% else %}
-    {{ value }}
+    {% if (value is none) or (value == 'None') %}
+      Not available
+    {% else %}
+      {{ value }}
+    {% endif %}
   {% endif %}
 {% endmacro %}
 

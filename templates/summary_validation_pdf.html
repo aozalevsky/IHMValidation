@@ -1,4 +1,4 @@
-{% from "macro.html" import write_bullet %}
+{% from "macro.html" import write_bullet, format_value %}
 <!Template for writing Supplemental Table page>
 <! ganesans - Salilab - UCSF>
 <!ganesans@salilab.org>
@@ -232,9 +232,9 @@
          {% for i in range(method_info['Step number']|length) %} 
            <tr>
              <td><i>{{ i + 1 }}. <a href="https://pdb-ihm.org/validation_help.html#sumtabmetname">Name</a></i></td>
-             <td>{{ method_info['Method name'][i] }}</td>
+             <td>{{ format_value(method_info['Method name'][i]) }}</td>
            </tr>
-           {% if method_info['Number of computed models'][i] is not none %}
+           {% if not ((method_info['Method type'][i] is none) or (method_info['Method type'][i] == "None")) %}
              <tr>
                <td><i> &nbsp; &nbsp; &nbsp; <a href="https://pdb-ihm.org/validation_help.html#sumtabmetmet">Method</a></i></td>
                <td>
@@ -242,7 +242,7 @@
                </td>
              </tr>
            {% endif %}
-           {% if method_info['Method description'][i] is not none %}
+           {% if not ((method_info['Method description'][i] is none) or (method_info['Method description'][i] == "None")) %}
              <tr>
                <td><i> &nbsp; &nbsp; &nbsp; <a href="https://pdb-ihm.org/validation_help.html#sumtabmetdesc">Description</a></i></td>
                <td>
@@ -250,7 +250,7 @@
                </td>
              </tr>
             {% endif %}
-            {% if method_info['Number of computed models'][i] is not none %}
+            {% if not ((method_info['Number of computed models'][i] is none) or (method_info['Number of computed models'][i] == "None")) %}
               <tr>
                <td><i> &nbsp; &nbsp; &nbsp; <a href="https://pdb-ihm.org/validation_help.html#sumtabmetnummodels">Number of computed models</a></i></td>
                <td>
