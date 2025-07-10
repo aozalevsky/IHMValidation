@@ -424,7 +424,7 @@ def get_rg_data(rg_dict: dict) -> list:
     fin_rg = []
     for key, val in rg_dict.items():
         fin_rg.append(key+': Rg from Gunier is ' +
-                      str(val[0])+'nm and Rg from p(r) is ' + str(val[1])+'nm')
+                      str(val[0])+' nm and Rg from p(r) is ' + str(val[1])+' nm')
     return fin_rg
 
 
