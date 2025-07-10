@@ -22,8 +22,6 @@ p = Path(__file__).absolute().parent.parent.parent
 sys.path.append(str(p))
 p = Path(p, 'prism', 'src')
 sys.path.append(str(p))
-p = Path(p, 'prism', 'src')
-sys.path.append(str(p))
 # Path to pymol
 sys.path.append('/usr/lib/python3/dist-packages')
 
@@ -187,3 +185,7 @@ class PRISM(GetInputInformation):
     def pymol_version(self):
         return cmd.get_version()[0]
 
+    @property
+    def prism_version(self):
+        '''This is a stub. Using hardoced commit id for now.'''
+        return 'dbe5a41'

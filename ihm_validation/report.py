@@ -498,9 +498,10 @@ class WriteReport(object):
         Template_Dict['prism_data'] = I_p.get_data()
         Template_Dict['prism_plots'] = I_p.get_plots(imageDirName)
 
-
+        Template_Dict['prism_version'] = None
         Template_Dict['pymol_version'] = None
         if len(Template_Dict['prism_plots']) > 0:
+            Template_Dict['prism_version'] = I_p.prism_version
             Template_Dict['pymol_version'] = I_p.pymol_version
 
     def run_em_validation(self, Template_Dict: dict, imageDirName: str) -> (dict):
