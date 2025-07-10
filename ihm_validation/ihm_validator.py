@@ -82,6 +82,8 @@ parser.add_argument('-dv', type=list, default=[
 parser.add_argument('-res', type=list, default=['Rigid bodies: 1 residue per bead.',
                                                 'Flexible regions: N/A'], help="Add information on model quality (molprobity or excluded volume)")
 
+parser.add_argument('--enable-format-check', default=True, type=lambda x: bool(strtobool(x)),
+                        help="Run format checker")
 parser.add_argument('--enable-sas', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run SAS validation")
 parser.add_argument('--enable-cx', default=True, type=lambda x: bool(strtobool(x)),
@@ -240,8 +242,9 @@ if __name__ == "__main__":
     logging.info("Clean up temporary files")
     utility.clean_all()
 
-    logging.info("Checking file format")
-    format_checker.check_file_log(args.f)
+    if args.enable_format_check:
+        logging.info("Checking file format")
+        format_checker.check_file_log(args.f)
 
     report = WriteReport(args.f,
                          db=args.databases_root,
