@@ -142,7 +142,7 @@
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #E4E4E4; min-height: 17rem;">
             <h1 align="center">Integrative Structure Validation Report <a class='help1' style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#overview">?</a></h1>
-            <h2 align="center">{{ date }}</h2>
+            <p align="center" style="font-size: 2rem">{{ date }}</p>
             {% include 'validation_software.j2' %}
           </div>
         </div>
@@ -221,9 +221,9 @@
             <div class="box text-center container-fluid no-padding" align='center' style="break-inside: avoid;">
               {% if disclaimer == 0 %}
                 {% if atomic and molprobity_models|length > 0 %}
-                  <h5 align=center>
-                    Model Quality: MolProbity Analysis
-                  </h5>
+                  <h4 align=center>
+                    <u>Model Quality: MolProbity Analysis</u>
+                  </h4>
                 
                   {% for i in range([molprobity_models|length, MAXPLOTS] | min) %}
                     <div>
@@ -234,9 +234,9 @@
                 {% endif %}
                 
                 {% if cg and excluded_volume_models|length > 0 %}
-                  <h5 align=center>
-                    Model Quality: Excluded Volume Analysis
-                  </h5>
+                  <h4 align=center>
+                    <u>Model Quality: Excluded Volume Analysis</u>
+                  </h4>
                 
                   {% for i in range([excluded_volume_models|length, MAXPLOTS] | min) %}
                     <div>
@@ -253,16 +253,20 @@
             </div>
   
             <!-- Data quality -->
-            <!-- SAS -->
-            {% if glance_plots["DQ"] and ((sas and (sasdb_sascif|length > 0)) or ((cx_data_quality is not none and cx_data_quality|length > 0))) %}
+            {% if glance_plots["DQ"] %}
+              <h4 align=center style="margin-top: 2em">
+                <u>Data Quality</u>
+              </h4>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_DQ.svg"}}>
               </div>
             {% endif %}
   
             <!-- Fit to data -->
-            <!-- SAS -->
-            {% if glance_plots["FQ"] and ((sas and (number_of_fits|int > 0)) or (cx_stats is not none)) %}
+            {% if glance_plots["FQ"] %}
+              <h4 align=center style="margin-top: 2em">
+                <u>Fit to Data Used for Modeling</u>
+              </h4>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_FQ.svg"}}>
               </div>
@@ -278,10 +282,10 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h4 align="center">
+            <h3 align="center">
               <a name="ensemble"><u>Ensemble information</u></a>
               <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#ensemble">?</a>
-            </h4>
+            </h3>
             <p><i>This entry consists of {{ num_ensembles|int }} distinct ensemble(s).</i></p>
           </div>
         </div>
@@ -293,10 +297,10 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h4 align="center">
+            <h3 align="center">
               <u><a name=summary>Summary</a></u>
               <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#summary">?</a>
-            </h4>
+            </h3>
             <p align="justify">
               <i>This entry consists of {{ number_of_models }} model(s). A total of {{ number_of_datasets|int }} datasets were used to build this entry.</i>
             </p>
@@ -312,9 +316,9 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h4 align="center">
+            <h3 align="center">
               <u><a name='data'>Datasets used for modeling</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#datasets">?</a>
-            </h4>
+            </h3>
             
             <p>
               {% if number_of_datasets|int < 2 %}
@@ -336,9 +340,9 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h4 align="center">
+            <h3 align="center">
               <u><a name="methods">Methodology and software</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#software">?</a>
-            </h4>
+            </h3>
             <p>
               <i>This entry is a result of {{ Protocols_number|int }} distinct protocol(s).</i>
             </p>
@@ -366,16 +370,16 @@
     <div class="card-header" style="background-color: #FFF;">
       <div class="row">
         <div class="col-lg-12">
-          <h4 align="center">
+          <h3 align="center">
              <u><a name='first'>Data quality</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#dataquality">?</a>
-          </h4>
+          </h3>
           
           <!-- SAS -->
           {% if ( sas ) and ( sasdb_sascif|length > 0 ) %}
             <!-- Scattering profiles -->
-            <h5 align=center>
+            <h4 align=center>
                <u> <a name=firstI>Scattering profile</a> </u><a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#scattering'>?</a>
-            </h5>
+            </h4>
             
             <p align=justify>
                SAS data used in this integrative model was obtained from {{ sasdb_code_html|length }} deposited SASBDB entry (entries).
@@ -398,9 +402,9 @@
             {% endfor %}
 
             <!-- Key experimental estimates -->
-            <h5 align=center>
+            <h4 align=center>
               <u><a name=firstE>Key experimental estimates</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#expt'>?</a>
-            </h5>
+            </h4>
             <p align='justify'>
               <u>Molecular weight (MW) estimates from experiments and analysis</u>:
               true molecular weight can be compared to the Porod estimate from scattering profiles.
@@ -415,9 +419,9 @@
             {{ write_table(parameters_volume) }}
             
             <!-- Flexibility analysis -->
-            <h5 align=center>
+            <h4 align=center>
               <u><a name=firstF>Flexibility analysis</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#flexibility'>?</a>
-            </h5>
+            </h4>
             {% for i in range ( sasdb_code_html|length ) %}
               <p align=justify>
                 <u>Flexibility analysis for {{ sasdb_code_html[i] }}</u>: In a Porod-Debye plot, a clear plateau is observed for globular (partial or fully folded) domains, whereas, fully unfolded domains are devoid of any discernable plateau. For details, refer to Figure 5 in <a href=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3103662/>Rambo and Tainer, 2011</a>. In a Kratky plot, a parabolic shape is observed for globular (partial or fully folded) domains and a hyperbolic shape is observed for fully unfolded domains.
@@ -432,9 +436,9 @@
             {% endfor %}
             
             <!-- Pair-distance distribution analysis -->
-            <h5 align=center>
+            <h4 align=center>
               <u><a name=firstP>Pair-distance distribution analysis</a></u>   <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#pofr'>?</a>
-            </h5>
+            </h4>
             <p align='justify'>
               <u>P(r) analysis:</u> P(r) represents the distribution of distances between all pairs of atoms within the particle weighted by the respective electron densities. P(r) is the Fourier transform of I(s) (and vice versa). R<sub>g</sub> can be estimated from integrating the P(r) function. Agreement between the P(r) and Guinier-determined R<sub>g</sub> (table below) is a good measure of the self-consistency of the SAS profile. R<sub>g</sub> is a measure for the overall size of a macromolecule; e.g. a protein with a smaller R<sub>g</sub> is more compact than a protein with a larger R<sub>g</sub>, provided both have the same molecular weight (MW). The point where P(r) is decaying to zero is called D<sub>max</sub> and represents the maximum size of the particle.
             </p>
@@ -455,9 +459,9 @@
             {% endfor %}
             
             <!-- Guinier analysis -->
-            <h5 align= center>
+            <h4 align= center>
               <u><a name=firstG>Guinier analysis </a></u>   <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#guinier'>?</a>
-            </h5>
+            </h4>
             
             <p align='justify'>
               <u>Guinier analysis:</u> agreement between the P(r) and Guinier-determined R<sub>g</sub> (table below) is a good measure of the self-consistency of the SAS profile. Molecular weight estimates can also be compared to Porod and sample molecular weights for consistency.
@@ -475,22 +479,23 @@
             </div>
             
           {% elif sas and (sasdb_sascif|length < 1) %}
-            <h5 align=center>
+            <h4 align=center>
               <u><a name=firstI>SAS:Scattering profile</a></u>
-            </h5>
+            </h4>
             
             <p align=justify>
               SAS data used in this integrative model could not be validated as the sascif file is currently unavailable.
             </p>
           {% endif %}
-  
+ 
+          <!-- crosslinking MS data validation --> 
           {% include 'cx_data_quality.j2' %}
           
           <!-- Other datasets -->
           {% for i in range(Unique_dataset|length) %}
-            <h5 align=center>
+            <h4 align=center>
               <u><a name=last>{{ Unique_dataset[i] }}</a></u>
-            </h5>
+            </h4>
             <p align=justify>
               Validation for this section is under development.
             </p>
@@ -510,19 +515,19 @@
       <div class="card-header" style="background-color: #FFF; padding: 0px;">
         <div class="row">
           <div class="col-lg-12">
-            <h4 align="center">
+            <h3 align="center">
               <u><a name='first'>Fit of model to data used for modeling</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#fittodata'>?</a>
-            </h4>
+            </h3>
 
             {% if sas %}
               {% if sasdb_sascif|length > 0 %}
-                <h5 align=center>
+                <h4 align=center>
                   <u>Fit of model(s) to SAS data</u>
-                </h5>
+                </h4>
                 
-                <h5 align=center>
+                <h4 align=center>
                   <u>χ² goodness of fit and cormap analysis</u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#goodness'>?</a>
-                </h5>
+                </h4>
                 
                 {% if number_of_fits  > 0 %}
                   <p>
@@ -560,9 +565,9 @@
             {% endif %}
 
             {% if cx %}
-              <h5 align=center id="cxms">
+              <h4 align=center id="cxms">
                 <u> Fit of model(s) to crosslinking-MS data</u>
-              </h5>
+              </h4>
 
               <h5 align=center id="cxms_ertypes">
                 <u>Restraint types</u>
@@ -729,9 +734,9 @@
             {% endif %}
                 
             {% for i in range(Unique_dataset|length) %}
-              <h5 align= center>
+              <h4 align= center>
                 <u><a name=last>{{ Unique_dataset[i] }}</a></u>
-              </h5>
+              </h4>
               <p align=justify>
                 Validation for this section is under development.
               </p>
@@ -750,9 +755,9 @@
       <div class="card-header" style="background-color: #FFF; padding: 0px;">
         <div class="row">
           <div class="col-lg-12">
-            <h4 align="center">
+            <h3 align="center">
               <u><a name='first'>Fit of model to data used for validation</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#fittoval'>?</a>
-            </h4>
+            </h3>
             <p align=justify>
               Validation for this section is under development.
             </p>

@@ -74,8 +74,8 @@
 {% endmacro %}
 
 <!-- Define a macro for the html/pdf formatting of help links -->
-{% macro format_help(mode, topic) %}
-  {% if mode == 'html' %}
+{% macro format_help(topic, current_task='html') %}
+  {% if current_task == 'html' %}
     <a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='/validation_help.html#{{ topic }}'>?</a>
   {% else %}
     <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#{{ topic }}">?</a>

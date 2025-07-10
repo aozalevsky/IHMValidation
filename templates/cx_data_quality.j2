@@ -6,9 +6,9 @@
       <!-- Data quality header -->
       <div class="row">
         <div class="col-lg-12">
-          <h5 class= ex2 align= center>
+          <h4 class= ex2 align= center>
             <u><a name=crosslinking-ms>Crosslinking-MS</a></u>
-          </h5>
+          </h4>
           <p align=justify>
             <em>
               At the moment, data validation is only available for crosslinking-MS data deposited as a fully <a href=https://www.ebi.ac.uk/pride/markdownpage/crosslinking>compliant</a> dataset in the <a href=https://www.ebi.ac.uk/pride/archive/crosslinking>PRIDE Crosslinking</a> database. 
@@ -19,11 +19,10 @@
           {% if cx_data_quality is not none and cx_data_quality|length > 0 %}
             {% for data in cx_data_quality %}
               <div name=crosslinking-ms-{{ data["pride_id"] }} {{ 'class="card-header" style="background-color: #FFF;"' if cx_data_quality|length > 1 }}>
+                <h5>
+                  <a href=https://www.ebi.ac.uk/pride/archive/crosslinking/{{ data["pride_id"] }}>{{ data["pride_id"] }}</a>
+                </h5>
                 <table class='table'>
-                  <tr>
-                    <td>Crosslinking-MS dataset (<a href=https://www.ebi.ac.uk/pride/archive/crosslinking>PRIDE ID</a>)</td>
-                    <td><a href=https://www.ebi.ac.uk/pride/archive/crosslinking/{{ data["pride_id"] }}>{{ data["pride_id"] }}</a></td>
-                  </tr>
                   <tr>
                     <td>Number of entities in the crosslinking-MS dataset:</td>
                     <td>{{ data['entities_ms'] }}</td>
