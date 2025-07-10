@@ -1297,6 +1297,10 @@ class GetInputInformation(object):
         return self._has_dataset_type(ihm.dataset.SASDataset)
 
     @property
+    def has_em_dataset(self):
+        return self._has_dataset_type(ihm.dataset.EMDensityDataset)
+
+    @property
     def deposition_date(self):
         """Return initial deposition date"""
         date = utility.NA

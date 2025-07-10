@@ -40,8 +40,12 @@ class Plots(GetInputInformation):
         self.filename = imageDirName
         self.driver=driver
 
-    def plot_quality_at_glance(self, molprobity_data: dict, exv_data: dict,
-                               sas_data: dict, sas_fit: dict, cx_data_quality: dict, cx_fit: dict) -> dict:
+    def plot_quality_at_glance(self,
+                               molprobity_data: dict=None, exv_data: dict=None,
+                               sas_data_quality: dict=None, sas_fit: dict=None,
+                               cx_data_quality: dict=None, cx_fit: dict=None,
+                               em_data_quality: dict=None, em_fit: dict=None
+                               ) -> dict:
 
         glance_plots = {
             'MQ': False,
@@ -384,6 +388,47 @@ class Plots(GetInputInformation):
 
             dq_plots.append(grid)
 
+        if em_data_quality is not None and len(em_data_quality) > 0:
+            Scores = []
+            counts = []
+            for dataset in em_data_quality:
+                emdbid = dataset['emdbid']
+                try:
+                    s = float(dataset['data_stats']['resolution'])
+                except (ValueError, TypeError):
+                    continue
+                Scores.append(emdbid)
+                counts.append(s)
+
+            if len(counts) > 0:
+                legends = [f'{i:.2f}Å' for i in counts]
+                source = ColumnDataSource(data=dict(
+                    Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                pf = figure(y_range=Scores, x_range=(0, 80), plot_height=95 + len(counts) * 20,
+                            plot_width=800, title="3DEM resolution")
+                rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
+                             source=source, alpha=0.8, line_color='white')
+                pf.ygrid.grid_line_color = None
+                pf.title.text_font_size = '14pt'
+                pf.xaxis.axis_label = 'Resolution'
+                pf.xaxis.major_label_text_font_size = "12pt"
+                pf.yaxis.major_label_text_font_size = "12pt"
+                legend = Legend(items=[LegendItem(label=legends[i], renderers=[
+                                rf], index=i) for i in range(len(legends))], location="center",
+                                orientation='vertical', label_text_font_size="12px")
+                pf.add_layout(legend, 'right')
+                pf.legend.items.reverse()
+                pf.legend.border_line_width = 0
+                pf.title.vertical_align = 'top'
+                pf.title.align = "center"
+                pf.output_backend = "svg"
+                pf.legend.label_text_font_size = "12px"
+                pf.xaxis.axis_label_text_font_style = 'italic'
+                pf.yaxis.axis_label_text_font_style = 'italic'
+                pf.xaxis.axis_label_text_font_size = "14pt"
+                pf.yaxis.major_label_text_font_size = "14pt"
+                dq_plots.append(pf)
+
         if len(dq_plots) > 0:
             pd = gridplot(dq_plots, ncols=1,
                 merge_tools=True,
@@ -461,6 +506,48 @@ class Plots(GetInputInformation):
                 pf.ygrid.grid_line_color = None
                 pf.title.text_font_size = '14pt'
                 pf.xaxis.axis_label = 'Satisfaction rate, %'
+                pf.xaxis.major_label_text_font_size = "12pt"
+                pf.yaxis.major_label_text_font_size = "12pt"
+                legend = Legend(items=[LegendItem(label=legends[i], renderers=[
+                                rf], index=i) for i in range(len(legends))], location="center",
+                                orientation='vertical', label_text_font_size="12px")
+                pf.add_layout(legend, 'right')
+                pf.legend.items.reverse()
+                pf.legend.border_line_width = 0
+                pf.title.vertical_align = 'top'
+                pf.title.align = "center"
+                pf.output_backend = "svg"
+                pf.legend.label_text_font_size = "12px"
+                pf.xaxis.axis_label_text_font_style = 'italic'
+                pf.yaxis.axis_label_text_font_style = 'italic'
+                pf.xaxis.axis_label_text_font_size = "14pt"
+                pf.yaxis.major_label_text_font_size = "14pt"
+                fq_plots.append(pf)
+
+        if em_fit is not None and len(em_fit) > 0:
+            Scores = []
+            counts = []
+            for dataset in em_fit:
+                emdbid = dataset['emdbid']
+                for mid, data_ in dataset['fit_stats'].items():
+                    try:
+                        s = float(data_['q_score']['average'])
+                    except ValueError:
+                        continue
+                    Scores.append(f'Model {mid}/{emdbid}')
+                    counts.append(s)
+
+            if len(counts) > 0:
+                legends = [f'{i:.3f}' for i in counts]
+                source = ColumnDataSource(data=dict(
+                    Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                pf = figure(y_range=Scores, x_range=(-1, 1), plot_height=95 + len(counts) * 20,
+                            plot_width=800, title="Q-score")
+                rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
+                             source=source, alpha=0.8, line_color='white')
+                pf.ygrid.grid_line_color = None
+                pf.title.text_font_size = '14pt'
+                pf.xaxis.axis_label = 'Q-score'
                 pf.xaxis.major_label_text_font_size = "12pt"
                 pf.yaxis.major_label_text_font_size = "12pt"
                 legend = Legend(items=[LegendItem(label=legends[i], renderers=[

@@ -86,6 +86,8 @@ parser.add_argument('--enable-sas', default=True, type=lambda x: bool(strtobool(
                         help="Run SAS validation")
 parser.add_argument('--enable-cx', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run crosslinking-MS validation")
+parser.add_argument('--enable-em', default=False, type=lambda x: bool(strtobool(x)),
+                        help="Run 3DEM validation")
 parser.add_argument('--enable-prism', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run PrISM precision analysis")
 
@@ -181,7 +183,7 @@ def write_html(prefix: str, template_dict: dict, template_list: list, dirName: s
 
 def write_pdf(prefix: str, template_dict: dict, template_file: str, dirName: str, dirName_Output: str):
     template = templateEnv.get_template(template_file)
-    outputText = template.render(template_dict)
+    outputText = template.render(template_dict, HTMLDIR=dirName)
     temp_html = os.path.join(dirName, utility.get_output_file_temp_html(prefix))
     output_pdf = os.path.join(dirName_Output, utility.get_output_file_pdf(prefix))
 
@@ -247,6 +249,7 @@ if __name__ == "__main__":
                          nocache=args.nocache,
                          enable_sas=args.enable_sas,
                          enable_cx=args.enable_cx,
+                         enable_em=args.enable_em,
                          enable_prism=args.enable_prism
                          )
 
@@ -332,6 +335,15 @@ if __name__ == "__main__":
         cx_fit = None
         cx_data_quality = None
 
+    # 3DEM
+    template_dict['enable_em'] = args.enable_em
+    if args.enable_em:
+        logging.info("3DEM validation")
+        report.run_em_validation(template_dict,
+                                       imageDirName=dirNames['images'])
+        em_data_quality = template_dict['em_data_quality']
+        em_fit = template_dict['em_data_quality']
+
     if args.enable_prism:
         logging.info('PrISM precision analysis')
         template_dict['enable_prism'] = args.enable_prism
@@ -342,6 +354,7 @@ if __name__ == "__main__":
         molprobity_dict, exv_data,
         sas_data, sas_fit,
         cx_data_quality, cx_fit,
+        em_data_quality, em_fit,
         imageDirName=dirNames['images']
     )
     template_dict['glance_plots'] = glance_plots

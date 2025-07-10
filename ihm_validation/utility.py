@@ -20,6 +20,7 @@ import time
 import signal
 import re
 import requests
+import base64
 
 NA = 'Not available'
 
@@ -194,7 +195,7 @@ def get_unique_datasets(name: dict) -> list:
     '''
     all_data = set(name['Dataset type'])
     sub_data = {'Integrative model', 'Other', 'Comparative model',
-                'Experimental model', 'De Novo model', 'SAS data', 'Crosslinking-MS data'}
+                'Experimental model', 'De Novo model', 'SAS data', 'Crosslinking-MS data', '3DEM volume'}
     fin_data = list(all_data.difference(sub_data))
     output = list()
     for i in fin_data:
@@ -770,3 +771,32 @@ def get_alphafolddb_link(acc: str) -> str|None:
             url = f"https://alphafold.ebi.ac.uk/entry/{uid}"
 
     return url
+
+def encode_img(buffer):
+    img_base64 = base64.b64encode(buffer)  # encode to base64 (bytes)
+    img_base64 = img_base64.decode()    # convert bytes to string
+    return img_base64
+
+def load_img(path):
+    with open(path, 'rb') as f:
+        img_ = f.read() # read bytes from file
+
+    img_base64 = encode_img(img_)
+    return img_base64
+
+def get_larget_assembly_model(system: ihm.System) -> tuple:
+    """Find model ID corresponding to the largest assembly"""
+    # TODO: The logic has to be updated when we get support for
+    # _ihm_model_representative https://github.com/ihmwg/python-ihm/issues/173
+    idx = None
+    idx_model = None
+    idx_num_asym_ids = None
+    for group, model in system._all_models():
+        asym_ids = set([rep.asym_unit._id for rep in model.representation])
+        num_asym_ids = len(asym_ids)
+        if idx == None or num_asym_ids > idx_num_asym_ids:
+            idx = model._id
+            idx_model = model
+            idx_num_asym_ids = num_asym_ids
+
+    return (idx, idx_model, idx_num_asym_ids)

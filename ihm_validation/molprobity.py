@@ -540,7 +540,7 @@ class MyModelDumper(ihm.dumper._ModelDumper):
               "label_alt_id", "label_comp_id", "label_seq_id", "auth_seq_id",
               "pdbx_PDB_ins_code", "label_asym_id", "Cartn_x", "Cartn_y",
               "Cartn_z", "occupancy", "label_entity_id", "auth_asym_id",
-              "auth_comp_id", "B_iso_or_equiv", "pdbx_PDB_model_num"]
+              "auth_comp_id", "B_iso_or_equiv", "pdbx_PDB_model_num", "pdbx_formal_charge"]
         if add_ihm:
             it.append("ihm_model_id")
         with writer.loop("_atom_site", it) as lp:
@@ -595,7 +595,8 @@ class MyModelDumper(ihm.dumper._ModelDumper):
                              B_iso_or_equiv=atom.biso,
                              occupancy=atom.occupancy,
                              pdbx_PDB_model_num=model._id,
-                             ihm_model_id=model._id)
+                             ihm_model_id=model._id,
+                             pdbx_formal_charge=ihm.unknown)
         return seen_types
 
 
