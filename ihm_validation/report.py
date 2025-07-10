@@ -214,14 +214,11 @@ class WriteReport(object):
             Template_Dict['rg_table'] = utility.dict_to_JSlist(
                 I_sas.get_rg_table_many())
             Template_Dict['sasdb_code_fits'] = I_sas.get_sasdb_code_fits()
-            Template_Dict['Data_quality'] = utility.get_rg_data(
+            Template_Dict['sas_data_quality'] = utility.get_rg_data(
                 I_sas.get_rg_for_plot())
-            Template_Dict['validation_input'] = utility.get_rg_data_fits(
+            Template_Dict['sas_fits_stats'] = utility.get_rg_data_fits(
                 I_sas.get_fits_for_plot())
-            # we check if model fits have been deposited
-            if len(Template_Dict['validation_input']) < 1:
-                Template_Dict['validation_input'] = [
-                    'Fit of model to data has not been deposited']
+
             sas_data = I_sas.get_rg_for_plot()
             sas_fit = I_sas.get_fits_for_plot()
         # if there are no sas datasets used to build the model, we set appropriate keys

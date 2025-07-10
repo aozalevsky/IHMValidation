@@ -263,11 +263,11 @@ class Plots(GetInputInformation):
         # this section will be updated with more data assessments, as and when it is complete
         dq_plots = []
 
-        if len(sas_data.keys()) > 0:
+        if len(sas_data_quality.keys()) > 0:
             Rgl = {0: 'P(r)', 1: 'Guinier'}
-            Scores = [Rgl[m] + ' ('+i+')' for i, j in sas_data.items()
+            Scores = [Rgl[m] + ' ('+i+')' for i, j in sas_data_quality.items()
                       for m, n in enumerate(j)]
-            counts = [float(n)for i, j in sas_data.items()
+            counts = [float(n)for i, j in sas_data_quality.items()
                       for m, n in enumerate(j)]
             legends = [str(i)+' nm' for i in counts]
             source = ColumnDataSource(data=dict(
