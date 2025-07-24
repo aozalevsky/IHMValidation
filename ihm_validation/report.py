@@ -43,6 +43,10 @@ class WriteReport(object):
         self.cache = cache
         self.nocache = nocache
         self.report_version = REPORT_VERSION
+        self.enable_sas = enable_sas
+        self.enable_cx = enable_cx
+        self.enable_em = enable_em
+        self.enable_prism = enable_prism
 
     def create_webdriver(self) -> webdriver.Firefox:
         '''instantiate webdriver for rendering plots'''
@@ -509,13 +513,13 @@ class WriteReport(object):
         Template_Dict['em'] = False
         Template_Dict['em_stats'] = None
         Template_Dict['em_data_quality'] = None
+        Template_Dict['va_version'] = None
         Template_Dict['chimera_version'] = None
         Template_Dict['chimerax_version'] = None
         Template_Dict['mapq_version'] = None
         output = (Template_Dict, None, None)
 
-
-        if self.input.has_em_dataset:
+        if self.enable_em and self.input.has_em_dataset:
             Template_Dict['em'] = True
             I_em = em.EMValidation(self.mmcif_file, cache=self.cache)
             self.I_em = I_em

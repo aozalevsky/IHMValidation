@@ -88,7 +88,7 @@ parser.add_argument('--enable-sas', default=True, type=lambda x: bool(strtobool(
                         help="Run SAS validation")
 parser.add_argument('--enable-cx', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run crosslinking-MS validation")
-parser.add_argument('--enable-em', default=False, type=lambda x: bool(strtobool(x)),
+parser.add_argument('--enable-em', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run 3DEM validation")
 parser.add_argument('--enable-prism', default=True, type=lambda x: bool(strtobool(x)),
                         help="Run PrISM precision analysis")
@@ -346,6 +346,10 @@ if __name__ == "__main__":
                                        imageDirName=dirNames['images'])
         em_data_quality = template_dict['em_data_quality']
         em_fit = template_dict['em_data_quality']
+
+    else:
+        em_data_quality = []
+        em_fit = []
 
     if args.enable_prism:
         logging.info('PrISM precision analysis')
