@@ -11,47 +11,47 @@
 
   {# MolProbity #}
 
-  {% if molprobity_version is not none %}
+  {% if molprobity_version is defined %}
     <li><em><a href='http://molprobity.biochem.duke.edu/'>MolProbity</a> Version {{ molprobity_version }}</em></li>
   {% endif %}
   
   {# SAS #}
 
-  {% if atsas_version is not none %}
+  {% if atsas_version is defined %}
     <li><em><a href='https://www.embl-hamburg.de/biosaxs/software.html'>ATSAS</a> Version {{ atsas_version }}</em></li>
   {% endif %}
 
   {# Crosslinking MS #}
  
-  {% if pyhmmer_version is not none %}
+  {% if pyhmmer_version is defined %}
     <li><em><a href='https://pyhmmer.readthedocs.io/en/stable/'>pyHMMER</a> Version {{ pyhmmer_version }}</em></li>
   {% endif %}
   
   {# 3DEM #}
   
-  {% if va_version is not none %}
+  {% if va_version is defined %}
     <li><em><a href='https://www.ebi.ac.uk/emdb/va/'>VA</a> Version {{ va_version }}</em></li>
   {% endif %}
   
-  {% if chimerax_version is not none %}
+  {% if chimerax_version is defined %}
     <li><em><a href='https://www.cgl.ucsf.edu/chimerax/'>ChimeraX</a> Version {{ chimerax_version }}</em></li>
   {% endif %}
   
-  {% if chimera_version is not none %}
+  {% if chimera_version is defined %}
     <li><em><a href='https://www.cgl.ucsf.edu/chimera/'>Chimera</a> Version {{ chimera_version }}</em></li>
   {% endif %}
   
-  {% if mapq_version is not none %}
+  {% if mapq_version is defined %}
     <li><em><a href='https://github.com/gregdp/mapq'>mapq</a> Version {{ mapq_version }}</em></li>
   {% endif %}
   
   {# PrISM #}
 
-  {% if prism_version is not none %}
+  {% if prism_version is defined %}
     <li><em><a href='https://github.com/aozalevsky/prism'>PrISM</a> Version {{ prism_version }}</em></li>
   {% endif %}
 
-  {% if pymol_version is not none %}
+  {% if pymol_version is defined %}
     <li><em><a href='https://pymol.org/'>PyMOL</a> Version {{ pymol_version }}</em></li>
   {% endif %}
 

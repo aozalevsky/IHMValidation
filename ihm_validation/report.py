@@ -143,7 +143,6 @@ class WriteReport(object):
         Template_Dict['disclaimer'] = 0
         Template_Dict['NumModels'] = self.input.num_models
         Template_Dict['atomic'] = False
-        Template_Dict['molprobity_version'] = None
         Template_Dict['assess_atomic_segments'] = None
         molprobity_dict = None
         Template_Dict['cg'] = False
@@ -198,7 +197,6 @@ class WriteReport(object):
         '''
         # we start by checking if sas dataset was used to build model
         Template_Dict['sas'] = False
-        Template_Dict['atsas_version'] = None
 
         if self.input.has_sas_dataset:
             Template_Dict['sas'] = True
@@ -499,8 +497,6 @@ class WriteReport(object):
         Template_Dict['prism_data'] = I_p.get_data()
         Template_Dict['prism_plots'] = I_p.get_plots(imageDirName)
 
-        Template_Dict['prism_version'] = None
-        Template_Dict['pymol_version'] = None
         if len(Template_Dict['prism_plots']) > 0:
             Template_Dict['prism_version'] = I_p.prism_version
             Template_Dict['pymol_version'] = I_p.pymol_version
@@ -513,10 +509,6 @@ class WriteReport(object):
         Template_Dict['em'] = False
         Template_Dict['em_stats'] = None
         Template_Dict['em_data_quality'] = None
-        Template_Dict['va_version'] = None
-        Template_Dict['chimera_version'] = None
-        Template_Dict['chimerax_version'] = None
-        Template_Dict['mapq_version'] = None
         output = (Template_Dict, None, None)
 
         if self.enable_em and self.input.has_em_dataset:
