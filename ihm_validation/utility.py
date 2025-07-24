@@ -800,3 +800,17 @@ def get_larget_assembly_model(system: ihm.System) -> tuple:
             idx_num_asym_ids = num_asym_ids
 
     return (idx, idx_model, idx_num_asym_ids)
+
+def format_wwpdb_url(pdbid: str) -> str:
+    """Generate a url to the wwPDB entry page"""
+
+    url = ''
+
+    if len(pdbid) == 4:
+        url = f"https://dx.doi.org/10.2210/pdb{pdbid.lower()}/pdb"
+    elif len(pdbid) == 12:
+        url = f"https://dx.doi.org/10.2210/{pdbid.lower()}/pdb"
+    else:
+        logging.error(f"Wrong PDB ID: {pdbid}")
+
+    return url
