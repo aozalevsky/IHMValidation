@@ -50,11 +50,13 @@ class GetMolprobityInformation(GetInputInformation):
         Get MolProbity version.
         We assume that all tools belong to the same release.
         """
-        version = None
+        version = utility.NA
         try:
             # Try to get "internal version" 4.x.x
             version = self.get_internal_version()
-        except OSError:
+        except subprocess.CalledProcessError:
+            logging.error(f'{tool} is missing')
+        except FileNotFoundError:
             # Fallback to commit-based version
             version = subprocess.check_output(
                 [tool, '--version'],
@@ -94,7 +96,7 @@ class GetMolprobityInformation(GetInputInformation):
             return version
 
         else:
-            raise OSError('Molprobity core.php module is missing')
+            raise FileNotFoundError('Molprobity core.php module is missing')
 
     def run_molprobity(self, fname) -> dict|None:
         """ Run MolProbity"""
