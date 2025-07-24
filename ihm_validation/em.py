@@ -649,14 +649,14 @@ class EMValidation(GetInputInformation):
     @staticmethod
     def get_chimera_version() -> str:
         """return chimera version"""
-        version_string = subprocess.check_output(['chimera', '--version']).decode()
+        version_string = subprocess.check_output(['chimera', '--version', '--nogui']).decode()
         version = re.search(' (\d+.\d+) ', version_string).groups()[0]
         return version
 
     @staticmethod
     def get_chimerax_version() -> str:
         """return chimera version"""
-        version_string = subprocess.check_output(['chimera', '--version']).decode()
+        version_string = subprocess.check_output(['chimerax', '--version', '--nogui']).decode()
         version = re.search(' (\d+.\d+) ', version_string).groups()[0]
         return version
 
