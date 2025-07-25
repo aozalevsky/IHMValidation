@@ -39,6 +39,28 @@
                       <td>{{ format_value(data["data_stats"]["estimated_volume"]) }} {{ "nm³" if data["data_stats"]["resolution"] is not none }}</td>
                     </tr>
                     <tr>
+                      <td>Specimen preparation:</td>
+                      <td style="padding-left: 0">
+                        <table>
+                          {% for data_ in data["data_stats"]["specimen_preparation_list"] %}
+                            <tr>
+                              <td style="border-top: none !important; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">Preparation ID</td>
+                              <td style="border-top: none !important; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">{{ data_['preparation_id'] }}</td>
+                              <td style="border-top: none !important; margin-top: 0; padding-top: 0; margin-bottom: 0; padding-bottom: 0;">
+                                {% if 'staining' in data_ %}
+                                  Staining: {{ data_['staining']['type_'] }}; Material: {{ data_['staining']['material'] }}
+                                {% elif 'vitrification' in data_ %}
+                                  Vitrification
+                                {% else %}
+                                  Other
+                                {% endif %}
+                              </td>
+                            </tr>
+                          {% endfor %}
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
                       <td>Map-only validation report:</td>
                       <td><a target="_blank" rel="noopener noreferrer" href=https://ftp.ebi.ac.uk/pub/databases/emdb/validation_reports/EMD-{{ data["emdbid_"] }}/emd_{{ data["emdbid_"] }}_validation.pdf.gz>wwPDB validation report<a></td>
                     </tr>

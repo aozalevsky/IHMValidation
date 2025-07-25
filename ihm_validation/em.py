@@ -611,6 +611,7 @@ class EMValidation(GetInputInformation):
                 fit_stats = {}
                 fit_plots = {}
 
+        data_stats['specimen_preparation_list'] = map_metadata['structure_determination_list']['structure_determination'][0]['specimen_preparation_list']['specimen_preparation']
         data_stats['reconstruction_method'] = self.get_em_reconstruction_method(map_metadata)
         resolution_estimates, comments = self.get_resolution_estimates(map_metadata, map_validation)
         data_stats['resolution'] = resolution
