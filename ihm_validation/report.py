@@ -120,6 +120,7 @@ class WriteReport(object):
         )['Dataset type']).difference({'Experimental model', 'Comparative model'}))]
         Template_Dict['Datasets_list'] = utility.dict_to_JSlist(
             self.input.get_dataset_comp())
+        Template_Dict['Datasets_summary'] = utility.get_datasets_summary(self.input.system)
         Template_Dict['Unique_dataset'] = utility.get_unique_datasets(
             self.input.get_dataset_comp())
         Template_Dict['Protocols_number'] = self.input.get_protocol_number()

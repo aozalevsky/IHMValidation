@@ -829,3 +829,21 @@ def format_wwpdb_id(pdbid: str) -> str:
         logging.error(f"Wrong PDB ID: {pdbid}")
 
     return output
+
+def get_datasets_summary(system: ihm.System) -> list:
+    """Get counts for all data types used for modeling"""
+    datasets = []
+    datatypes = [d.data_type for d in set(system.orphan_datasets)]
+    exps, models = [], []
+    for k, v in Counter(datatypes).items():
+        if re.search('model', k):
+            models.append((k, 'Starting model', v))
+        else:
+            exps.append((k, 'Experimental data', v))
+    exps = sorted(exps, key=lambda x: x[0])
+    models = sorted(models, key=lambda x: x[1])
+    datasets = exps + models
+    if len(datasets) > 0:
+        datasets.insert(0, ('Name', 'Type', 'Count'))
+
+    return datasets

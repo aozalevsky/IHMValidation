@@ -1,0 +1,20 @@
+{% from "macro.html" import format_value, format_help, write_table with context %}
+
+<!-- Summary -->
+<div class="card-body border-success" style="border-color: solid black;">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card-header" style="background-color: #FFF; padding: 0px;">
+        <h3 align="center">
+          <u><a name=summary>Summary</a></u>{{ format_help("summary", current_task) }}
+        </h3>
+        <p align="justify">
+          <i>This entry consists of {{ number_of_models }} model(s). A total of {{ number_of_datasets|int }} dataset(s) were used to build this entry.</i>
+        </p>
+        {% if Datasets_summary|length > 0 %}
+          {{ write_table(Datasets_summary) }} 
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
