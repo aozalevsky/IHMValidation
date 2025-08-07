@@ -16,7 +16,7 @@ import numpy as np
 from bokeh.io import output_file, curdoc, export_svg, show
 from bokeh.models import (ColumnDataSource, Legend, LegendItem, FactorRange,
                           Div, BasicTickFormatter)
-from bokeh.palettes import viridis, Reds256, linear_palette
+from bokeh.palettes import linear_palette, Greys256, Blues256, Oranges256, Greens256
 from bokeh.plotting import figure, save
 from bokeh.models.widgets import Tabs, Panel
 from bokeh.layouts import row
@@ -104,7 +104,7 @@ class Plots(GetInputInformation):
                 p_ = p.hbar(y=source.data['y'][i * 3: (i + 1) * 3],
                        right=source.data['counts'][i * 3: (i + 1) * 3],
                        line_color="white",
-                       fill_color=factor_cmap('y', palette=viridis(len(Scores)),
+                            fill_color=factor_cmap('y', palette=linear_palette(Greys256, len(Scores) + 2)[1:-1],
                                               factors=Scores,
                                               start=1, end=2)
                        )
@@ -165,8 +165,10 @@ class Plots(GetInputInformation):
             # set the size of the axis
             # n = 3 if len(model) < 3 else len(model)
             n = len(counts)
+            color = linear_palette(Greys256, 5)[1] # match with darkest molprobity color
+            colors = [color for x in range(n)]
             source = ColumnDataSource(
-                data=dict(Scores=Scores, counts=counts, legends=legends, color=viridis(n)))
+                data=dict(Scores=Scores, counts=counts, legends=legends, color=colors))
 
             #  build plots
             plots = []
@@ -181,7 +183,7 @@ class Plots(GetInputInformation):
                 p.xaxis.ticker.desired_num_ticks = 3
 
                 p_ = p.hbar(y=source.data['Scores'][i:i + 1], right=source.data['counts'][i: i + 1], color=source.data['color'][i:i + 1], height=1.0,
-                           alpha=0.8, line_color='white')
+                           line_color='white')
 
                 p.xaxis.axis_label = 'Satisfaction rate, %'
                 legend = Legend(items=[LegendItem(label=legends[i:i + 1][j], renderers=[
@@ -264,18 +266,23 @@ class Plots(GetInputInformation):
         dq_plots = []
 
         if len(sas_data_quality.keys()) > 0:
+            # Don't forget to update palette if adding new metric
             Rgl = {0: 'P(r)', 1: 'Guinier'}
             Scores = [Rgl[m] + ' ('+i+')' for i, j in sas_data_quality.items()
                       for m, n in enumerate(j)]
             counts = [float(n)for i, j in sas_data_quality.items()
                       for m, n in enumerate(j)]
             legends = [str(i)+' nm' for i in counts]
+            # Update palette if we need more colors
+            colors_ = linear_palette(Blues256, len(Rgl) + 2)[1:-1]
+            colors = [colors_[m] for i, j in sas_data_quality.items()
+                      for m, n in enumerate(j)]
             source = ColumnDataSource(data=dict(
-                Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                Scores=Scores, counts=counts, legends=legends, color=colors))
             pd = figure(y_range=Scores, x_range=(0, max(
                 counts)+1), plot_height=90 + len(counts) * 20, plot_width=800, title="Data Quality for SAS: Rg Analysis",)
             rd = pd.hbar(y='Scores', right='counts', color='color', height=1.0,
-                         source=source, alpha=0.8, line_color='white')
+                         source=source, line_color='white')
             pd.ygrid.grid_line_color = None
             pd.xaxis.axis_label = 'Distance (nm)'
             pd.xaxis.major_label_text_font_size = "12pt"
@@ -301,6 +308,7 @@ class Plots(GetInputInformation):
         # If crosslinking-MS data is available
         if cx_data_quality is not None and len(cx_data_quality) > 0:
             Models = [data["pride_id"] for data in cx_data_quality]
+            # Don't forget to update palette if adding new metric
             Scores = ['Total', 'Mapped to matching entities', 'Matched']
             legends = []
             for data in cx_data_quality:
@@ -349,7 +357,7 @@ class Plots(GetInputInformation):
                 rd = p.hbar(y=source.data['y'][i * 3: (i + 1) * 3],
                        right=source.data['counts'][i * 3: (i + 1) * 3],
                        line_color="white",
-                       fill_color=factor_cmap('y', palette=viridis(len(Scores)),
+                        fill_color=factor_cmap('y', palette=linear_palette(Oranges256, len(Scores) + 2)[1:-1],
                                               factors=Scores,
                                               start=1, end=2)
                        )
@@ -403,11 +411,11 @@ class Plots(GetInputInformation):
             if len(counts) > 0:
                 legends = [f'{i:.2f}Å' for i in counts]
                 source = ColumnDataSource(data=dict(
-                    Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                    Scores=Scores, counts=counts, legends=legends, color=linear_palette(Greens256, len(legends) + 2)[1:-1]))
                 pf = figure(y_range=Scores, x_range=(0, 80), plot_height=95 + len(counts) * 20,
                             plot_width=800, title="3DEM resolution")
                 rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
-                             source=source, alpha=0.8, line_color='white')
+                             source=source, line_color='white')
                 pf.ygrid.grid_line_color = None
                 pf.title.text_font_size = '14pt'
                 pf.xaxis.axis_label = 'Resolution'
@@ -451,11 +459,11 @@ class Plots(GetInputInformation):
                       for m, n in enumerate(j)]
             legends = [str(i) for i in counts]
             source = ColumnDataSource(data=dict(
-                Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                Scores=Scores, counts=counts, legends=legends, color=linear_palette(Blues256, len(legends) + 2)[1:-1]))
             pf = figure(y_range=Scores, x_range=(0, max(counts)+1), plot_height=100 + len(counts) * 20,
                         plot_width=800, title="Fit to SAS Data:  \u03C7\u00b2 Fit")
             rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
-                         source=source, alpha=0.8, line_color='white')
+                         source=source, line_color='white')
             pf.ygrid.grid_line_color = None
             pf.title.text_font_size = '14pt'
             pf.xaxis.axis_label = 'Fit value'
@@ -497,12 +505,14 @@ class Plots(GetInputInformation):
 
             if len(counts) > 0:
                 legends = [f'{i} %' for i in counts]
+                # Select dark orange;
+                # identical in all plots because they're separated
                 source = ColumnDataSource(data=dict(
-                    Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                    Scores=Scores, counts=counts, legends=legends, color=linear_palette(Oranges256, len(legends) + 2)[1:-1]))
                 pf = figure(y_range=Scores, x_range=(0, 102), plot_height=95 + len(counts) * 20,
                             plot_width=800, title="Crosslink satisfaction")
                 rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
-                             source=source, alpha=0.8, line_color='white')
+                             source=source, line_color='white')
                 pf.ygrid.grid_line_color = None
                 pf.title.text_font_size = '14pt'
                 pf.xaxis.axis_label = 'Satisfaction rate, %'
@@ -540,11 +550,11 @@ class Plots(GetInputInformation):
             if len(counts) > 0:
                 legends = [f'{i:.3f}' for i in counts]
                 source = ColumnDataSource(data=dict(
-                    Scores=Scores, counts=counts, legends=legends, color=viridis(len(legends))))
+                    Scores=Scores, counts=counts, legends=legends, color=linear_palette(Greens256, len(legends) + 2)[1:-1]))
                 pf = figure(y_range=Scores, x_range=(-1, 1), plot_height=95 + len(counts) * 20,
                             plot_width=800, title="Q-score")
                 rf = pf.hbar(y='Scores', right='counts', color='color', height=1.0,
-                             source=source, alpha=0.8, line_color='white')
+                             source=source, line_color='white')
                 pf.ygrid.grid_line_color = None
                 pf.title.text_font_size = '14pt'
                 pf.xaxis.axis_label = 'Q-score'
