@@ -814,3 +814,17 @@ def format_wwpdb_url(pdbid: str) -> str:
         logging.error(f"Wrong PDB ID: {pdbid}")
 
     return url
+
+def format_wwpdb_id(pdbid: str) -> str:
+    """Format all pdb ids to extended format"""
+    output = pdbid
+
+    if len(pdbid) == 12:
+        # We don't do any format checks
+        output = pdbid.lower()
+    elif len(pdbid) == 4:
+        output = f"pdb_0000{pdbid.lower()}"
+    else:
+        logging.error(f"Wrong PDB ID: {pdbid}")
+
+    return output

@@ -93,7 +93,7 @@ class WriteReport(object):
         file_id = self.input.get_file_id()
         Template_Dict['ID'] = entry_id
         Template_Dict['ID_f'] = file_id
-        Template_Dict['PDB_ID'] = self.input.get_pdb_id()
+        Template_Dict['PDB_ID'] = utility.format_wwpdb_id(self.input.get_pdb_id())
         Template_Dict['PDBDEV_ID'] = self.input.get_pdb_dev_id()
         Template_Dict['ranked_id_list'] = self.input.get_ranked_id_list()
         Template_Dict['Molecule'] = self.input.get_struc_title()

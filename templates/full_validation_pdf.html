@@ -161,7 +161,12 @@
                 {% for k, v in ranked_id_list %}
                   <tr>
                     <td style="text-align:center; vertical-align: middle; white-space:nowrap;">{{ k }}</td>
-                    <td style="text-align:center; vertical-align: middle;">{{ v }}</td>
+                    <td style="text-align:center; vertical-align: middle;">{{ v }}
+                      <!-- Ad-hoc fix for extended PDB IDs -->
+                      {% if k == "PDB ID" and v|length == 4 %}
+                        | {{ PDB_ID }}
+                      {% endif %}
+                    </td>
                   </tr>
                 {% endfor %}
                 <tr>

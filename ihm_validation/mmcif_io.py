@@ -622,8 +622,9 @@ class GetInputInformation(object):
                         acc = f"<a href=https://pdb-ihm.org/entry.html?{acc}>{acc}</a>"
 
                     if isinstance(_.location, ihm.location.PDBLocation) and acc != utility.NA:
+                        pdbid = utility.format_wwpdb_id(acc)
                         url = utility.format_wwpdb_url(acc)
-                        acc = f"<a href={url}>{acc}</a>"
+                        acc = f"<a href={url}>{pdbid}</a>"
 
                     if isinstance(_.location, ihm.location.ModelArchiveLocation) and acc != utility.NA:
                         acc = f"<a href=https://doi.org/10.5452/{acc}>{acc}</a>"
