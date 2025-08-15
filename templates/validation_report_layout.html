@@ -86,7 +86,7 @@
                 </ul>
             {% endif %}
             
-            {% if (enable_em and em_data_quality|length > 0) %}
+            {% if (enable_em and em_data_quality and em_data_quality|length > 0) %}
                 <a class="dropdown-item colorclass" dropdown-toggle  href=data_quality.html#3dem>3DEM</a>
                 <ul class=dropdown-submenu>                  
                   {% for data in em_data_quality %}
@@ -125,7 +125,7 @@
         
         <!-- Fit to data used for modeling -->
         <li class="nav-item mr-4 dropdown">
-          {% if (('SAS DATA' in Data) and enable_sas) or (enable_cx and cx_stats) or ((enable_em and em_data_quality|length > 0) and atomic) %}
+          {% if (('SAS DATA' in Data) and enable_sas) or (enable_cx and cx_stats) or ((enable_em and em_data_quality and em_data_quality|length > 0) and atomic) %}
             <a class="dropdown-toggle"  data-toggle="dropdown"><button type="button" class="btn btn-primary" onclick=window.location="formodeling.html";>Fit to Data <br> Used for Modeling </button></a>
                 
           {% elif Unique_dataset|length > 0 %}
@@ -169,7 +169,7 @@
               </ul>
             {% endif %}
             
-            {% if (enable_em and em_data_quality|length > 0) and atomic %}
+            {% if (enable_em and em_data_quality and em_data_quality|length > 0) and atomic %}
                 <a class="dropdown-item colorclass" dropdown-toggle  href=formodeling.html#3dem>3DEM</a>
                 <ul class=dropdown-submenu>                  
                   {% for data in em_data_quality %}
