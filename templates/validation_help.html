@@ -37,18 +37,17 @@
             <li>
               <a href="#overview" style="color: #003366;">2. Overview</a>
               <ul>
-                <li><a href="#overview" style="color: #003366;">2.1 Overall Quality Assessment</a></li>
+                <li><a href="#summary" style="color: #003366;">2.1 Summary </a></li>
+                <li><a href="#overview" style="color: #003366;">2.2 Overall Quality Assessment</a></li>
               </ul>
             </li>
             <li>
               <a href="#ensemble" style="color: #003366;">3. Model Details</a>
               <ul>
                 <li><a href="#ensemble" style="color: #003366;">3.1 Ensemble Information</a></li>
-                  <li><a href="#summary" style="color: #003366;">3.2 Summary </a></li>
-                  <li><a href="#entry" style="color: #003366;">3.3 Entry Composition</a></li>
-                  <li><a href="#datasets" style="color: #003366;">3.4 Datasets Used</a></li>
-                  <li><a href="#representation" style="color: #003366;">3.5 Representation</a></li>
-                  <li><a href="#software" style="color: #003366;">3.6 Methods and Software</a></li>
+                <li><a href="#representation" style="color: #003366;">3.2 Representation</a></li>
+                <li><a href="#datasets" style="color: #003366;">3.3 Datasets Used</a></li>
+                <li><a href="#software" style="color: #003366;">3.4 Methods and Software</a></li>
               </ul>
             </li>
             <li>
@@ -60,6 +59,7 @@
                 <li><a href="#pofr" style="color: #003366;">4.4 SAS: P(r) Analysis</a></li>
                 <li><a href="#guinier" style="color: #003366;">4.5 SAS: Guinier Analysis</a></li>
                 <li><a href="#dq-crosslinking-ms" style="color: #003366;">4.6 Crosslinking-MS</a></li>
+                <li><a href="#dq-3dem" style="color: #003366;">4.7 3DEM</a></li>
               </ul>
             </li>
             <li>
@@ -77,6 +77,7 @@
                 <li><a href="#cormap" style="color: #003366;">6.2: SAS: Cormap Analysis </a></li>
                 <li><a href="#fq-crosslinking-ms-restraints" style="color: #003366;">6.3 Crosslinking-MS: Restraint Types</a></li>
                 <li><a href="#fq-crosslinking-ms-satisfaction" style="color: #003366;">6.4 Crosslinking-MS: Satisfaction Rates</a></li>
+                <li><a href="#fq-3dem" style="color: #003366;">6.5 3DEM</a></li>
               </ul>
             </li>
             <li>
@@ -144,8 +145,11 @@
           <p class=ex2 align='center'>
             <b><u><a name='overview'>2. Overview</a></u></b>
           </p>
+          
+          <p class=ex2 align='justify' ><a name='summary'> <i>2.1. Summary:</i></a> Summary of the structure, including number of models deposited, datasets used to build the models and information on model representation. </p>
+          
           <p class=ex2 align='justify'>
-            <a name='overview'><i>2.1 Overall Quality Assessment:</i></a> This is a set of plots that represent a snapshot view of the validation results. There are four tabs, one for each validation criterion: (i) model quality, (ii) data quality, (iii) fit to data used for modeling, and (iv) fit to data used for validation.
+            <a name='overview'><i>2.2 Overall Quality Assessment:</i></a> This is a set of plots that represent a snapshot view of the validation results. There are four tabs, one for each validation criterion: (i) model quality, (ii) data quality, (iii) fit to data used for modeling, and (iv) fit to data used for validation.
           </p>
           
           <p style=margin-bottom:0.5cm;> </p>
@@ -153,22 +157,22 @@
           <ul style="list-style-type:none;">
             <li>
               <p class=ex2>
-                <i><a name='overview'>2.1.1. Model quality:</a></i> For atomic structures, MolProbity is used for evaluation. We evaluate bond outliers, side chain outliers, clash score, rotamer satisfaction, and Ramachandran dihedral satisfaction <a href='https://pubmed.ncbi.nlm.nih.gov/29067766/'>(Williams et al. 2018)</a> . Details on MolProbity evaluation and tables can be found <a href='https://www.wwpdb.org/validation/2017/XrayValidationReportHelp#model_quality'>here</a>. For coarse-grained structures of beads, we evaluate excluded volume satisfaction. An excluded volume violation or overlap between two beads occurs if the distance between the two beads is less than the sum of their radii <a href='https://pubmed.ncbi.nlm.nih.gov/29539637/'>(S. J. Kim et al. 2018)</a>. Excluded volume satisfaction is the percentage of pair distances in a structure that are not violated (higher values are better).
+                <i><a name='overview'>2.2.1. Model quality:</a></i> For atomic structures, MolProbity is used for evaluation. We evaluate bond outliers, side chain outliers, clash score, rotamer satisfaction, and Ramachandran dihedral satisfaction <a href='https://pubmed.ncbi.nlm.nih.gov/29067766/'>(Williams et al. 2018)</a> . Details on MolProbity evaluation and tables can be found <a href='https://www.wwpdb.org/validation/2017/XrayValidationReportHelp#model_quality'>here</a>. For coarse-grained structures of beads, we evaluate excluded volume satisfaction. An excluded volume violation or overlap between two beads occurs if the distance between the two beads is less than the sum of their radii <a href='https://pubmed.ncbi.nlm.nih.gov/29539637/'>(S. J. Kim et al. 2018)</a>. Excluded volume satisfaction is the percentage of pair distances in a structure that are not violated (higher values are better).
               </p>
             </li>
             <li>
               <p class=ex2>
-                <i><a name='overview'>2.1.2.  Data quality:</a></i> Data quality assessments are available for SAS and crosslinking-MS datasets. The current plot displays radius of gyration (R<sub>g</sub>) for each SAS dataset used to build the model. R<sub>g</sub> is obtained from both a P(r) analysis (see more <a href='#pofr'>here</a>), and a Guinier analysis (see more <a href='#guinier'>here</a>). For the crosslinking-MS datasets we assess consistency between experimental data and data used for modeling (see more <a href="#dq-crosslinking-ms">here</a>).  
+                <i><a name='overview'>2.2.2.  Data quality:</a></i> Data quality assessments are available for SAS and crosslinking-MS datasets. The current plot displays radius of gyration (R<sub>g</sub>) for each SAS dataset used to build the model. R<sub>g</sub> is obtained from both a P(r) analysis (see more <a href='#pofr'>here</a>), and a Guinier analysis (see more <a href='#guinier'>here</a>). For the crosslinking-MS datasets we assess consistency between experimental data and data used for modeling (see more <a href="#dq-crosslinking-ms">here</a>).  
               </p>
             </li>
             <li>
               <p class=ex2>
-                <i><a name='overview'>2.1.3. Fit to data used for modeling:</a></i> Fit to data used for modeling assessments are available for SAS and crosslinking-MS datasets. The plot displays  &#x3A7;&#178; Goodness of Fit Assessment for SAS-model fits (see more <a href='#goodness'>here</a>) and percentage of satisfied crosslinking-MS restraints (see more <a href="#fq-crosslinking-ms-satisfaction">here</a>).
+                <i><a name='overview'>2.2.3. Fit to data used for modeling:</a></i> Fit to data used for modeling assessments are available for SAS and crosslinking-MS datasets. The plot displays  &#x3A7;&#178; Goodness of Fit Assessment for SAS-model fits (see more <a href='#goodness'>here</a>) and percentage of satisfied crosslinking-MS restraints (see more <a href="#fq-crosslinking-ms-satisfaction">here</a>).
               </p>
             </li>
             <li>
               <p class=ex2>
-                <i><a name='overview'>2.1.4. Fit to data used for validation:</a></i> Fit to data used for validation is currently under development.
+                <i><a name='overview'>2.2.4. Fit to data used for validation:</a></i> Fit to data used for validation is currently under development.
               </p>
             </li>
           </ul>
@@ -184,11 +188,9 @@
         <div class="card-header" style="background-color: #E4E4E4;">
           <p class=ex2 align='center' ><b><u> <a name='ensemble'>3. Model Details </a></u> </b></p>
           <p class=ex2 align='justify' ><a name='ensemble'><i>3.1. Ensemble Information:</i></a> Number of ensembles deposited, where each ensemble consists of two or more structures. </p>
-          <p class=ex2 align='justify' ><a name='summary'> <i>3.2. Summary:</i></a> Summary of the structure, including number of models deposited, datasets used to build the models and information on model representation. </p>
-          <p class=ex2 align='justify' ><a name='entry'><i>3.3. Entry Composition:</i></a> Number of chains present in the integrative structure. </p>
-          <p class=ex2 align='justify' ><a name='datasets'><i>3.4. Datasets Used:</i></a> Number and type of experimental datasets used to build the model. </p>
-          <p class=ex2 align='justify' ><a name='representation'><i>3.5. Representation:</i></a> Number and details on rigid and non-rigid elements of the structure. </p>
-          <p class=ex2 align='justify' ><a name='software'><i>3.6. Methods and Software:</i></a> Methods, protocols, and softwares used to build the integrative structure. </p>
+          <p class=ex2 align='justify' ><a name='representation'><i>3.2. Representation:</i></a> Number and details on rigid and non-rigid elements of the structure. </p>
+          <p class=ex2 align='justify' ><a name='datasets'><i>3.3. Datasets Used:</i></a> Number and type of experimental datasets used to build the model. </p>
+          <p class=ex2 align='justify' ><a name='software'><i>3.4. Methods and Software:</i></a> Methods, protocols, and softwares used to build the integrative structure. </p>
           <p style=margin-bottom:0.5cm;> </p>
         </div>
       </div>
@@ -226,6 +228,11 @@
             <a name='dq-crosslinking-ms'><i>4.6. Crosslinking-MS:</i></a> At present, data validation is only available for crosslinking-MS data deposited as a fully <a href=https://www.ebi.ac.uk/pride/markdownpage/crosslinking>compliant</a> dataset in <a href=https://www.ebi.ac.uk/pride/archive/crosslinking>PRIDE</a> database. 
               Correspondence between crosslinking-MS and entry entities is established using <a href=https://pyhmmer.readthedocs.io/en/stable/>pyHMMER</a>. Only residue pairs that passed the reported threshold are used for the analysis. The values in the report have to be interpreted in the context
               of the experiment (i.e. only a minor fraction of in-situ or in-vivo dataset can be used for modeling).
+          </p>
+          
+          <p class=ex2 align='justify'>
+            <a name='dq-3dem'><i>4.7. 3DEM:</i></a> PDB-IHM validation pipeline for 3DEM data reuses elements of the <a href=https://www.wwpdb.org/validation/EMValidationReportHelp>wwPDB EM validation pipeline</a>. 
+            Detailed descriptions of data quality metrics and visualisations are available on the <a href=https://www.wwpdb.org/validation/EMValidationReportHelp>wwPDB EM validation help page</a>, starting from section <a href=https://www.wwpdb.org/validation/EMValidationReportHelp#map_visualisation>6. Map visualization</a>. 
           </p>
           
           <p style=margin-bottom:0.5cm;></p>
@@ -329,11 +336,16 @@
           </p>
           
           <p class=ex2 align='justify'>
-            <a name='fq-crosslinking-ms-restraints'><i>6.3. Crosslinking-MS: Restraint types:</i> Summary table of crosslinking-MS restraint types reported in the entry and distogram plots. Restraints assigned <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.model_granularity.html>"by-residue"</a> are interpreted as between CA atoms. Restraints between coarse-grained beads are indicated as "coarse-grained". <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.group_id.html>Restraint group</a> represents a set of crosslinking restraints applied collectively in the modeling. Restraints with identical thresholds are grouped into one plot. Only the best distance per restraint per model group/ensemble is plotted. Inter- and intramolecular (including self-links) restraints are also grouped into one plot. Distance for a restraint between coarse-grained beads is calculated as a minimal distance between shells; if beads intersect, the distance will be reported as 0.0. A bead with the highest available resolution for a given residue is used for the assessment.
+            <a name='fq-crosslinking-ms-restraints'><i>6.3. Crosslinking-MS: Restraint types:</i></a> Summary table of crosslinking-MS restraint types reported in the entry and distogram plots. Restraints assigned <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.model_granularity.html>"by-residue"</a> are interpreted as between CA atoms. Restraints between coarse-grained beads are indicated as "coarse-grained". <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.group_id.html>Restraint group</a> represents a set of crosslinking restraints applied collectively in the modeling. Restraints with identical thresholds are grouped into one plot. Only the best distance per restraint per model group/ensemble is plotted. Inter- and intramolecular (including self-links) restraints are also grouped into one plot. Distance for a restraint between coarse-grained beads is calculated as a minimal distance between shells; if beads intersect, the distance will be reported as 0.0. A bead with the highest available resolution for a given residue is used for the assessment.
           </p>
           
           <p class=ex2 align='justify'>
-          <a name='fq-crosslinking-ms-satisfaction'><i>6.4. Crosslinking-MS: Satisfaction rates:</i> Satisfaction of restraints is calculated on a <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.group_id.html>restraint group</a> (a set of crosslinking restraints applied collectively in the modeling) level. Satisfaction of a restraint group depends on satisfaction of individual restraints in the group and the conditionality (all/any). A restraint group is considered satisfied, if the condition was met in at least one model of the model group/ensemble. Only deposited models are used for validation right now.
+            <a name='fq-crosslinking-ms-satisfaction'><i>6.4. Crosslinking-MS: Satisfaction rates:</i></a> Satisfaction of restraints is calculated on a <a href=https://mmcif.wwpdb.org/dictionaries/mmcif_ihm_ext.dic/Items/_ihm_cross_link_restraint.group_id.html>restraint group</a> (a set of crosslinking restraints applied collectively in the modeling) level. Satisfaction of a restraint group depends on satisfaction of individual restraints in the group and the conditionality (all/any). A restraint group is considered satisfied, if the condition was met in at least one model of the model group/ensemble. Only deposited models are used for validation right now.
+          </p>
+          
+          <p class=ex2 align='justify'>
+            <a name='fq-3dem'><i>6.5. 3DEM:</i></a> PDB-IHM validation pipeline for 3DEM data reuses elements of the <a href=https://www.wwpdb.org/validation/EMValidationReportHelp>wwPDB EM validation pipeline</a>. 
+            Detailed descriptions of model to map fit metrics and visualisations are available on the <a href=https://www.wwpdb.org/validation/EMValidationReportHelp>wwPDB EM validation help page</a>, in section <a href=https://www.wwpdb.org/validation/EMValidationReportHelp#map_model_fit>9. Map-Model fit</a>. 
           </p>
           
           <p style=margin-bottom:0.5cm;> </p>
@@ -604,6 +616,11 @@
                 <li>
                   <p class=ex2>
                     Ullanat, Varun,  Nikhil Kasukurthi, Shruthi Viswanath. 2022. "PrISM: precision for integrative structural models." Bioinformatics 38 (15): 3837-3839.
+                  </p>
+                </li>
+                <li>
+                  <p class=ex2>
+                    Kleywegt, Gerard J., Paul D. Adams, Sarah J. Butcher, Catherine L. Lawson, et al. 2024. "Community recommendations on cryoEM data archiving and validation." IUCrJ, 11, 140-151.
                   </p>
                 </li>
               </ol>  
