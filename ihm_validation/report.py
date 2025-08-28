@@ -422,14 +422,14 @@ class WriteReport(object):
             for data_ in Template_Dict['cx_data_quality']:
                 try:
                     r_ = float(data_['stats']['entry']['matched_pct'])
-                    dq.append(f'{data_["pride_id"]}: {r_}% crosslinks found in the data.')
+                    dq.append(f'{data_["pride_id"]}: {r_:.2f}% of crosslinks found in the data.')
                 except (ValueError, TypeError, KeyError) as e:
                     pass
 
             for data_ in Template_Dict['cx_data_quality']:
                 try:
                     r_ = float(data_['stats']['ms']['mapped_entities_pct'])
-                    dq.append(f'{data_["pride_id"]}: {r_}% crosslinks from the data were used for modeling.')
+                    dq.append(f'{data_["pride_id"]}: {r_:.2f}% of crosslinks from the data were used for modeling.')
                 except (ValueError, TypeError, KeyError) as e:
                     pass
 
