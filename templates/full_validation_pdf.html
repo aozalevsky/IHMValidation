@@ -1,4 +1,4 @@
-{% from "macro.html" import write_table with context %}
+{% from "macro.html" import write_table, format_help with context %}
 <!Template for writing HTML(minimal use of bootstrap) for PDF version of the report>
 <! ganesans - Salilab - UCSF>
 <!ganesans@salilab.org>
@@ -290,25 +290,22 @@
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
             <h3 align="center">
+              <a name="#modeldetails"><u>Model Details</u></a>
+              {{ format_help("modeldetails", current_task) }}
+            </h3>
+            
+            <h4 align="center">
               <a name="ensemble"><u>Ensemble information</u></a>
-              <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#ensemble">?</a>
-            </h3>
+              {{ format_help("ensemble", current_task) }}
+            </h4>
             <p><i>This entry consists of {{ num_ensembles|int }} distinct ensemble(s).</i></p>
-          </div>
-        </div>
-      </div>
-    </div>
+          
+            {% include 'representation.j2' %} 
     
-    {% include 'representation.j2' %} 
-    
-    <!-- Datasets -->
-    <div class="card-body border-success" style="border-color: solid black;">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h3 align="center">
-              <u><a name='data'>Datasets used for modeling</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#datasets">?</a>
-            </h3>
+            <h4 align="center">
+              <u><a name='data'>Datasets used for modeling</a></u>
+              {{ format_help("datasets", current_task) }}
+            </h4>
             
             <p>
               {% if number_of_datasets|int < 2 %}
@@ -320,19 +317,10 @@
             
             {{ write_table(Datasets_list) }}
             
-          </div>
-        </div>
-      </div>
-    </div>
-      
-    <!-- Methodology and software -->
-    <div class="card-body border-success" style="border-color: solid black;">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="card-header" style="background-color: #FFF; padding: 0px;">
-            <h3 align="center">
-              <u><a name="methods">Methodology and software</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#software">?</a>
-            </h3>
+            <h4 align="center">
+              <u><a name="methods">Methodology and software</a></u> 
+              {{ format_help("software", current_task) }}
+            </h4>
             <p>
               <i>This entry is a result of {{ Protocols_number|int }} distinct protocol(s).</i>
             </p>

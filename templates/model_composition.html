@@ -23,24 +23,17 @@
     </div>
   </div>
   
-  <!-- Structure summary -->
+  <!-- Representation -->
   <div class="card-body border-success" style="border-color: solid black;">
     <div class="row">
       <div class="col-lg-12">
         <div class="card-header" style="background-color: #FFF;">
-          <h4 class="ex2" align="center">
-            <u><a name=summary>Summary</a></u><a class="help" title="help" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px"  href="/validation_help.html#summary">?</a>
-          </h4>
-            
-          <p align="justify">
-            <i>This entry consists of {{ number_of_models }} model(s). A total of {{ number_of_datasets|int }} datasets were used to build this entry.</i>
-          </p>
+          {% include 'representation.j2' %} 
         </div>
       </div>
     </div>
   </div>
   
-  {% include 'representation.j2' %} 
   
   <!-- Datasets summary -->
   <div class="card-body border-success" style="border-color: solid black;">
