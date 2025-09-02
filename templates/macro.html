@@ -90,6 +90,14 @@
   {% endif %}
 {% endmacro %}
 
+{% macro format_xray_help(topic, current_task='html') %}
+  {% if current_task == 'html' %}
+    <a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://www.wwpdb.org/validation/XrayValidationReportHelp{{ topic }}'>?</a>
+  {% else %}
+    <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://www.wwpdb.org/validation/XrayValidationReportHelp#{{ topic }}">?</a>
+  {% endif %}
+{% endmacro %}
+
 {% macro insert_json_plot(plot_name) %}
   <div class='bk-root' id='{{ plot_name }}' style="max-height: 75vh; overflow: auto; padding-bottom: 1em">
   </div>
