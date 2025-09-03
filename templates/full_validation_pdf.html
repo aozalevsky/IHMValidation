@@ -219,7 +219,7 @@
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFFFFF; padding: 0px;">
             <h3 align="center">
-              <a name='overview'><u>Overview</u></a> 
+              <a name='overview'><u>1. Overview</u></a> 
               {{ format_help("overview", current_task) }}
             </h3>
             
@@ -228,7 +228,7 @@
             
             <!-- Overall quality -->
             <h4 align="center">
-              <a name='qual'><u>Overall quality</u></a> 
+              <a name='qual'><u>1.2. Overall quality</u></a> 
               {{ format_help("ataglance", current_task) }}
             </h4>
             
@@ -242,6 +242,7 @@
                 {% if atomic and molprobity_models|length > 0 %}
                   <h5 align=center>
                     <u>Model Quality: MolProbity Analysis</u>
+                    {{ format_help("molprobity", current_task) }}
                   </h5>
                 
                   {% for i in range([molprobity_models|length, MAXPLOTS] | min) %}
@@ -255,6 +256,7 @@
                 {% if cg and excluded_volume_models|length > 0 %}
                   <h5 align=center>
                     <u>Model Quality: Excluded Volume Analysis</u>
+                    {{ format_help("exv", current_task) }}
                   </h5>
                 
                   {% for i in range([excluded_volume_models|length, MAXPLOTS] | min) %}
@@ -275,6 +277,7 @@
             {% if glance_plots["DQ"] %}
               <h5 align=center style="margin-top: 2em">
                 <u>Data Quality</u>
+                {{ format_help("dataquality", current_task) }}
               </h5>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_DQ.svg"}}>
@@ -285,6 +288,7 @@
             {% if glance_plots["FQ"] %}
               <h5 align=center style="margin-top: 2em">
                 <u>Fit to Data Used for Modeling</u>
+                {{ format_help("fittodata", current_task) }}
               </h5>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_FQ.svg"}}>
@@ -302,12 +306,12 @@
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #FFF; padding: 0px;">
             <h3 align="center">
-              <a name="#modeldetails"><u>Model Details</u></a>
+              <a name="#modeldetails"><u>2. Model Details</u></a>
               {{ format_help("modeldetails", current_task) }}
             </h3>
             
             <h4 align="center">
-              <a name="ensemble"><u>Ensemble information</u></a>
+              <a name="ensemble"><u>2.1. Ensemble information</u></a>
               {{ format_help("ensemble", current_task) }}
             </h4>
             <p><i>This entry consists of {{ num_ensembles|int }} distinct ensemble(s).</i></p>
@@ -315,7 +319,7 @@
             {% include 'representation.j2' %} 
     
             <h4 align="center">
-              <u><a name='data'>Datasets used for modeling</a></u>
+              <u><a name='data'>2.3. Datasets used for modeling</a></u>
               {{ format_help("datasets", current_task) }}
             </h4>
             
@@ -330,7 +334,7 @@
             {{ write_table(Datasets_list) }}
             
             <h4 align="center">
-              <u><a name="methods">Methodology and software</a></u> 
+              <u><a name="methods">2.4. Methodology and software</a></u> 
               {{ format_help("software", current_task) }}
             </h4>
             <p>
@@ -361,17 +365,21 @@
       <div class="row">
         <div class="col-lg-12">
           <h3 align="center">
-             <u><a name='first'>Data quality</a></u> 
+             <u><a name='first'>3. Data quality</a></u> 
               {{ format_help("dataquality", current_task) }}
           </h3>
           
           <!-- SAS -->
           {% if ( sas ) and ( sasdb_sascif|length > 0 ) %}
-            <!-- Scattering profiles -->
-            <h4 align=center>
-              <u> <a name=firstI>Scattering profile</a> </u>
-              {{ format_help("scattering", current_task) }}
+            <h4 align="center">
+              <u><a name='first'>3.1. SAS</a></u> 
+              {{ format_help("dq-sas", current_task) }}
             </h4>
+            <!-- Scattering profiles -->
+            <h5 align=center>
+              <u> <a name=firstI>3.1.1. Scattering profile</a> </u>
+              {{ format_help("scattering", current_task) }}
+            </h5>
             
             <p align=justify>
                SAS data used in this integrative model was obtained from {{ sasdb_code_html|length }} deposited SASBDB entry (entries).
@@ -394,10 +402,10 @@
             {% endfor %}
 
             <!-- Key experimental estimates -->
-            <h4 align=center>
-              <u><a name=firstE>Key experimental estimates</a></u>
+            <h5 align=center>
+              <u><a name=firstE>3.1.2. Key experimental estimates</a></u>
               {{ format_help("expt", current_task) }}
-            </h4>
+            </h5>
             <p align='justify'>
               <u>Molecular weight (MW) estimates from experiments and analysis</u>:
               true molecular weight can be compared to the Porod estimate from scattering profiles.
@@ -412,10 +420,10 @@
             {{ write_table(parameters_volume) }}
             
             <!-- Flexibility analysis -->
-            <h4 align=center>
-              <u><a name=firstF>Flexibility analysis</a></u> 
+            <h5 align=center>
+              <u><a name=firstF>3.1.3. Flexibility analysis</a></u> 
               {{ format_help("flexibility", current_task) }}
-            </h4>
+            </h5>
             {% for i in range ( sasdb_code_html|length ) %}
               <p align=justify>
                 <u>Flexibility analysis for {{ sasdb_code_html[i] }}</u>: In a Porod-Debye plot, a clear plateau is observed for globular (partial or fully folded) domains, whereas, fully unfolded domains are devoid of any discernable plateau. For details, refer to Figure 5 in <a href=https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3103662/>Rambo and Tainer, 2011</a>. In a Kratky plot, a parabolic shape is observed for globular (partial or fully folded) domains and a hyperbolic shape is observed for fully unfolded domains.
@@ -430,10 +438,10 @@
             {% endfor %}
             
             <!-- Pair-distance distribution analysis -->
-            <h4 align=center>
-              <u><a name=firstP>Pair-distance distribution analysis</a></u>
+            <h5 align=center>
+              <u><a name=firstP>3.1.4. Pair-distance distribution analysis</a></u>
               {{ format_help("pofr", current_task) }}
-            </h4>
+            </h5>
             <p align='justify'>
               <u>P(r) analysis:</u> P(r) represents the distribution of distances between all pairs of atoms within the particle weighted by the respective electron densities. P(r) is the Fourier transform of I(s) (and vice versa). R<sub>g</sub> can be estimated from integrating the P(r) function. Agreement between the P(r) and Guinier-determined R<sub>g</sub> (table below) is a good measure of the self-consistency of the SAS profile. R<sub>g</sub> is a measure for the overall size of a macromolecule; e.g. a protein with a smaller R<sub>g</sub> is more compact than a protein with a larger R<sub>g</sub>, provided both have the same molecular weight (MW). The point where P(r) is decaying to zero is called D<sub>max</sub> and represents the maximum size of the particle.
             </p>
@@ -454,10 +462,10 @@
             {% endfor %}
             
             <!-- Guinier analysis -->
-            <h4 align= center>
-              <u><a name=firstG>Guinier analysis </a></u>
+            <h5 align= center>
+              <u><a name=firstG>3.1.5. Guinier analysis </a></u>
               {{ format_help("guinier", current_task) }}
-            </h4>
+            </h5>
             
             <p align='justify'>
               <u>Guinier analysis:</u> agreement between the P(r) and Guinier-determined R<sub>g</sub> (table below) is a good measure of the self-consistency of the SAS profile. Molecular weight estimates can also be compared to Porod and sample molecular weights for consistency.
@@ -475,9 +483,9 @@
             </div>
             
           {% elif sas and (sasdb_sascif|length < 1) %}
-            <h4 align=center>
-              <u><a name=firstI>SAS:Scattering profile</a></u>
-            </h4>
+            <h5 align=center>
+              <u><a name=firstI>3.1.1. Scattering profile</a></u>
+            </h5>
             
             <p align=justify>
               SAS data used in this integrative model could not be validated as the sascif file is currently unavailable.
@@ -493,7 +501,8 @@
           <!-- Other datasets -->
           {% for i in range(Unique_dataset|length) %}
             <h4 align=center>
-              <u><a name=last>{{ Unique_dataset[i] }}</a></u>
+              <u><a name=last>3.4. {{ Unique_dataset[i] }}</a></u>
+              {{ format_help("dq-other", current_task) }}
             </h4>
             <p align=justify>
               Validation for this section is under development.
@@ -515,20 +524,21 @@
         <div class="row">
           <div class="col-lg-12">
             <h3 align="center">
-              <u><a name='first'>Fit of model to data used for modeling</a></u> 
+              <u><a name='first'>5. Fit to Data Used for Modeling Assessment</a></u> 
               {{ format_help("fittodata", current_task) }}
             </h3>
 
             {% if sas %}
               {% if sasdb_sascif|length > 0 %}
                 <h4 align=center>
-                  <u>Fit of model(s) to SAS data</u>
+                  <u>5.1. SAS</u>
+                  {{ format_help("fq-sas", current_task) }}
                 </h4>
                 
-                <h4 align=center>
-                  <u>χ² goodness of fit and cormap analysis</u> 
+                <h5 align=center>
+                  <u>5.1.1 χ² goodness of fit and 5.1.2 cormap analysis</u> 
                   {{ format_help("goodness", current_task) }}
-                </h4>
+                </h5>
                 
                 {% if number_of_fits  > 0 %}
                   <p>
@@ -567,11 +577,13 @@
 
             {% if cx %}
               <h4 align=center id="cxms">
-                <u> Fit of model(s) to crosslinking-MS data</u>
+                <u>5.2. Crosslinking-MS</u>
+                {{ format_help("fq-crosslinking-ms", current_task) }}
               </h4>
 
               <h5 align=center id="cxms_ertypes">
-                <u>Restraint types</u>
+                <u>5.2.1. Restraint types</u>
+                {{ format_help("fq-crosslinking-ms-restraints", current_task) }}
               </h5>
               
               {% if cx_ertypes is none %}
@@ -641,7 +653,8 @@
               <!-- end of cx_ertypes --> 
               
               <h5 align=center id="cxms_satisfaction">
-                <u>Satisfaction of restraints</u>
+                <u>5.2.2. Satisfaction of restraints</u>
+                {{ format_help("fq-crosslinking-ms-satisfaction", current_task) }}
               </h5>
               
               {% if cx_stats is none %}
@@ -738,7 +751,8 @@
                 
             {% for i in range(Unique_dataset|length) %}
               <h4 align= center>
-                <u><a name=last>{{ Unique_dataset[i] }}</a></u>
+                <u><a name=last>5.4. {{ Unique_dataset[i] }}</a></u>
+                {{ format_help("fq-other", current_task) }}
               </h4>
               <p align=justify>
                 Validation for this section is under development.
@@ -759,7 +773,7 @@
         <div class="row">
           <div class="col-lg-12">
             <h3 align="center">
-              <u><a name='first'>Fit of model to data used for validation</a></u>
+              <u><a name='first'>6. Fit to Data Used for Validation Assessment</a></u>
               {{ format_help("fittoval", current_task) }}
             </h3>
             <p align=justify>
