@@ -1,5 +1,5 @@
 {% extends "validation_report_layout.html" %}
-{% from "macro.html" import insert_json_plot, write_table with context %}
+{% from "macro.html" import insert_json_plot, write_table, format_help with context %}
 {% block body %}
 <!-- Template for writing fit to information webpage -->
 <!-- ganesans - Salilab - UCSF -->
@@ -10,7 +10,8 @@
       <div class="row">
         <div class="col-lg-12">
           <h4 class="ex2" align="center">
-            <u><a name='first'>Fit of model to data used for modeling</a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='/validation_help.html#fittodata'>?</a>
+            <u><a name='first'>5. Fit of model to data used for modeling</a></u>
+            {{ format_help("fittodata", current_task) }}
           </h4>
         </div>
       </div>
@@ -23,7 +24,10 @@
       <div class="card-header" style="background-color: #FFF; height=18rem">
         <div class="row">
           <div class="col-lg-12">
-            <h5 class= ex2 align= center><u> Fit of model(s) to SAS data</u></h5>
+            <h5 class= ex2 align= center>
+              <u>5.1. SAS</u>
+              {{ format_help("fq-sas", current_task) }}
+            </h5>
             {% if sasdb_sascif|length < 1 %}
               <p align=justify>
                 SAS data used in this integrative model could not be validated as the sascif file is currently unavailable.
@@ -35,20 +39,9 @@
           <div class="row">
             <div class="col-lg-6">
               <h5 class= ex2 align= center>
-                <u><a name='second'>Cormap p-value analysis of fits </a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='/validation_help.html#cormap'>?</a>
+                <u><a name='second'>5.1.1. &#x3A7;&#178; Goodness of Fit Assessment</a></u>
+                {{ format_help("goodness", current_task) }}
               </h5>
-              {% if number_of_fits > 0 %}
-                <p class =ex2>
-                  <i>ATSAS DATCMP was used for hypothesis testing. <i>All data sets are similar (i.e. the fit and the data collected) </i> is the null hypothesis. p-value is a measure of evidence against the null hypothesis, smaller the value, the stronger the evidence that you should reject the null hypothesis.</i>
-                </p>
-                {{ write_table(p_val) }}
-              {% else %}
-                <p class =ex2>
-                  <i>Model(s) and/or fit for this entry has not been deposited.</i>
-                </p>
-              {% endif %}
-            </div>
-            <div class="col-lg-6">
               <p align=justify align=center>
                 <i>The experimental scattering curve (in blue) can be compared with the theoretical curve calculated from a model (in red). Residual value plot is a measure to assess fit to the data. Residual values should be equally and randomly spaced around the horizontal axis.</i>
               </p>
@@ -60,6 +53,22 @@
                   {% endfor %}
                 {% endfor %}
               </div>
+            </div>
+            <div class="col-lg-6">
+              <h5 class= ex2 align= center>
+                <u><a name='second'>5.1.2. Cormap Analysis</a></u>
+                {{ format_help("cormap", current_task) }}
+              </h5>
+              {% if number_of_fits > 0 %}
+                <p class =ex2>
+                  <i>ATSAS DATCMP was used for hypothesis testing. <i>All data sets are similar (i.e. the fit and the data collected) </i> is the null hypothesis. p-value is a measure of evidence against the null hypothesis, smaller the value, the stronger the evidence that you should reject the null hypothesis.</i>
+                </p>
+                {{ write_table(p_val) }}
+              {% else %}
+                <p class =ex2>
+                  <i>Model(s) and/or fit for this entry has not been deposited.</i>
+                </p>
+              {% endif %}
             </div>
           </div>
         {% endif %}
@@ -73,8 +82,14 @@
       <div class="card-header" style="background-color: #FFF; height=18rem">
         <div class="row">
           <div class='col-lg-12'>
-            <h4 align=center id="crosslinking-ms"><u> Fit of model(s) to crosslinking-MS data</u></h4>
-            <h5 align=center id="crosslinking-ms_ertypes"><u>Restraint types</u></h5>
+            <h4 align=center id="crosslinking-ms">
+              <u>5.2. Crosslinking-MS</u>
+              {{ format_help("fq-crosslinking-ms", current_task) }}
+            </h4>
+            <h5 align=center id="crosslinking-ms_ertypes">
+              <u>5.2.1. Restraint types</u>
+              {{ format_help("fq-crosslinking-ms-restraints", current_task) }}
+            </h5>
             {% if cx_ertypes is none %}
               <p>Restraint types in this entry are not supported at the moment.</p>
             {% else %}
@@ -142,7 +157,10 @@
               </div>
             {% endif %}
             <!-- end of cx_ertypes --> 
-            <h5 align=center id="crosslinking-ms_satisfaction"><u>Satisfaction of restraints</u></h5>
+            <h5 align=center id="crosslinking-ms_satisfaction">
+              <u>5.2.2. Satisfaction of restraints</u>
+              {{ format_help("fq-crosslinking-ms-satisfaction", current_task) }}
+            </h5>
             {% if cx_stats is none %}
               <p>Satisfaction rates for this entry are unavailable at the moment.</p>
             {% else %}
@@ -237,6 +255,10 @@
       </div>
     </div>
   {% endif %}
-  {% include 'em_fit.j2' %}
+
+  <!-- 3DEM -->
+  <div class="card-header" style="background-color: #FFFFFF; border-color:#003366;">
+    {% include 'em_fit.j2' %}
+  </div>
 
 {% endblock %}

@@ -11,7 +11,7 @@
       <div class="col-lg-12">
         <div class="card-header" style="background-color: #FFF;">
           <h4 align='center'>
-            <u><a name='ensemble'>Ensemble information</a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#ensemble">?</a>
+            <u><a name='ensemble'>2.1. Ensemble information</a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#ensemble">?</a>
           </h4>
           {% if num_ensembles < 2 %}
             <p class ="ex2"><i>This entry consists of {{num_ensembles|int}} distinct ensemble.</i></p>
@@ -40,7 +40,7 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="card-header" style="background-color: #FFF;">
-          <h4 class="ex2" align="center"><u><a name='data'>Datasets used for modeling </a></u> <a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#datasets">?</a></h4>
+          <h4 class="ex2" align="center"><u><a name='data'>2.3. Datasets used for modeling </a></u> <a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#datasets">?</a></h4>
           {% if number_of_datasets < 2 %}
             <i>There is {{number_of_datasets|int}} unique dataset used to build the models in this entry.</i>
           {% else %}
@@ -59,7 +59,7 @@
       <div class="col-lg-12">
         <div class="card-header" style="background-color: #FFF;">
           <h4 class="ex2" align="center">
-            <u><a name="methods">Methodology and software</a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#software">?</a>
+            <u><a name="methods">2.4. Methodology and software</a></u><a class='help' title='help' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href="/validation_help.html#software">?</a>
           </h4>
           <!-- Protocols summary -->
           {% if Protocols_number < 2 %}
