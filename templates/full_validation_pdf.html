@@ -141,7 +141,9 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="card-header" style="background-color: #E4E4E4; min-height: 17rem;">
-            <h1 align="center">Integrative Structure Validation Report <a class='help1' style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#overview">?</a></h1>
+            <h1 align="center">Integrative Structure Validation Report
+              {{ format_help("understanding", current_task) }}
+            </h1>
             <p align="center" style="font-size: 2rem">{{ date }}</p>
             {% include 'validation_software.j2' %}
           </div>
@@ -359,14 +361,16 @@
       <div class="row">
         <div class="col-lg-12">
           <h3 align="center">
-             <u><a name='first'>Data quality</a></u> <a class="help1" style="background-color:#228B22;color:#000000;text-decoration:none font-size=16px" href="https://pdb-ihm.org/validation_help.html#dataquality">?</a>
+             <u><a name='first'>Data quality</a></u> 
+              {{ format_help("dataquality", current_task) }}
           </h3>
           
           <!-- SAS -->
           {% if ( sas ) and ( sasdb_sascif|length > 0 ) %}
             <!-- Scattering profiles -->
             <h4 align=center>
-               <u> <a name=firstI>Scattering profile</a> </u><a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#scattering'>?</a>
+              <u> <a name=firstI>Scattering profile</a> </u>
+              {{ format_help("scattering", current_task) }}
             </h4>
             
             <p align=justify>
@@ -391,7 +395,8 @@
 
             <!-- Key experimental estimates -->
             <h4 align=center>
-              <u><a name=firstE>Key experimental estimates</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#expt'>?</a>
+              <u><a name=firstE>Key experimental estimates</a></u>
+              {{ format_help("expt", current_task) }}
             </h4>
             <p align='justify'>
               <u>Molecular weight (MW) estimates from experiments and analysis</u>:
@@ -408,7 +413,8 @@
             
             <!-- Flexibility analysis -->
             <h4 align=center>
-              <u><a name=firstF>Flexibility analysis</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#flexibility'>?</a>
+              <u><a name=firstF>Flexibility analysis</a></u> 
+              {{ format_help("flexibility", current_task) }}
             </h4>
             {% for i in range ( sasdb_code_html|length ) %}
               <p align=justify>
@@ -425,7 +431,8 @@
             
             <!-- Pair-distance distribution analysis -->
             <h4 align=center>
-              <u><a name=firstP>Pair-distance distribution analysis</a></u>   <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#pofr'>?</a>
+              <u><a name=firstP>Pair-distance distribution analysis</a></u>
+              {{ format_help("pofr", current_task) }}
             </h4>
             <p align='justify'>
               <u>P(r) analysis:</u> P(r) represents the distribution of distances between all pairs of atoms within the particle weighted by the respective electron densities. P(r) is the Fourier transform of I(s) (and vice versa). R<sub>g</sub> can be estimated from integrating the P(r) function. Agreement between the P(r) and Guinier-determined R<sub>g</sub> (table below) is a good measure of the self-consistency of the SAS profile. R<sub>g</sub> is a measure for the overall size of a macromolecule; e.g. a protein with a smaller R<sub>g</sub> is more compact than a protein with a larger R<sub>g</sub>, provided both have the same molecular weight (MW). The point where P(r) is decaying to zero is called D<sub>max</sub> and represents the maximum size of the particle.
@@ -448,7 +455,8 @@
             
             <!-- Guinier analysis -->
             <h4 align= center>
-              <u><a name=firstG>Guinier analysis </a></u>   <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#guinier'>?</a>
+              <u><a name=firstG>Guinier analysis </a></u>
+              {{ format_help("guinier", current_task) }}
             </h4>
             
             <p align='justify'>
@@ -507,7 +515,8 @@
         <div class="row">
           <div class="col-lg-12">
             <h3 align="center">
-              <u><a name='first'>Fit of model to data used for modeling</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#fittodata'>?</a>
+              <u><a name='first'>Fit of model to data used for modeling</a></u> 
+              {{ format_help("fittodata", current_task) }}
             </h3>
 
             {% if sas %}
@@ -517,7 +526,8 @@
                 </h4>
                 
                 <h4 align=center>
-                  <u>χ² goodness of fit and cormap analysis</u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#goodness'>?</a>
+                  <u>χ² goodness of fit and cormap analysis</u> 
+                  {{ format_help("goodness", current_task) }}
                 </h4>
                 
                 {% if number_of_fits  > 0 %}
@@ -749,7 +759,8 @@
         <div class="row">
           <div class="col-lg-12">
             <h3 align="center">
-              <u><a name='first'>Fit of model to data used for validation</a></u> <a class='help1' style='background-color:#228B22;color:#000000;text-decoration:none font-size=16px' href='https://pdb-ihm.org/validation_help.html#fittoval'>?</a>
+              <u><a name='first'>Fit of model to data used for validation</a></u>
+              {{ format_help("fittoval", current_task) }}
             </h3>
             <p align=justify>
               Validation for this section is under development.
