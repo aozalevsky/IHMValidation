@@ -240,9 +240,9 @@
             <div class="box text-center container-fluid no-padding" align='center' style="break-inside: avoid;">
               {% if disclaimer == 0 %}
                 {% if atomic and molprobity_models|length > 0 %}
-                  <h4 align=center>
+                  <h5 align=center>
                     <u>Model Quality: MolProbity Analysis</u>
-                  </h4>
+                  </h5>
                 
                   {% for i in range([molprobity_models|length, MAXPLOTS] | min) %}
                     <div>
@@ -253,9 +253,9 @@
                 {% endif %}
                 
                 {% if cg and excluded_volume_models|length > 0 %}
-                  <h4 align=center>
+                  <h5 align=center>
                     <u>Model Quality: Excluded Volume Analysis</u>
-                  </h4>
+                  </h5>
                 
                   {% for i in range([excluded_volume_models|length, MAXPLOTS] | min) %}
                     <div>
@@ -273,9 +273,9 @@
   
             <!-- Data quality -->
             {% if glance_plots["DQ"] %}
-              <h4 align=center style="margin-top: 2em">
+              <h5 align=center style="margin-top: 2em">
                 <u>Data Quality</u>
-              </h4>
+              </h5>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_DQ.svg"}}>
               </div>
@@ -283,9 +283,9 @@
   
             <!-- Fit to data -->
             {% if glance_plots["FQ"] %}
-              <h4 align=center style="margin-top: 2em">
+              <h5 align=center style="margin-top: 2em">
                 <u>Fit to Data Used for Modeling</u>
-              </h4>
+              </h5>
               <div class="box text-center container-fluid no-padding" align="center">
                 <img src={{"../images/" ~ ID_f ~ '_' ~ "quality_at_glance_FQ.svg"}}>
               </div>
