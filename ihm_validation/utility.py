@@ -61,11 +61,11 @@ def dict_to_JSlist(d: dict) -> list:
                             el_ = str(el)
 
                 # Otherwise cast as str
+                elif isinstance(el_, (type(None), type(ihm.unknown))):
+                    el_ = NA
                 else:
                     el_ = str(el)
 
-                if el_ == '?':
-                    el_ = '_'
                 try:
                     output_list[i, j] = el_
                 except IndexError:
