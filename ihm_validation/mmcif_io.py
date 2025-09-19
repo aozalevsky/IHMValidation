@@ -606,6 +606,19 @@ class GetInputInformation(object):
                         'Database name': [], 'Data access code': []}
         lists = self.system.orphan_datasets
         if len(lists) > 0:
+            try:
+                lists = sorted(lists, key=lambda x: int(x._id))
+            except AttributeError as e:
+                logging.error(f'Missing dataset ID')
+                logging.error(e)
+            except ValueError as e:
+                logging.error(f'Incorrect data type for dataset ID')
+                logging.error(e)
+            except Exception as e:
+                logging.error(f'Unexepcted dataset error')
+                logging.error(e)
+
+        if len(lists) > 0:
             for _ in lists:
                 if isinstance(_.location, ihm.location.DatabaseLocation):
                     try:
