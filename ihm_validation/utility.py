@@ -43,8 +43,12 @@ def dict_to_JSlist(d: dict) -> list:
         for j, v in enumerate(d.values()):
             # iterate over values of every key - fill rows
             for i, el in enumerate(v, start=1):
+                # Otherwise cast as str
+                if isinstance(el, (type(None), type(ihm.unknown))):
+                    el_ = NA
+
                 # Check if int or float
-                if isinstance(el, int) or isinstance(el, float):
+                elif isinstance(el, int) or isinstance(el, float):
                     el_ = el
 
                 # If string, try casting as int or float
@@ -60,9 +64,6 @@ def dict_to_JSlist(d: dict) -> list:
                         except (TypeError, ValueError):
                             el_ = str(el)
 
-                # Otherwise cast as str
-                elif isinstance(el_, (type(None), type(ihm.unknown))):
-                    el_ = NA
                 else:
                     el_ = str(el)
 
