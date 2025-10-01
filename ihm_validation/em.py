@@ -135,7 +135,11 @@ class EMValidation(GetInputInformation):
             map_path = self.get_emdb_map(code, map_path)
             map_plots = self.get_emdb_map_images(code, map_validation)
 
-            if map_metadata is not None and map_validation is not None:
+            if (map_metadata is not None and
+                map_validation is not None and
+                Path(map_path).is_file() and
+                len(map_plots) > 0):
+
                 data = {
                     'emdb_id': code,
                     'map_metadata': map_metadata,
