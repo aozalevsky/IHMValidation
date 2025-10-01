@@ -1,5 +1,5 @@
 {% extends "validation_report_layout.html" %}
-{% from "macro.html" import insert_json_plot, write_table, format_help with context %}
+{% from "macro.html" import insert_json_plot, write_table, format_help, format_value with context %}
 {% block body %}
 <!-- Template for writing fit to information webpage -->
 <!-- ganesans - Salilab - UCSF -->
@@ -121,7 +121,7 @@
                       {% for i in range(cx_ertypes['data']|length) %}
                         <tr>
                           {% for v in cx_ertypes['data'][i] %}
-                            <td>{{ v }}</td>
+                            <td>{{ format_value(v) }}</td>
                           {% endfor %}
                         </tr>
                       {% endfor %}
