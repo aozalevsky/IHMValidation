@@ -12,62 +12,6 @@ import jinja2
 import utility
 from report import REPORT_VERSION
 
-####################################################################################################################
-# Parser
-#####################################################################
-
-parser = argparse.ArgumentParser()
-parser.add_argument('-v', dest='verbose', action='store_true',
-                    help="Verbose output")
-parser.add_argument('--about-validation', dest='about_validation', action='store_true',
-                    help="Generate about validation page")
-parser.add_argument('--validation-help', dest='validation_help', action='store_true',
-                    help="Generate validation help page")
-parser.add_argument('--output-root', type=str, default=str(Path(Path(__file__).parent.resolve(), 'Validation')),
-                    help="Path to a directory where the output will be written")
-# parser.add_argument('--html-mode', type=str, default='pdb-ihm',
-#                     choices=['local', 'pdb-ihm'],
-#                     help="HTML mode affects paths to various statis resources")
-# parser.add_argument('--html-resources',
-#                     type=str,
-#                     default=str(Path(Path(__file__).parent.parent.resolve(), 'static')),
-#                     help="Path to static HTML resources")
-parser.add_argument('--force', action='store_true', default=False,
-                    help="Overwright output files")
-
-args = parser.parse_args()
-
-logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)
-
-#############################################################################################################################
-# Input for Jinja
-####################################################################################
-
-templates = [
-#    "about_validation.html",
-#    "validation_help.html",
-]
-
-if args.about_validation:
-    templates.append('about_validation.html')
-
-if args.validation_help:
-    templates.append('validation_help.html')
-
-output_path = args.output_root
-
-dirNames = {
-    'root': str(output_path),
-}
-
-# This is a temporary hack for ../templates
-template_path = Path(Path(__file__).parent.parent.resolve(), 'templates')
-templateLoader = jinja2.FileSystemLoader(searchpath=template_path)
-templateEnv = jinja2.Environment(loader=templateLoader)
-Template_Dict = {}
-Template_Dict['version'] = REPORT_VERSION
-Template_Dict['html_mode'] = 'pdb-ihm'
-
 #############################################################################################################################
 # Jinja scripts
 #############################################################################################################################
@@ -101,6 +45,61 @@ def write_html(template_dict: dict, template_list: list, dirName: str, overwrite
 #################################################
 
 if __name__ == "__main__":
+    ###################################################################################################################
+    # Parser
+    #####################################################################
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-v', dest='verbose', action='store_true',
+                        help="Verbose output")
+    parser.add_argument('--about-validation', dest='about_validation', action='store_true',
+                        help="Generate about validation page")
+    parser.add_argument('--validation-help', dest='validation_help', action='store_true',
+                        help="Generate validation help page")
+    parser.add_argument('--output-root', type=str, default=str(Path(Path(__file__).parent.resolve(), 'Validation')),
+                        help="Path to a directory where the output will be written")
+    # parser.add_argument('--html-mode', type=str, default='pdb-ihm',
+    #                     choices=['local', 'pdb-ihm'],
+    #                     help="HTML mode affects paths to various statis resources")
+    # parser.add_argument('--html-resources',
+    #                     type=str,
+    #                     default=str(Path(Path(__file__).parent.parent.resolve(), 'static')),
+    #                     help="Path to static HTML resources")
+    parser.add_argument('--force', action='store_true', default=False,
+                        help="Overwright output files")
+
+    args = parser.parse_args()
+
+    logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)
+
+    #############################################################################################################################
+    # Input for Jinja
+    ####################################################################################
+
+    templates = [
+    #    "about_validation.html",
+    #    "validation_help.html",
+    ]
+
+    if args.about_validation:
+        templates.append('about_validation.html')
+
+    if args.validation_help:
+        templates.append('validation_help.html')
+
+    output_path = args.output_root
+
+    dirNames = {
+        'root': str(output_path),
+    }
+
+    # This is a temporary hack for ../templates
+    template_path = Path(Path(__file__).parent.parent.resolve(), 'templates')
+    templateLoader = jinja2.FileSystemLoader(searchpath=template_path)
+    templateEnv = jinja2.Environment(loader=templateLoader)
+    Template_Dict = {}
+    Template_Dict['version'] = REPORT_VERSION
+    Template_Dict['html_mode'] = 'pdb-ihm'
 
     logging.info("Clean up and create output directories")
 
