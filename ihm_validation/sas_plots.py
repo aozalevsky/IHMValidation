@@ -246,14 +246,14 @@ class SasValidationPlots(sas.SasValidation):
                    title=f"Guinier plot for {sasbdb}")
         legend1 = 'Experimental data'
         legend2 = f"Linear fit (R\u00B2={score})"
-        p1.circle(x='Q2', y='logI', source=source,
+        p1.circle(x='Q2', y='lnI', source=source,
                   # color='blue',
                  line_width=1, fill_alpha=0.3, size=5, legend_label=legend1)
         p1.line(x='Q2', y='y_pred', source=source,
                color="crimson", line_width=3, legend_label=legend2)
 
         p1.xaxis.axis_label = "q [nm\u207B\u00B2]"  # \u212B\u207B\u00B2"
-        p1.yaxis.axis_label = 'Log I(q)'
+        p1.yaxis.axis_label = 'Ln I(q)'
 
         p1.legend.orientation = "vertical"
         p1.legend.location = "top_right"

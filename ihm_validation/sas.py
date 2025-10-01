@@ -178,11 +178,11 @@ class SasValidation(GetInputInformation):
                 lambda row: (row['Q'], row['Q']), axis=1)
             I_df['err_y'] = I_df.apply(
                 lambda row: (
-                    np.log(row['I'] - row['E']),
-                    np.log(row['I'] + row['E'])),
+                    np.log10(row['I'] - row['E']),
+                    np.log10(row['I'] + row['E'])),
                 axis=1)
-            I_df['logI'] = np.log(I_df['I'])
-            I_df['logQ'] = np.log(I_df['Q'])
+            I_df['logI'] = np.log10(I_df['I'])
+            I_df['logQ'] = np.log10(I_df['Q'])
             I_df['logX'] = I_df.apply(lambda row: (
                 row['logQ'], row['logQ']), axis=1)
             I_df['Ky'] = I_df['Q'] * I_df['Q'] * I_df['I'] * dim_num
@@ -394,7 +394,7 @@ class SasValidation(GetInputInformation):
                 'I': np.array(data['intensity_reg'], dtype=float)
             })
             pdf_re['Q'] = pdf_re['Q'] * unitm
-            pdf_re['logI'] = np.log(pdf_re['I'])
+            pdf_re['logI'] = np.log10(pdf_re['I'])
             pofr_dict[code] = pdf_re
         return pofr_dict
 
@@ -456,7 +456,7 @@ class SasValidation(GetInputInformation):
             rg = float(data['_sas_result']['Rg_from_PR'])
 
             G_df = val.astype({'Q': float, 'I': float, 'E': float})
-            G_df['logI'] = np.log(G_df['I'])
+            G_df['lnI'] = np.log(G_df['I'])
             # dmax = float(data_dic[code]['pddf_dmax'])
             # index_low = int(data_dic[code]['guinier_point_first'])
             # index_high = int(data_dic[code]['guinier_point_last'])
@@ -466,7 +466,7 @@ class SasValidation(GetInputInformation):
             G_df_range['Q'] = G_df['Q']
             G_df_range['Q2'] = G_df_range['Q']**2
             X = G_df_range[['Q2']].values
-            y = G_df_range['logI'].values
+            y = G_df_range['lnI'].values
             regression = LinearRegression(fit_intercept=True)
             regression.fit(X, y)
             G_df_range['y_pred'] = regression.predict(X)
@@ -686,8 +686,8 @@ class SasValidation(GetInputInformation):
                         'E': fitS,
                     })
 
-                    f_df['logIe'] = np.log(f_df['Ie'])
-                    f_df['logIb'] = np.log(f_df['Ib'])
+                    f_df['logIe'] = np.log10(f_df['Ie'])
+                    f_df['logIb'] = np.log10(f_df['Ib'])
                     f_df['r'] = f_df['Ie']-f_df['Ib']
 
                     if f_df['E'].isnull().values.any():
