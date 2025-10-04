@@ -48,3 +48,7 @@ html_context = {
 html_theme_options = {
   'collapse_navigation': False,
 }
+
+import os
+import sys
+sys.path.insert(0, os.environ['READTHEDOCS_REPOSITORY_PATH'])
