@@ -9,6 +9,9 @@ build:
   os: ubuntu-24.04
   tools:
     python: "miniconda3-3.12-24.9"
+  jobs:
+    post_checkout:
+      git clone -b ihm https://github.com/aozalevsky/prism ${READTHEDOCS_REPOSITORY_PATH}/prism
 
 # Conda config
 conda:
