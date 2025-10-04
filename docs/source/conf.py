@@ -32,14 +32,6 @@ source_suffix = {
     ".md": "markdown",
 }
 
-import os
-import sys
-sys.path.insert(0, os.path.abspath('/opt')) # Adjust path as needed
-sys.path.insert(0, os.path.abspath('/opt/IHMValidation')) # Adjust path as needed
-sys.path.insert(0, os.path.abspath('/home/arthur/work/validation/IHMValidation_3.0_dev')) # Adjust path as needed
-sys.path.insert(0, os.path.abspath('/home/arthur/work/validation/IHMValidation_3.0_dev/ihm_validation')) # Adjust path as needed
-sys.path.insert(0, os.path.abspath('/home/arthur/work/validation/')) # Adjust path as needed
-
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
