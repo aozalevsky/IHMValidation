@@ -36,6 +36,6 @@ To get a full list of available options you can call the pipeline with a `-h` fl
 singularity run --pid ihmv.sif -h
 ```
 
-### Interpreting the report
+## Interpreting the reports
 
 If you're not an expert in structral biology or integrative modeling, we recommend checking a detailed [user guide](https://pdb-ihm.org/validation_help.html) with descriptions of all metrics and plots presented in the report. 
