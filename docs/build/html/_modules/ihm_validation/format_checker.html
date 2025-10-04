@@ -1,0 +1,398 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ihm_validation.format_checker &mdash; IHMValidation 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=110ea713"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            IHMValidation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#pdb-ihm-validation-system">PDB-IHM Validation System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#local-deployment">Local deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#building-runtime-image">Building runtime image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#running-the-pipeline">Running the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#interpreting-the-report">Interpreting the report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ihm_validation.html">ihm_validation package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.cx">ihm_validation.cx module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.cx.CxValidation"><code class="docutils literal notranslate"><span class="pre">CxValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.em">ihm_validation.em module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.em.EMValidation"><code class="docutils literal notranslate"><span class="pre">EMValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.excludedvolume">ihm_validation.excludedvolume module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.excludedvolume.GetExcludedVolume"><code class="docutils literal notranslate"><span class="pre">GetExcludedVolume</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.format_checker">ihm_validation.format_checker module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_exception"><code class="docutils literal notranslate"><span class="pre">check_all_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_log"><code class="docutils literal notranslate"><span class="pre">check_all_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_entities_histidines"><code class="docutils literal notranslate"><span class="pre">check_entities_histidines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_exception"><code class="docutils literal notranslate"><span class="pre">check_file_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_log"><code class="docutils literal notranslate"><span class="pre">check_file_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_models"><code class="docutils literal notranslate"><span class="pre">check_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.futures">ihm_validation.futures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator"><code class="docutils literal notranslate"><span class="pre">CXMSValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator"><code class="docutils literal notranslate"><span class="pre">StereoChemistryValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.Validator"><code class="docutils literal notranslate"><span class="pre">Validator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_atomic"><code class="docutils literal notranslate"><span class="pre">is_model_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_cg"><code class="docutils literal notranslate"><span class="pre">is_model_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_mixed"><code class="docutils literal notranslate"><span class="pre">is_model_mixed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.generate_static_html_pages">ihm_validation.generate_static_html_pages module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.get_plots">ihm_validation.get_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.get_plots.Plots"><code class="docutils literal notranslate"><span class="pre">Plots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.ihm_validator">ihm_validation.ihm_validator module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.load_json_plot"><code class="docutils literal notranslate"><span class="pre">load_json_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_pdf"><code class="docutils literal notranslate"><span class="pre">write_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_supplementary_table"><code class="docutils literal notranslate"><span class="pre">write_supplementary_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.images">ihm_validation.images module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.mmcif_io">ihm_validation.mmcif_io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.GetInputInformation"><code class="docutils literal notranslate"><span class="pre">GetInputInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.IHMVAvailableModes"><code class="docutils literal notranslate"><span class="pre">IHMVAvailableModes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.get_operational_mode"><code class="docutils literal notranslate"><span class="pre">get_operational_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity">ihm_validation.molprobity module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.AtomSiteVariant"><code class="docutils literal notranslate"><span class="pre">AtomSiteVariant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.GetMolprobityInformation"><code class="docutils literal notranslate"><span class="pre">GetMolprobityInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.MyModelDumper"><code class="docutils literal notranslate"><span class="pre">MyModelDumper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity_convert">ihm_validation.molprobity_convert module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.get_atom_tuple"><code class="docutils literal notranslate"><span class="pre">get_atom_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.rota_rama_result_to_tuple"><code class="docutils literal notranslate"><span class="pre">rota_rama_result_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.precision">ihm_validation.precision module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.precision.PRISM"><code class="docutils literal notranslate"><span class="pre">PRISM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.report">ihm_validation.report module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.report.WriteReport"><code class="docutils literal notranslate"><span class="pre">WriteReport</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas">ihm_validation.sas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas.SasValidation"><code class="docutils literal notranslate"><span class="pre">SasValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas_plots">ihm_validation.sas_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas_plots.SasValidationPlots"><code class="docutils literal notranslate"><span class="pre">SasValidationPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.utility">ihm_validation.utility module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.all_same"><code class="docutils literal notranslate"><span class="pre">all_same()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.calc_optimal_range"><code class="docutils literal notranslate"><span class="pre">calc_optimal_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.cat_list_string"><code class="docutils literal notranslate"><span class="pre">cat_list_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.check_for_dataset_type"><code class="docutils literal notranslate"><span class="pre">check_for_dataset_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.clean_all"><code class="docutils literal notranslate"><span class="pre">clean_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.compress_cx_stats"><code class="docutils literal notranslate"><span class="pre">compress_cx_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist_rows"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.encode_img"><code class="docutils literal notranslate"><span class="pre">encode_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_RB_text"><code class="docutils literal notranslate"><span class="pre">format_RB_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_flex_text"><code class="docutils literal notranslate"><span class="pre">format_flex_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_list_text"><code class="docutils literal notranslate"><span class="pre">format_list_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_range"><code class="docutils literal notranslate"><span class="pre">format_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_tuple"><code class="docutils literal notranslate"><span class="pre">format_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_id"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_url"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_RB"><code class="docutils literal notranslate"><span class="pre">get_RB()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_all_files"><code class="docutils literal notranslate"><span class="pre">get_all_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_alphafolddb_link"><code class="docutils literal notranslate"><span class="pre">get_alphafolddb_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_bead_size"><code class="docutils literal notranslate"><span class="pre">get_bead_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_copy"><code class="docutils literal notranslate"><span class="pre">get_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_cx_data_fits"><code class="docutils literal notranslate"><span class="pre">get_cx_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets"><code class="docutils literal notranslate"><span class="pre">get_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets_summary"><code class="docutils literal notranslate"><span class="pre">get_datasets_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_flex"><code class="docutils literal notranslate"><span class="pre">get_flex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_key_from_val"><code class="docutils literal notranslate"><span class="pre">get_key_from_val()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_larget_assembly_model"><code class="docutils literal notranslate"><span class="pre">get_larget_assembly_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_name"><code class="docutils literal notranslate"><span class="pre">get_method_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_type"><code class="docutils literal notranslate"><span class="pre">get_method_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_json"><code class="docutils literal notranslate"><span class="pre">get_output_file_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_output_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_temp_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_temp_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_python_ihm_version"><code class="docutils literal notranslate"><span class="pre">get_python_ihm_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_restraints_info"><code class="docutils literal notranslate"><span class="pre">get_restraints_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data"><code class="docutils literal notranslate"><span class="pre">get_rg_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data_fits"><code class="docutils literal notranslate"><span class="pre">get_rg_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_software"><code class="docutils literal notranslate"><span class="pre">get_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_subunits"><code class="docutils literal notranslate"><span class="pre">get_subunits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_html"><code class="docutils literal notranslate"><span class="pre">get_supp_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_supp_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_unique_datasets"><code class="docutils literal notranslate"><span class="pre">get_unique_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_val_from_key"><code class="docutils literal notranslate"><span class="pre">get_val_from_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_atomic"><code class="docutils literal notranslate"><span class="pre">is_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_cg"><code class="docutils literal notranslate"><span class="pre">is_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.islistempty"><code class="docutils literal notranslate"><span class="pre">islistempty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.load_img"><code class="docutils literal notranslate"><span class="pre">load_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.mp_readable_format"><code class="docutils literal notranslate"><span class="pre">mp_readable_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.order_of_magnitude"><code class="docutils literal notranslate"><span class="pre">order_of_magnitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.pretty_print_representations"><code class="docutils literal notranslate"><span class="pre">pretty_print_representations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.ranges"><code class="docutils literal notranslate"><span class="pre">ranges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel"><code class="docutils literal notranslate"><span class="pre">runInParallel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel_noargs"><code class="docutils literal notranslate"><span class="pre">runInParallel_noargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_entities"><code class="docutils literal notranslate"><span class="pre">summarize_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_segments"><code class="docutils literal notranslate"><span class="pre">summarize_segments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.timeout"><code class="docutils literal notranslate"><span class="pre">timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://validate.pdb-ihm.org/">PDB-IHM Validation System</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/validation_help.html">Validation Reports</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/">PDB-IHM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://data.pdb-ihm.org/">PDB-IHM Deposition System</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">IHMValidation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ihm_validation.format_checker</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ihm_validation.format_checker</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># format_checker.py - Check residue and atom names in IHMCIF file</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2025 Arthur Zalevsky &lt;aozalevsky@gmail.com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Check residue and atom names in IHMCIF file</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ag</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ihm</span><span class="o">,</span><span class="w"> </span><span class="nn">ihm.reader</span><span class="o">,</span><span class="w"> </span><span class="nn">ihm.util.make_mmcif</span>
+
+<span class="c1"># Non-standard histidine names (protonation states)</span>
+<span class="n">HISTIDINES</span> <span class="o">=</span> <span class="nb">frozenset</span><span class="p">((</span><span class="s1">&#39;HIP&#39;</span><span class="p">,</span> <span class="s1">&#39;HID&#39;</span><span class="p">,</span> <span class="s1">&#39;HIE&#39;</span><span class="p">))</span>
+
+<div class="viewcode-block" id="parse_ihm_cif">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.parse_ihm_cif">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">parse_ihm_cif</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">system</span><span class="p">,</span> <span class="o">=</span> <span class="n">ihm</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">UnicodeDecodeError</span><span class="p">:</span>
+        <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;ascii&#39;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+            <span class="n">system</span><span class="p">,</span> <span class="o">=</span> <span class="n">ihm</span><span class="o">.</span><span class="n">reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">encoding</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_entities_histidines">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_entities_histidines">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_entities_histidines</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">System</span><span class="p">,</span> <span class="n">histidines</span><span class="o">=</span><span class="n">HISTIDINES</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find any non-standard histidine chemical components&quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">his</span> <span class="o">=</span> <span class="n">ihm</span><span class="o">.</span><span class="n">LPeptideAlphabet</span><span class="p">()[</span><span class="s1">&#39;H&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">system</span><span class="o">.</span><span class="n">entities</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">sequence</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">id</span> <span class="ow">in</span> <span class="n">histidines</span><span class="p">:</span>
+                <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span><span class="p">(</span><span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Non-canonical histidine variant found: </span><span class="si">{</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">out</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="check_models">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_models">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_models</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">System</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Find any non-standard histidine chemical components&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">state_group</span> <span class="ow">in</span> <span class="n">system</span><span class="o">.</span><span class="n">state_groups</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="n">state_group</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">model_group</span> <span class="ow">in</span> <span class="n">state</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">model_group</span><span class="p">:</span>
+                    <span class="n">ihm</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">make_mmcif</span><span class="o">.</span><span class="n">_check_atom_names</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">check_all</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_all_exception">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_exception">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_all_exception</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">System</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform all checks. Throw an exception if a check fails.&quot;&quot;&quot;</span>
+    <span class="c1"># Disable atom check until python-ihm fixes</span>
+    <span class="c1"># checks = [check_entities_histidines, check_models]</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="p">[</span><span class="n">check_entities_histidines</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">checks</span><span class="p">:</span>
+        <span class="n">check</span><span class="p">(</span><span class="n">system</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_all_log">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_log">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_all_log</span><span class="p">(</span><span class="n">system</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">System</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Perform all checks. Throw a message in the log if a check fails and return a non-zero exit code&quot;&quot;&quot;</span>
+    <span class="c1"># Disable atom check until python-ihm fixes</span>
+    <span class="c1"># checks = [check_entities_histidines, check_models]</span>
+    <span class="n">checks</span> <span class="o">=</span> <span class="p">[</span><span class="n">check_entities_histidines</span><span class="p">]</span>
+    <span class="n">exit_code</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">check</span> <span class="ow">in</span> <span class="n">checks</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">check</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">exit_code</span> <span class="o">=</span> <span class="mi">127</span>
+
+    <span class="k">return</span> <span class="n">exit_code</span></div>
+
+
+<div class="viewcode-block" id="check_file_exception">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_exception">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_file_exception</span><span class="p">(</span><span class="n">fname</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a file, do all checks, throw an exception if a check fails.&quot;&quot;&quot;</span>
+    <span class="n">system</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">parse_ihm_cif</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+    <span class="n">check_all_exception</span><span class="p">(</span><span class="n">system</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="check_file_log">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_log">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_file_log</span><span class="p">(</span><span class="n">fname</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parse a file, do all checks, throw a log message if a check fails and return a non-zero exit code&quot;&quot;&quot;</span>
+    <span class="n">system</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">parse_ihm_cif</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+    <span class="n">exit_code</span> <span class="o">=</span> <span class="n">check_all_log</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">exit_code</span></div>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s2">&quot;Check residue and atom names in IHMCIF file&quot;</span><span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;-i&quot;</span><span class="p">,</span> <span class="s2">&quot;--input_file&quot;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the input file&quot;</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+    <span class="n">check_file_exception</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">input_file</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Arthur Zalevsky, Sai Ganesan, Benjamin M. Webb, Brinda Vallat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

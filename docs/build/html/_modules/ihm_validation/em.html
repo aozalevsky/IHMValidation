@@ -1,0 +1,1181 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ihm_validation.em &mdash; IHMValidation 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=110ea713"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            IHMValidation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#pdb-ihm-validation-system">PDB-IHM Validation System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#local-deployment">Local deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#building-runtime-image">Building runtime image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#running-the-pipeline">Running the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#interpreting-the-report">Interpreting the report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ihm_validation.html">ihm_validation package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.cx">ihm_validation.cx module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.cx.CxValidation"><code class="docutils literal notranslate"><span class="pre">CxValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.em">ihm_validation.em module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.em.EMValidation"><code class="docutils literal notranslate"><span class="pre">EMValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.excludedvolume">ihm_validation.excludedvolume module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.excludedvolume.GetExcludedVolume"><code class="docutils literal notranslate"><span class="pre">GetExcludedVolume</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.format_checker">ihm_validation.format_checker module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_exception"><code class="docutils literal notranslate"><span class="pre">check_all_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_log"><code class="docutils literal notranslate"><span class="pre">check_all_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_entities_histidines"><code class="docutils literal notranslate"><span class="pre">check_entities_histidines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_exception"><code class="docutils literal notranslate"><span class="pre">check_file_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_log"><code class="docutils literal notranslate"><span class="pre">check_file_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_models"><code class="docutils literal notranslate"><span class="pre">check_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.futures">ihm_validation.futures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator"><code class="docutils literal notranslate"><span class="pre">CXMSValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator"><code class="docutils literal notranslate"><span class="pre">StereoChemistryValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.Validator"><code class="docutils literal notranslate"><span class="pre">Validator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_atomic"><code class="docutils literal notranslate"><span class="pre">is_model_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_cg"><code class="docutils literal notranslate"><span class="pre">is_model_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_mixed"><code class="docutils literal notranslate"><span class="pre">is_model_mixed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.generate_static_html_pages">ihm_validation.generate_static_html_pages module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.get_plots">ihm_validation.get_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.get_plots.Plots"><code class="docutils literal notranslate"><span class="pre">Plots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.ihm_validator">ihm_validation.ihm_validator module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.load_json_plot"><code class="docutils literal notranslate"><span class="pre">load_json_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_pdf"><code class="docutils literal notranslate"><span class="pre">write_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_supplementary_table"><code class="docutils literal notranslate"><span class="pre">write_supplementary_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.images">ihm_validation.images module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.mmcif_io">ihm_validation.mmcif_io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.GetInputInformation"><code class="docutils literal notranslate"><span class="pre">GetInputInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.IHMVAvailableModes"><code class="docutils literal notranslate"><span class="pre">IHMVAvailableModes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.get_operational_mode"><code class="docutils literal notranslate"><span class="pre">get_operational_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity">ihm_validation.molprobity module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.AtomSiteVariant"><code class="docutils literal notranslate"><span class="pre">AtomSiteVariant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.GetMolprobityInformation"><code class="docutils literal notranslate"><span class="pre">GetMolprobityInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.MyModelDumper"><code class="docutils literal notranslate"><span class="pre">MyModelDumper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity_convert">ihm_validation.molprobity_convert module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.get_atom_tuple"><code class="docutils literal notranslate"><span class="pre">get_atom_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.rota_rama_result_to_tuple"><code class="docutils literal notranslate"><span class="pre">rota_rama_result_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.precision">ihm_validation.precision module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.precision.PRISM"><code class="docutils literal notranslate"><span class="pre">PRISM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.report">ihm_validation.report module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.report.WriteReport"><code class="docutils literal notranslate"><span class="pre">WriteReport</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas">ihm_validation.sas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas.SasValidation"><code class="docutils literal notranslate"><span class="pre">SasValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas_plots">ihm_validation.sas_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas_plots.SasValidationPlots"><code class="docutils literal notranslate"><span class="pre">SasValidationPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.utility">ihm_validation.utility module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.all_same"><code class="docutils literal notranslate"><span class="pre">all_same()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.calc_optimal_range"><code class="docutils literal notranslate"><span class="pre">calc_optimal_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.cat_list_string"><code class="docutils literal notranslate"><span class="pre">cat_list_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.check_for_dataset_type"><code class="docutils literal notranslate"><span class="pre">check_for_dataset_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.clean_all"><code class="docutils literal notranslate"><span class="pre">clean_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.compress_cx_stats"><code class="docutils literal notranslate"><span class="pre">compress_cx_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist_rows"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.encode_img"><code class="docutils literal notranslate"><span class="pre">encode_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_RB_text"><code class="docutils literal notranslate"><span class="pre">format_RB_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_flex_text"><code class="docutils literal notranslate"><span class="pre">format_flex_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_list_text"><code class="docutils literal notranslate"><span class="pre">format_list_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_range"><code class="docutils literal notranslate"><span class="pre">format_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_tuple"><code class="docutils literal notranslate"><span class="pre">format_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_id"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_url"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_RB"><code class="docutils literal notranslate"><span class="pre">get_RB()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_all_files"><code class="docutils literal notranslate"><span class="pre">get_all_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_alphafolddb_link"><code class="docutils literal notranslate"><span class="pre">get_alphafolddb_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_bead_size"><code class="docutils literal notranslate"><span class="pre">get_bead_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_copy"><code class="docutils literal notranslate"><span class="pre">get_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_cx_data_fits"><code class="docutils literal notranslate"><span class="pre">get_cx_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets"><code class="docutils literal notranslate"><span class="pre">get_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets_summary"><code class="docutils literal notranslate"><span class="pre">get_datasets_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_flex"><code class="docutils literal notranslate"><span class="pre">get_flex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_key_from_val"><code class="docutils literal notranslate"><span class="pre">get_key_from_val()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_larget_assembly_model"><code class="docutils literal notranslate"><span class="pre">get_larget_assembly_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_name"><code class="docutils literal notranslate"><span class="pre">get_method_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_type"><code class="docutils literal notranslate"><span class="pre">get_method_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_json"><code class="docutils literal notranslate"><span class="pre">get_output_file_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_output_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_temp_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_temp_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_python_ihm_version"><code class="docutils literal notranslate"><span class="pre">get_python_ihm_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_restraints_info"><code class="docutils literal notranslate"><span class="pre">get_restraints_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data"><code class="docutils literal notranslate"><span class="pre">get_rg_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data_fits"><code class="docutils literal notranslate"><span class="pre">get_rg_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_software"><code class="docutils literal notranslate"><span class="pre">get_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_subunits"><code class="docutils literal notranslate"><span class="pre">get_subunits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_html"><code class="docutils literal notranslate"><span class="pre">get_supp_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_supp_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_unique_datasets"><code class="docutils literal notranslate"><span class="pre">get_unique_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_val_from_key"><code class="docutils literal notranslate"><span class="pre">get_val_from_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_atomic"><code class="docutils literal notranslate"><span class="pre">is_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_cg"><code class="docutils literal notranslate"><span class="pre">is_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.islistempty"><code class="docutils literal notranslate"><span class="pre">islistempty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.load_img"><code class="docutils literal notranslate"><span class="pre">load_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.mp_readable_format"><code class="docutils literal notranslate"><span class="pre">mp_readable_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.order_of_magnitude"><code class="docutils literal notranslate"><span class="pre">order_of_magnitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.pretty_print_representations"><code class="docutils literal notranslate"><span class="pre">pretty_print_representations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.ranges"><code class="docutils literal notranslate"><span class="pre">ranges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel"><code class="docutils literal notranslate"><span class="pre">runInParallel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel_noargs"><code class="docutils literal notranslate"><span class="pre">runInParallel_noargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_entities"><code class="docutils literal notranslate"><span class="pre">summarize_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_segments"><code class="docutils literal notranslate"><span class="pre">summarize_segments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.timeout"><code class="docutils literal notranslate"><span class="pre">timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://validate.pdb-ihm.org/">PDB-IHM Validation System</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/validation_help.html">Validation Reports</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/">PDB-IHM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://data.pdb-ihm.org/">PDB-IHM Deposition System</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">IHMValidation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ihm_validation.em</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ihm_validation.em</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1">#</span>
+<span class="c1"># em.py - 3DEM validation for PDB-IHM</span>
+<span class="c1">#</span>
+<span class="c1"># Copyright (C) 2025 Arthur Zalevsky &lt;aozalevsky@gmail.com&gt;</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">3DEM validation for PDB-IHM</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># system</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gzip</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+
+<span class="c1"># handling files</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1"># numerical</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># plotting</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">save</span><span class="p">,</span> <span class="n">figure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.layouts</span><span class="w"> </span><span class="kn">import</span> <span class="n">gridplot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Range1d</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.models.widgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Panel</span><span class="p">,</span> <span class="n">Tabs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">json_item</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">export_svgs</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">iqplot</span>
+
+<span class="c1"># ihmv</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mmcif_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">GetInputInformation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utility</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ihm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">molprobity</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyModelDumper</span><span class="p">,</span> <span class="n">AtomSiteVariant</span><span class="p">,</span> <span class="n">_stub</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">images</span>
+
+<span class="c1"># EMDB</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">va</span>
+
+<span class="c1"># Set global pandas options</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="EMValidation">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EMValidation</span><span class="p">(</span><span class="n">GetInputInformation</span><span class="p">):</span>
+    <span class="n">ID</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">driver</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">VA_TIMEOUT</span> <span class="o">=</span> <span class="mi">900</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mmcif_file</span><span class="p">,</span> <span class="n">cache</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">mmcif_file</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span> <span class="o">=</span> <span class="n">cache</span>
+        <span class="c1"># Only atomic structures are supported so far</span>
+
+<div class="viewcode-block" id="EMValidation.save_plots">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.save_plots">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_plots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save bokeh plots as svg images and json blobs&quot;&quot;&quot;</span>
+        <span class="n">stem</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ID_f</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="n">imgpath_json</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+            <span class="n">imageDirName</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">stem</span><span class="si">}</span><span class="s1">.json&#39;</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">imgpath_json</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_item</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">title</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span>
+
+        <span class="n">imgpath_svg</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span>
+            <span class="n">imageDirName</span><span class="p">,</span>
+            <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">stem</span><span class="si">}</span><span class="s1">.svg&#39;</span><span class="p">)</span>
+
+        <span class="n">svgs</span> <span class="o">=</span> <span class="n">export_svgs</span><span class="p">(</span><span class="n">plot</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">imgpath_svg</span><span class="p">,</span>
+                   <span class="n">webdriver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">driver</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="n">svgs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">svgs</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">imgpath_json</span><span class="p">,</span> <span class="n">svgs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.request_emdb">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.request_emdb">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">request_emdb</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;pull data from EMDB&#39;&#39;&#39;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+            <span class="c1"># Wait until cold request completes and go to DB cache</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Retrying pulling </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1"> from EMDB&#39;</span><span class="p">)</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="k">except</span> <span class="n">JSONDecodeError</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_data">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        get data from EMDB</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">cache_fn</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s1">.pkl&#39;</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Check if we already requested the data</span>
+        <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">cache_fn</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s1"> in cache! </span><span class="si">{</span><span class="n">cache_fn</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cache_fn</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">Path</span><span class="p">(</span><span class="n">cache_fn</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">():</span>
+            <span class="n">map_metadata</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_map_metadata</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+            <span class="n">map_validation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_map_validation</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+            <span class="n">map_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s1">.map&#39;</span><span class="p">)</span>
+            <span class="n">map_path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_map</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">map_path</span><span class="p">)</span>
+            <span class="n">map_plots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_map_images</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">map_validation</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">map_metadata</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+                <span class="n">map_validation</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span>
+                <span class="n">Path</span><span class="p">(</span><span class="n">map_path</span><span class="p">)</span><span class="o">.</span><span class="n">is_file</span><span class="p">()</span> <span class="ow">and</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">map_plots</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+
+                <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;emdb_id&#39;</span><span class="p">:</span> <span class="n">code</span><span class="p">,</span>
+                    <span class="s1">&#39;map_metadata&#39;</span><span class="p">:</span> <span class="n">map_metadata</span><span class="p">,</span>
+                    <span class="s1">&#39;map_validation&#39;</span><span class="p">:</span> <span class="n">map_validation</span><span class="p">,</span>
+                    <span class="s1">&#39;map_path&#39;</span><span class="p">:</span> <span class="n">map_path</span><span class="p">,</span>
+                    <span class="s1">&#39;map_plots&#39;</span><span class="p">:</span> <span class="n">map_plots</span>
+                <span class="p">}</span>
+
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">cache_fn</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;EMDB data for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s1"> is incomplete&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">data</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_numerical_code">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_numerical_code">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_numerical_code</span><span class="p">(</span><span class="n">code</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract only numerical part of the EMDB ID&quot;&quot;&quot;</span>
+        <span class="n">code_</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">code_</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_map">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_map">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_map</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;download validation data from EMDB&#39;&#39;&#39;</span>
+        <span class="c1"># Extract only numerical part of the ID</span>
+        <span class="n">code_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://files.wwpdb.org/pub/emdb/structures/EMD-</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s1">/map/emd_</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s1">.map.gz&#39;</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">out</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">stream_</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                <span class="n">stream_</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+            <span class="n">data_</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">stream_</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data_</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not download EMDB map, status code: </span><span class="si">{</span><span class="n">out</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">fname</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_map_metadata">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_map_metadata">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_map_metadata</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;download validation data from EMDB&#39;&#39;&#39;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># Extract only numerical part of the ID</span>
+        <span class="n">code_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://www.ebi.ac.uk/emdb/api/entry/</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Couldn&#39;t get map metadata from EMDB for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_map_images">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_map_images">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_map_images</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">map_validation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">plots</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">try</span><span class="p">:</span>
+             <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+             <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                 <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">projection&quot;</span>
+                 <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                 <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+             <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;map_proj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">central_slice&quot;</span>
+                <span class="n">ind</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;central_slice&#39;</span><span class="p">][</span><span class="s1">&#39;indices&#39;</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> Index: </span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;map_central_slice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+             <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+             <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                 <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">largestvariance_slice&quot;</span>
+                 <span class="n">ind</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;largest_variance_slice&#39;</span><span class="p">][</span><span class="s1">&#39;indices&#39;</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+                 <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> Index: </span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span>
+                 <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+             <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;map_largest_variance_slice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;glow_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">std&quot;</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;map_glow_std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">surface&quot;</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+            <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;map_surface&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Try rawmap, not always available</span>
+        <span class="k">if</span> <span class="s1">&#39;rawmap_orthogonal_projection&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">projection&quot;</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;rawmap_proj&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">central_slice&quot;</span>
+                    <span class="n">ind</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rawmap_central_slice&#39;</span><span class="p">][</span><span class="s1">&#39;indices&#39;</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> Index: </span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;rawmap_central_slice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">largestvariance_slice&quot;</span>
+                    <span class="n">ind</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rawmap_largest_variance_slice&#39;</span><span class="p">][</span><span class="s1">&#39;indices&#39;</span><span class="p">][</span><span class="n">p</span><span class="p">]</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2"> Index: </span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;rawmap_largest_variance_slice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;glow_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">std&quot;</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;rawmap_glow_std&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">surface&quot;</span>
+                    <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+                <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;rawmap_surface&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s1">&#39;masks&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+            <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;masks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;masks&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                        <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">_scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">maskview&quot;</span>
+                        <span class="n">label</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+                        <span class="n">plots_</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">encode_img</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">get_map_image</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span>
+                    <span class="n">plots</span><span class="p">[</span><span class="s1">&#39;masks&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+                <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">plots</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_map_validation">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_map_validation">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_map_validation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;download validation data from EMDB&#39;&#39;&#39;</span>
+        <span class="c1"># Extract only numerical part of the ID</span>
+        <span class="n">code_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;https://www.ebi.ac.uk/emdb/api/analysis/</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s1">?information=all&#39;</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">out</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="n">code_</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Couldn&#39;t get data quality from EMDB for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_emdb_ids">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_emdb_ids">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_emdb_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        get a list of all EMDB ids from entry</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">ids</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="o">.</span><span class="n">orphan_datasets</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">ihm</span><span class="o">.</span><span class="n">dataset</span><span class="o">.</span><span class="n">EMDensityDataset</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">location</span><span class="p">,</span> <span class="n">ihm</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">EMDBLocation</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">pid</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">access_code</span>
+                        <span class="n">ids</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pid</span><span class="p">)</span>
+                    <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+                        <span class="k">pass</span>
+        <span class="k">return</span> <span class="n">ids</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_map_image">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_map_image">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_map_image</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">rawmap</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">extension</span><span class="o">=</span><span class="s2">&quot;jpeg&quot;</span><span class="p">):</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">code_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.ebi.ac.uk/pdbe/emdb/emdb-entry/emdbva/va-</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s2">/va/emd_</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s2">.map_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">rawmap</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://www.ebi.ac.uk/pdbe/emdb/emdb-entry/emdbva/va-</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s2">/va/emd_</span><span class="si">{</span><span class="n">code_</span><span class="si">}</span><span class="s2">_rawmap.map_</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">extension</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">buffer</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="mi">1024</span><span class="p">,</span> <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
+
+            <span class="n">img</span> <span class="o">=</span> <span class="n">buffer</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Couldn&#39;t download </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">img</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.validate_emdb_data">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.validate_emdb_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_emdb_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">imageDirName</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span> <span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Match sequences, residues pairs and return stats&quot;&quot;&quot;</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="n">data_stats</span><span class="p">,</span> <span class="n">data_plots</span><span class="p">,</span> <span class="n">data_stats_plots</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{},</span> <span class="p">{}</span>
+        <span class="n">fit_stats</span><span class="p">,</span> <span class="n">fit_plots</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+
+        <span class="c1"># Unpack emdb data</span>
+        <span class="n">emdbid</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;emdb_id&#39;</span><span class="p">]</span>
+        <span class="n">emdbid_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">emdbid</span><span class="p">)</span>
+        <span class="n">map_metadata</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_metadata&#39;</span><span class="p">]</span>
+        <span class="n">map_validation</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_validation&#39;</span><span class="p">]</span>
+        <span class="n">resolution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">map_validation</span><span class="p">[</span><span class="s2">&quot;resolution&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="n">recl</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">recl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;recommended_contour_level&#39;</span><span class="p">][</span><span class="s1">&#39;recl&#39;</span><span class="p">])</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="n">data_plots</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_plots&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Voxel-value plot</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+                <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Voxel-value distribution (Mode=</span><span class="si">{</span><span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;density_distribution&#39;</span><span class="p">][</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span>
+                <span class="n">x_axis_label</span><span class="o">=</span><span class="s1">&#39;Voxel value&#39;</span><span class="p">,</span>
+                <span class="n">y_axis_label</span><span class="o">=</span><span class="s1">&#39;Number of voxels (log10)&#39;</span><span class="p">,</span>
+                <span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span>
+                <span class="p">)</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;density_distribution&#39;</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;density_distribution&#39;</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="n">recl</span><span class="p">,</span> <span class="n">recl</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">Y</span><span class="p">)],</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Recommended contour level </span><span class="si">{</span><span class="n">recl</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">desired_num_ticks</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">output_backend</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+            <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s1">_voxel&#39;</span>
+            <span class="n">plots_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="p">)</span>
+            <span class="n">data_stats_plots</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Volume estimate</span>
+        <span class="n">vol</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">vol</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;volume_estimate&#39;</span><span class="p">][</span><span class="s1">&#39;estvolume&#39;</span><span class="p">]</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;volume_estimate&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">]</span>
+            <span class="n">Y</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;volume_estimate&#39;</span><span class="p">][</span><span class="s1">&#39;volume&#39;</span><span class="p">]</span>
+
+            <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Volume estimate (Estimated volume=</span><span class="si">{</span><span class="n">vol</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm³)&quot;</span><span class="p">,</span>
+                    <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Contour level&#39;</span><span class="p">,</span>
+                    <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Volume, nm³&#39;</span><span class="p">,</span>
+                    <span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span>
+            <span class="p">)</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">desired_num_ticks</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">output_backend</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+            <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="n">recl</span><span class="p">,</span> <span class="n">recl</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">Y</span><span class="p">)],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Recommended contour level </span><span class="si">{</span><span class="n">recl</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+            <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="nb">min</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">X</span><span class="p">)],</span> <span class="p">[</span><span class="n">vol</span><span class="p">,</span> <span class="n">vol</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Estimated volume </span><span class="si">{</span><span class="n">vol</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> nm³&#39;</span><span class="p">)</span>
+
+            <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s1">_volume&#39;</span>
+            <span class="n">plots_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="p">)</span>
+            <span class="n">data_stats_plots</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+
+        <span class="c1"># RAPS</span>
+        <span class="k">if</span> <span class="s1">&#39;rotationally_averaged_power_spectrum&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+                        <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Rotationally averaged power spectrum&quot;</span><span class="p">,</span>
+                        <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Spatial frequency, Å⁻¹&#39;</span><span class="p">,</span>
+                        <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Intensity (log10)&#39;</span><span class="p">,</span>
+                        <span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span>
+                    <span class="p">)</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">desired_num_ticks</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">output_backend</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+                <span class="n">X</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rotationally_averaged_power_spectrum&#39;</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+                <span class="n">Y</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rotationally_averaged_power_spectrum&#39;</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+                <span class="n">maxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+                <span class="n">miny</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="s1">&#39;rawmap_rotationally_averaged_power_spectrum&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+                    <span class="n">X_raw</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rawmap_rotationally_averaged_power_spectrum&#39;</span><span class="p">][</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+                    <span class="n">Y_raw</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rawmap_rotationally_averaged_power_spectrum&#39;</span><span class="p">][</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+                    <span class="n">maxy</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Y_raw</span><span class="p">))</span>
+                    <span class="n">miny</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span>
+                    <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X_raw</span><span class="p">,</span> <span class="n">Y_raw</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Raw map RAPS&#39;</span><span class="p">)</span>
+
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Primary map RAPS&#39;</span><span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">loc</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">resolution</span>
+                    <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span> <span class="n">loc</span><span class="p">],</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Reported resolution </span><span class="si">{</span><span class="n">resolution</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">*&#39;</span><span class="p">)</span>
+                <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+                <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s1">_raps&#39;</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="p">)</span>
+                <span class="n">data_stats_plots</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># FSC</span>
+
+        <span class="k">if</span> <span class="s1">&#39;fsc&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;FSC&quot;</span><span class="p">,</span>
+                    <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Spatial frequency, Å⁻¹&#39;</span><span class="p">,</span>
+                    <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Correlation&#39;</span><span class="p">,</span>
+                    <span class="n">y_range</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">),</span>
+                    <span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span>
+                    <span class="p">)</span>
+
+                <span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">ticker</span><span class="o">.</span><span class="n">desired_num_ticks</span> <span class="o">=</span> <span class="mi">3</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">output_backend</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+                <span class="k">if</span> <span class="s1">&#39;load_fsc&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+                    <span class="n">X0</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;load_fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;fscx&#39;</span><span class="p">]</span>
+                    <span class="n">Y0</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;load_fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;fscy&#39;</span><span class="p">]</span>
+                    <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Author provided&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+                <span class="n">X</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">]</span>
+                <span class="n">Y1</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;fsc&#39;</span><span class="p">]</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Unmasked-calculated FSC&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+                <span class="n">Y2</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;0.143&#39;</span><span class="p">]</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;0.143&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+                <span class="n">Y2</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;0.5&#39;</span><span class="p">]</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;0.5&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+                <span class="n">Y3</span> <span class="o">=</span> <span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;curves&#39;</span><span class="p">][</span><span class="s1">&#39;halfbit&#39;</span><span class="p">]</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y3</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Half-bit&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="n">loc</span><span class="p">,</span> <span class="n">loc</span><span class="p">],</span> <span class="p">[</span><span class="n">miny</span><span class="p">,</span> <span class="n">maxy</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Reported resolution </span><span class="si">{</span><span class="n">resolution</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">*&#39;</span><span class="p">)</span>
+
+                <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s1">_fsc&#39;</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="p">)</span>
+                <span class="n">data_stats_plots</span><span class="p">[</span><span class="n">title</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+            <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+        <span class="c1"># Fit-to-data</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">atomic</span><span class="p">:</span>
+            <span class="n">mid</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">__</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">get_larget_assembly_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">system</span><span class="p">)</span>
+            <span class="n">mid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+            <span class="n">varoot</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">ID_f</span><span class="si">}</span><span class="s2">_va&quot;</span><span class="p">)</span>
+            <span class="n">vapath</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">varoot</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">varoot</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">Path</span><span class="p">(</span><span class="n">vapath</span><span class="p">)</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found VA for </span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s2"> in cache: </span><span class="si">{</span><span class="n">vapath</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">run_va</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">vapath</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">fname</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vapath</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*cif*.map_scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">surface.jpeg&#39;</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">b64</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">b64</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;map_model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">fname</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vapath</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*cif*.map_scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">qscoresurface.jpeg&#39;</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">b64</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">upper</span><span class="p">()]</span> <span class="o">=</span> <span class="n">b64</span>
+
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mid</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;map_model_q&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;q_scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">QSCORE_SCALE</span>
+
+                <span class="n">plots_</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]:</span>
+                    <span class="n">fname</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vapath</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*cif*.map_scaled_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1">fitsurface.jpeg&#39;</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">b64</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">load_img</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+                    <span class="n">plots_</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">=</span> <span class="n">b64</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;map_model_inclusion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;ai_scale&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">AI_SCALE</span>
+
+                <span class="n">fname</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">vapath</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;*.map_all.json&#39;</span><span class="p">)))[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">emdbid_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_numerical_code</span><span class="p">(</span><span class="n">emdbid</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">data_</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)[</span><span class="sa">f</span><span class="s1">&#39;EMD-</span><span class="si">{</span><span class="n">emdbid_</span><span class="si">}</span><span class="s1">.map&#39;</span><span class="p">]</span>
+
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;ai_score&#39;</span><span class="p">:</span> <span class="p">{},</span> <span class="s1">&#39;q_score&#39;</span><span class="p">:</span> <span class="p">{}}</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">][</span><span class="s1">&#39;All&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;average_ai_model&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;average_ai_color&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;numberOfAtoms&#39;</span><span class="p">:</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;totalNumberOfAtoms&#39;</span><span class="p">]</span>
+                <span class="p">}</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;chainaiscore&#39;</span><span class="p">])</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;average&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;average_ai_model&#39;</span><span class="p">]</span>
+
+                <span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span>
+                    <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Atom inclusion&quot;</span><span class="p">,</span>
+                    <span class="n">x_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Contour level&#39;</span><span class="p">,</span>
+                    <span class="n">y_axis_label</span> <span class="o">=</span> <span class="s1">&#39;Fraction of atoms inside the map&#39;</span><span class="p">,</span>
+                    <span class="n">y_range</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">),</span>
+                    <span class="n">plot_height</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">output_backend</span> <span class="o">=</span> <span class="s2">&quot;svg&quot;</span>
+
+                <span class="n">X</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">]</span>
+                <span class="n">Y1</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;backbone&#39;</span><span class="p">]</span>
+                <span class="n">Y2</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;atom_inclusion_by_level&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;all_atom&#39;</span><span class="p">]</span>
+
+                <span class="n">ai_recl_backbone</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Y1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">recl</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span> <span class="o">*</span> <span class="mf">100.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                <span class="n">ai_recl_all</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">Y2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">recl</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">.</span><span class="n">argmin</span><span class="p">()]</span> <span class="o">*</span> <span class="mf">100.</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;ai_recl_backbone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ai_recl_backbone</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;ai_score&#39;</span><span class="p">][</span><span class="s1">&#39;ai_recl_all&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ai_recl_all</span>
+
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Backbone atoms&#39;</span><span class="p">)</span>
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;All non-hydrogen atoms&#39;</span><span class="p">)</span>
+
+                <span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">([</span><span class="n">recl</span><span class="p">,</span> <span class="n">recl</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Recommended contour level </span><span class="si">{</span><span class="n">recl</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+                <span class="n">title</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">emdbid</span><span class="si">}</span><span class="s1">_ai_plot&#39;</span>
+                <span class="n">plots_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_plots</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">imageDirName</span><span class="p">)</span>
+                <span class="n">fit_plots</span><span class="p">[</span><span class="s1">&#39;ai_plot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">plots_</span>
+
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;q_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;q_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">][</span><span class="s1">&#39;All&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;qscore&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;averageqscore&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;qscore&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;averageqscore_color&#39;</span><span class="p">],</span>
+                <span class="p">}</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;q_score&#39;</span><span class="p">][</span><span class="s1">&#39;chains&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">data_</span><span class="p">[</span><span class="s1">&#39;qscore&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;chainqscore&#39;</span><span class="p">])</span>
+                <span class="n">fit_stats</span><span class="p">[</span><span class="n">mid</span><span class="p">][</span><span class="s1">&#39;q_score&#39;</span><span class="p">][</span><span class="s1">&#39;average&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="s1">&#39;qscore&#39;</span><span class="p">][</span><span class="s1">&#39;0&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;averageqscore&#39;</span><span class="p">]</span>
+
+            <span class="k">except</span> <span class="p">(</span><span class="ne">FileNotFoundError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">,</span> <span class="ne">IndexError</span><span class="p">,</span> <span class="ne">KeyError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="n">fit_stats</span> <span class="o">=</span> <span class="p">{}</span>
+                <span class="n">fit_plots</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;specimen_preparation_list&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">map_metadata</span><span class="p">[</span><span class="s1">&#39;structure_determination_list&#39;</span><span class="p">][</span><span class="s1">&#39;structure_determination&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;specimen_preparation_list&#39;</span><span class="p">][</span><span class="s1">&#39;specimen_preparation&#39;</span><span class="p">]</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;reconstruction_method&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_em_reconstruction_method</span><span class="p">(</span><span class="n">map_metadata</span><span class="p">)</span>
+        <span class="n">resolution_estimates</span><span class="p">,</span> <span class="n">comments</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_resolution_estimates</span><span class="p">(</span><span class="n">map_metadata</span><span class="p">,</span> <span class="n">map_validation</span><span class="p">)</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;resolution&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resolution</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;resolution_estimates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resolution_estimates</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">resolution_estimates</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;resolution_estimates&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;resolution_estimates_comments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comments</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;recommended_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">recl</span>
+        <span class="k">if</span> <span class="s1">&#39;rawmap_contour_level&#39;</span> <span class="ow">in</span> <span class="n">map_validation</span><span class="p">:</span>
+            <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;rawmap_recommended_level&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;rawmap_contour_level&#39;</span><span class="p">][</span><span class="s1">&#39;cl&#39;</span><span class="p">])</span>
+        <span class="n">data_stats</span><span class="p">[</span><span class="s1">&#39;estimated_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">vol</span>
+        <span class="n">out_</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;emdbid&#39;</span><span class="p">:</span> <span class="n">emdbid</span><span class="p">,</span> <span class="s1">&#39;emdbid_&#39;</span><span class="p">:</span> <span class="n">emdbid_</span><span class="p">,</span>
+            <span class="s1">&#39;data_stats&#39;</span><span class="p">:</span> <span class="n">data_stats</span><span class="p">,</span>
+            <span class="s1">&#39;data_plots&#39;</span><span class="p">:</span> <span class="n">data_plots</span><span class="p">,</span>
+            <span class="s1">&#39;data_stats_plots&#39;</span><span class="p">:</span> <span class="n">data_stats_plots</span><span class="p">,</span>
+            <span class="s2">&quot;fit_stats&quot;</span><span class="p">:</span> <span class="n">fit_stats</span><span class="p">,</span> <span class="s2">&quot;fit_plots&quot;</span><span class="p">:</span> <span class="n">fit_plots</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">out_</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.validate_all_emdb_data">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.validate_all_emdb_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_all_emdb_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">imageDirName</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;perform data quality validation for all crosslinking-MS datasets&#39;&#39;&#39;</span>
+
+        <span class="n">codes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_ids</span><span class="p">()</span>
+        <span class="n">outs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_emdb_data</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">out</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">__</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">validate_emdb_data</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">imageDirName</span><span class="o">=</span><span class="n">imageDirName</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">out</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">outs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">outs</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_chimera_version">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_chimera_version">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_chimera_version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return chimera version&quot;&quot;&quot;</span>
+        <span class="n">version_string</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;chimera&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="s1">&#39;--nogui&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39; (\d+.\d+) &#39;</span><span class="p">,</span> <span class="n">version_string</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">version</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_chimerax_version">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_chimerax_version">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_chimerax_version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return chimera version&quot;&quot;&quot;</span>
+        <span class="n">version_string</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;chimerax&#39;</span><span class="p">,</span> <span class="s1">&#39;--version&#39;</span><span class="p">,</span> <span class="s1">&#39;--nogui&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39; (\d+.\d+) &#39;</span><span class="p">,</span> <span class="n">version_string</span><span class="p">)</span><span class="o">.</span><span class="n">groups</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">version</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_mapq_version">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_mapq_version">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_mapq_version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return mapq version&quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;from mapq import mapqVersion; print(mapqVersion)&#39;</span><span class="p">)</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="n">version_string</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">check_output</span><span class="p">([</span><span class="s1">&#39;chimera&#39;</span><span class="p">,</span> <span class="s1">&#39;--nogui&#39;</span><span class="p">,</span> <span class="s1">&#39;--script&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">name</span><span class="p">])</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+            <span class="n">version</span> <span class="o">=</span> <span class="n">version_string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">version</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_va_version">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_va_version">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_va_version</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return va version&quot;&quot;&quot;</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">va</span><span class="o">.</span><span class="n">__version__</span>
+        <span class="k">return</span> <span class="n">version</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.run_va">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.run_va">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_va</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">outpath</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run EMDB va validation pipeline for map and model&quot;&quot;&quot;</span>
+
+        <span class="c1"># Select representative model</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">mid</span><span class="p">)</span>
+
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Running va from scratch for MODEL </span><span class="si">{</span><span class="n">mid</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">map_path</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_path&#39;</span><span class="p">]</span>
+        <span class="n">map_metadata</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_metadata&#39;</span><span class="p">]</span>
+        <span class="n">method</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_em_reconstrucion_method_va</span><span class="p">(</span><span class="n">map_metadata</span><span class="p">)</span>
+        <span class="n">map_validation</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map_validation&#39;</span><span class="p">]</span>
+        <span class="n">resolution</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">map_validation</span><span class="p">[</span><span class="s2">&quot;resolution&quot;</span><span class="p">][</span><span class="s2">&quot;value&quot;</span><span class="p">])</span>
+        <span class="n">recl</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">map_validation</span><span class="p">[</span><span class="s1">&#39;recommended_contour_level&#39;</span><span class="p">][</span><span class="s1">&#39;recl&#39;</span><span class="p">])</span>
+
+        <span class="n">fn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mmcif_file</span>
+        <span class="c1"># tempcif</span>
+        <span class="n">outfn</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s1">_temp.cif&#39;</span><span class="p">))</span>
+
+        <span class="n">system</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">parse_ihm_cif</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+
+        <span class="c1"># Reassign label_asym_id as auth_asym_id</span>
+        <span class="c1"># for MolProbity</span>
+        <span class="k">for</span> <span class="n">asym</span> <span class="ow">in</span> <span class="n">system</span><span class="o">.</span><span class="n">asym_units</span><span class="p">:</span>
+            <span class="n">asym</span><span class="o">.</span><span class="n">auth_seq_id_map</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">asym</span><span class="o">.</span><span class="n">_strand_id</span> <span class="o">=</span> <span class="n">asym</span><span class="o">.</span><span class="n">id</span>
+
+        <span class="n">system</span><span class="o">.</span><span class="n">_check_after_write</span> <span class="o">=</span> <span class="n">_stub</span>
+
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">(</span><span class="n">ignore_cleanup_errors</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="k">as</span> <span class="n">tempdir</span><span class="p">:</span>
+            <span class="n">outfn</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">tempdir</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s1">_temp.cif&#39;</span><span class="p">))</span>
+
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfn</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">ihm</span><span class="o">.</span><span class="n">dumper</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="n">system</span><span class="p">],</span> <span class="n">variant</span><span class="o">=</span><span class="n">AtomSiteVariant</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span>
+
+            <span class="n">mapfn</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">map_path</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">map_path</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">(</span><span class="n">tempdir</span><span class="p">,</span> <span class="n">mapfn</span><span class="p">)))</span>
+
+            <span class="n">call</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="c1"># &#39;xvfb-run&#39;, &#39;-a&#39;, # Use framebuffer on machines with wayland</span>
+                <span class="s1">&#39;va&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="n">tempdir</span><span class="p">,</span>
+                <span class="s1">&#39;-met&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">method</span><span class="p">),</span>
+                <span class="s1">&#39;-run&#39;</span><span class="p">,</span> <span class="s1">&#39;surface&#39;</span><span class="p">,</span> <span class="s1">&#39;inclusion&#39;</span><span class="p">,</span> <span class="s1">&#39;qscore&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;-cl&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">recl</span><span class="p">),</span>
+                <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">resolution</span><span class="p">),</span>
+                <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">mapfn</span><span class="p">)</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="n">Path</span><span class="p">(</span><span class="n">outfn</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+            <span class="p">]</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">cwd</span><span class="o">=</span><span class="n">tempdir</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">VA_TIMEOUT</span><span class="p">)</span>
+            <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">TimeoutExpired</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Could not finish the VA run&quot;</span><span class="p">)</span>
+
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copytree</span><span class="p">(</span><span class="n">tempdir</span><span class="p">,</span> <span class="n">outpath</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_level_from_primary_contour">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_level_from_primary_contour">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_level_from_primary_contour</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get recommended level for the map&quot;&quot;&quot;</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">contour</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;map&#39;</span><span class="p">][</span><span class="s1">&#39;contour_list&#39;</span><span class="p">][</span><span class="s1">&#39;contour&#39;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">contour</span><span class="p">[</span><span class="s1">&#39;primary&#39;</span><span class="p">]:</span>
+                <span class="n">level</span> <span class="o">=</span> <span class="n">contour</span><span class="p">[</span><span class="s1">&#39;level&#39;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">level</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_resolution_estimates">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_resolution_estimates">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_resolution_estimates</span><span class="p">(</span><span class="n">map_data</span><span class="p">,</span> <span class="n">val_data</span><span class="p">):</span>
+        <span class="n">estimates</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">comments</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;general&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;fsc&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+
+        <span class="n">resenum</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;FSC 0.143 CUT-OFF&#39;</span><span class="p">:</span> <span class="s1">&#39;0.143&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;FSC 0.5 CUT-OFF&#39;</span><span class="p">:</span> <span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;FSC 1/2 BIT CUT-OFF&#39;</span><span class="p">:</span> <span class="s1">&#39;Half-bit&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;0.143&#39;</span><span class="p">:</span> <span class="s1">&#39;0.143&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;0.5&#39;</span><span class="p">:</span> <span class="s1">&#39;0.5&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;halfbit&#39;</span><span class="p">:</span> <span class="s1">&#39;Half-bit&#39;</span>
+        <span class="p">}</span>
+
+        <span class="n">rresenum</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;0.143&#39;</span><span class="p">:</span> <span class="s1">&#39;FSC 0.143 CUT-OFF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;0.5&#39;</span><span class="p">:</span> <span class="s1">&#39;FSC 0.5 CUT-OFF&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Half-bit&#39;</span><span class="p">:</span> <span class="s1">&#39;FSC 1/2 BIT CUT-OFF&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">estimates_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">rec</span> <span class="o">=</span> <span class="n">map_data</span><span class="p">[</span><span class="s1">&#39;structure_determination_list&#39;</span><span class="p">][</span><span class="s1">&#39;structure_determination&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;image_processing&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;final_reconstruction&#39;</span><span class="p">]</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;resolution&#39;</span><span class="p">]</span>
+            <span class="n">byauthor</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;res_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;BY AUTHOR&#39;</span>
+            <span class="k">if</span> <span class="n">byauthor</span><span class="p">:</span>
+                <span class="n">resmethod</span> <span class="o">=</span> <span class="n">rec</span><span class="p">[</span><span class="s1">&#39;resolution_method&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">resmethod</span> <span class="o">==</span> <span class="s1">&#39;OTHER&#39;</span><span class="p">:</span>
+                    <span class="n">resenum</span><span class="p">[</span><span class="n">resmethod</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Other&#39;</span>
+                <span class="k">if</span> <span class="n">resmethod</span> <span class="ow">in</span> <span class="n">resenum</span><span class="p">:</span>
+                    <span class="n">resmethod_</span> <span class="o">=</span> <span class="n">resenum</span><span class="p">[</span><span class="n">resmethod</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resenum</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">estimates_</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+                    <span class="n">estimates_</span><span class="p">[</span><span class="n">resmethod_</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&quot;valueOf_&quot;</span><span class="p">])</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+
+                    <span class="n">estimates</span><span class="p">[</span><span class="s1">&#39;Reported by author&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">estimates_</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="n">comments</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;Author provided resolution is not available. &#39;</span>
+
+        <span class="k">if</span> <span class="s1">&#39;load_fsc&#39;</span> <span class="ow">in</span> <span class="n">val_data</span><span class="p">:</span>
+            <span class="n">estimates_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resenum</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">estimates_</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val_data</span><span class="p">[</span><span class="s1">&#39;load_fsc&#39;</span><span class="p">][</span><span class="s1">&#39;intersections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">resenum</span><span class="p">:</span>
+                    <span class="n">estimates_</span><span class="p">[</span><span class="n">resenum</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+
+            <span class="n">estimates</span><span class="p">[</span><span class="s1">&#39;Author-provided FSC curve&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">estimates_</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">comments</span><span class="p">[</span><span class="s1">&#39;general&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="s1">&#39;Author-provided FSC curve is not available. &#39;</span>
+
+        <span class="k">if</span> <span class="s1">&#39;fsc&#39;</span> <span class="ow">in</span> <span class="n">val_data</span><span class="p">:</span>
+            <span class="n">estimates_</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">resenum</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">estimates_</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">val_data</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">][</span><span class="s1">&#39;intersections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">resenum</span><span class="p">:</span>
+                    <span class="n">estimates_</span><span class="p">[</span><span class="n">resenum</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span>
+                <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&quot;valueOf_&quot;</span><span class="p">])</span>
+            <span class="n">estimates</span><span class="p">[</span><span class="s1">&#39;Unmasked-calculated*&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">estimates_</span>
+            <span class="n">comments</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;*Resolution estimate based on FSC curve calculated by comparison of deposited half-maps. &#39;</span>
+
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">estimates_</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">ares</span> <span class="o">=</span> <span class="n">estimates</span><span class="p">[</span><span class="s1">&#39;Reported by author&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span> <span class="ow">and</span> <span class="n">ares</span> <span class="o">!=</span> <span class="s1">&#39;-&#39;</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ares</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">ares</span><span class="p">)</span> <span class="o">/</span> <span class="mf">10.</span><span class="p">):</span>
+                        <span class="n">comments</span><span class="p">[</span><span class="s1">&#39;fsc&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;The value from deposited half-maps intersecting </span><span class="si">{</span><span class="n">rresenum</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s1"> differs from the reported value </span><span class="si">{</span><span class="n">ares</span><span class="si">}</span><span class="s1"> by more than 10%. &#39;</span>
+
+        <span class="k">return</span> <span class="n">estimates</span><span class="p">,</span> <span class="n">comments</span></div>
+
+
+<div class="viewcode-block" id="EMValidation.get_em_reconstruction_method">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.em.EMValidation.get_em_reconstruction_method">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_em_reconstruction_method</span><span class="p">(</span><span class="n">map_metadata</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get EM reconsruction method from the conrolled vocabulary&quot;&quot;&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">utility</span><span class="o">.</span><span class="n">NA</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;crystallography&#39;</span><span class="p">:</span> <span class="s1">&#39;CRYSTALLOGRAPHY&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;singleparticle&#39;</span><span class="p">:</span> <span class="s1">&#39;SINGLE PARTICLE&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;tomography&#39;</span><span class="p">:</span> <span class="s1">&#39;TOMOGRAPHY&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;subtomogramaveraging&#39;</span><span class="p">:</span> <span class="s1">&#39;SUBTOMOGRAM AVERAGING&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;helical&#39;</span><span class="p">:</span> <span class="s1">&#39;HELICAL&#39;</span>
+        <span class="p">}</span>
+        <span class="n">m_</span> <span class="o">=</span> <span class="n">map_metadata</span><span class="p">[</span><span class="s1">&#39;structure_determination_list&#39;</span><span class="p">][</span><span class="s1">&#39;structure_determination&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">methods</span><span class="p">[</span><span class="n">m_</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unknown em reconstuction method </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">m</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_em_reconstrucion_method_va</span><span class="p">(</span><span class="n">map_metadata</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get EM reconstruction methods for the VA run&quot;&quot;&quot;</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">map_metadata</span><span class="p">[</span><span class="s1">&#39;structure_determination_list&#39;</span><span class="p">][</span><span class="s1">&#39;structure_determination&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;method&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">m</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Arthur Zalevsky, Sai Ganesan, Benjamin M. Webb, Brinda Vallat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,855 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ihm_validation.futures &mdash; IHMValidation 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=110ea713"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            IHMValidation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#pdb-ihm-validation-system">PDB-IHM Validation System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#local-deployment">Local deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#building-runtime-image">Building runtime image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#running-the-pipeline">Running the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#interpreting-the-report">Interpreting the report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ihm_validation.html">ihm_validation package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.cx">ihm_validation.cx module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.cx.CxValidation"><code class="docutils literal notranslate"><span class="pre">CxValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.em">ihm_validation.em module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.em.EMValidation"><code class="docutils literal notranslate"><span class="pre">EMValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.excludedvolume">ihm_validation.excludedvolume module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.excludedvolume.GetExcludedVolume"><code class="docutils literal notranslate"><span class="pre">GetExcludedVolume</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.format_checker">ihm_validation.format_checker module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_exception"><code class="docutils literal notranslate"><span class="pre">check_all_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_log"><code class="docutils literal notranslate"><span class="pre">check_all_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_entities_histidines"><code class="docutils literal notranslate"><span class="pre">check_entities_histidines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_exception"><code class="docutils literal notranslate"><span class="pre">check_file_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_log"><code class="docutils literal notranslate"><span class="pre">check_file_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_models"><code class="docutils literal notranslate"><span class="pre">check_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.futures">ihm_validation.futures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator"><code class="docutils literal notranslate"><span class="pre">CXMSValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator"><code class="docutils literal notranslate"><span class="pre">StereoChemistryValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.Validator"><code class="docutils literal notranslate"><span class="pre">Validator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_atomic"><code class="docutils literal notranslate"><span class="pre">is_model_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_cg"><code class="docutils literal notranslate"><span class="pre">is_model_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_mixed"><code class="docutils literal notranslate"><span class="pre">is_model_mixed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.generate_static_html_pages">ihm_validation.generate_static_html_pages module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.get_plots">ihm_validation.get_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.get_plots.Plots"><code class="docutils literal notranslate"><span class="pre">Plots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.ihm_validator">ihm_validation.ihm_validator module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.load_json_plot"><code class="docutils literal notranslate"><span class="pre">load_json_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_pdf"><code class="docutils literal notranslate"><span class="pre">write_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_supplementary_table"><code class="docutils literal notranslate"><span class="pre">write_supplementary_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.images">ihm_validation.images module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.mmcif_io">ihm_validation.mmcif_io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.GetInputInformation"><code class="docutils literal notranslate"><span class="pre">GetInputInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.IHMVAvailableModes"><code class="docutils literal notranslate"><span class="pre">IHMVAvailableModes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.get_operational_mode"><code class="docutils literal notranslate"><span class="pre">get_operational_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity">ihm_validation.molprobity module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.AtomSiteVariant"><code class="docutils literal notranslate"><span class="pre">AtomSiteVariant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.GetMolprobityInformation"><code class="docutils literal notranslate"><span class="pre">GetMolprobityInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.MyModelDumper"><code class="docutils literal notranslate"><span class="pre">MyModelDumper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity_convert">ihm_validation.molprobity_convert module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.get_atom_tuple"><code class="docutils literal notranslate"><span class="pre">get_atom_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.rota_rama_result_to_tuple"><code class="docutils literal notranslate"><span class="pre">rota_rama_result_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.precision">ihm_validation.precision module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.precision.PRISM"><code class="docutils literal notranslate"><span class="pre">PRISM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.report">ihm_validation.report module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.report.WriteReport"><code class="docutils literal notranslate"><span class="pre">WriteReport</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas">ihm_validation.sas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas.SasValidation"><code class="docutils literal notranslate"><span class="pre">SasValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas_plots">ihm_validation.sas_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas_plots.SasValidationPlots"><code class="docutils literal notranslate"><span class="pre">SasValidationPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.utility">ihm_validation.utility module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.all_same"><code class="docutils literal notranslate"><span class="pre">all_same()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.calc_optimal_range"><code class="docutils literal notranslate"><span class="pre">calc_optimal_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.cat_list_string"><code class="docutils literal notranslate"><span class="pre">cat_list_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.check_for_dataset_type"><code class="docutils literal notranslate"><span class="pre">check_for_dataset_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.clean_all"><code class="docutils literal notranslate"><span class="pre">clean_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.compress_cx_stats"><code class="docutils literal notranslate"><span class="pre">compress_cx_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist_rows"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.encode_img"><code class="docutils literal notranslate"><span class="pre">encode_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_RB_text"><code class="docutils literal notranslate"><span class="pre">format_RB_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_flex_text"><code class="docutils literal notranslate"><span class="pre">format_flex_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_list_text"><code class="docutils literal notranslate"><span class="pre">format_list_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_range"><code class="docutils literal notranslate"><span class="pre">format_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_tuple"><code class="docutils literal notranslate"><span class="pre">format_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_id"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_url"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_RB"><code class="docutils literal notranslate"><span class="pre">get_RB()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_all_files"><code class="docutils literal notranslate"><span class="pre">get_all_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_alphafolddb_link"><code class="docutils literal notranslate"><span class="pre">get_alphafolddb_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_bead_size"><code class="docutils literal notranslate"><span class="pre">get_bead_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_copy"><code class="docutils literal notranslate"><span class="pre">get_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_cx_data_fits"><code class="docutils literal notranslate"><span class="pre">get_cx_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets"><code class="docutils literal notranslate"><span class="pre">get_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets_summary"><code class="docutils literal notranslate"><span class="pre">get_datasets_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_flex"><code class="docutils literal notranslate"><span class="pre">get_flex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_key_from_val"><code class="docutils literal notranslate"><span class="pre">get_key_from_val()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_larget_assembly_model"><code class="docutils literal notranslate"><span class="pre">get_larget_assembly_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_name"><code class="docutils literal notranslate"><span class="pre">get_method_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_type"><code class="docutils literal notranslate"><span class="pre">get_method_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_json"><code class="docutils literal notranslate"><span class="pre">get_output_file_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_output_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_temp_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_temp_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_python_ihm_version"><code class="docutils literal notranslate"><span class="pre">get_python_ihm_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_restraints_info"><code class="docutils literal notranslate"><span class="pre">get_restraints_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data"><code class="docutils literal notranslate"><span class="pre">get_rg_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data_fits"><code class="docutils literal notranslate"><span class="pre">get_rg_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_software"><code class="docutils literal notranslate"><span class="pre">get_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_subunits"><code class="docutils literal notranslate"><span class="pre">get_subunits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_html"><code class="docutils literal notranslate"><span class="pre">get_supp_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_supp_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_unique_datasets"><code class="docutils literal notranslate"><span class="pre">get_unique_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_val_from_key"><code class="docutils literal notranslate"><span class="pre">get_val_from_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_atomic"><code class="docutils literal notranslate"><span class="pre">is_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_cg"><code class="docutils literal notranslate"><span class="pre">is_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.islistempty"><code class="docutils literal notranslate"><span class="pre">islistempty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.load_img"><code class="docutils literal notranslate"><span class="pre">load_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.mp_readable_format"><code class="docutils literal notranslate"><span class="pre">mp_readable_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.order_of_magnitude"><code class="docutils literal notranslate"><span class="pre">order_of_magnitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.pretty_print_representations"><code class="docutils literal notranslate"><span class="pre">pretty_print_representations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.ranges"><code class="docutils literal notranslate"><span class="pre">ranges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel"><code class="docutils literal notranslate"><span class="pre">runInParallel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel_noargs"><code class="docutils literal notranslate"><span class="pre">runInParallel_noargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_entities"><code class="docutils literal notranslate"><span class="pre">summarize_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_segments"><code class="docutils literal notranslate"><span class="pre">summarize_segments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.timeout"><code class="docutils literal notranslate"><span class="pre">timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://validate.pdb-ihm.org/">PDB-IHM Validation System</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/validation_help.html">Validation Reports</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/">PDB-IHM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://data.pdb-ihm.org/">PDB-IHM Deposition System</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">IHMValidation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ihm_validation.futures</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ihm_validation.futures</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot;Validation framework</span>
+<span class="sd">This is a beta-version of a new validation framework</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ihm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<div class="viewcode-block" id="Validator">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.Validator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Validator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Base validator class&#39;&#39;&#39;</span>
+    <span class="n">dataset</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">restraint</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+
+<div class="viewcode-block" id="Validator.load_restraint">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.Validator.load_restraint">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_restraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">restraint</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">restraint</span><span class="o">.</span><span class="n">Restraint</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Parse the restraint data&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s1">&#39;Method not implemented for that class&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Validator.validate_model">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.Validator.validate_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Validate the model against the data&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s1">&#39;Model validation is not implemented for that class&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Validator.validate_ensemble">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.Validator.validate_ensemble">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_ensemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ensemble</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Validate the ensemble against the data&#39;&#39;&#39;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s1">&#39;Ensemble validation is not implemented for that class&#39;</span><span class="p">)</span></div>
+</div>
+
+
+<div class="viewcode-block" id="CXMSValidator">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CXMSValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">supported_particles</span> <span class="o">=</span> <span class="p">(</span><span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Atom</span><span class="p">,</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Sphere</span><span class="p">)</span>
+
+<div class="viewcode-block" id="CXMSValidator.load_restraint">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator.load_restraint">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_restraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">restraint</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">restraint</span><span class="o">.</span><span class="n">CrossLinkRestraint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extract crosslinking-MS data from mmcif file&quot;&quot;&quot;</span>
+
+        <span class="n">raw_restraints</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_restraint_raw</span><span class="p">(</span><span class="n">restraint</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_restraints</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_quality_check</span><span class="p">(</span><span class="n">raw_restraints</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span> <span class="o">=</span> <span class="n">raw_restraints</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assign_ertypes</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_assign_rtdtypes</span><span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_load_restraint_raw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">restraint</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">restraint</span><span class="o">.</span><span class="n">CrossLinkRestraint</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get raw restraint data&quot;&quot;&quot;</span>
+        <span class="n">allr</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># Iterate over all crosslinks in the dataset</span>
+        <span class="k">for</span> <span class="n">xl</span> <span class="ow">in</span> <span class="n">restraint</span><span class="o">.</span><span class="n">cross_links</span><span class="p">:</span>
+            <span class="n">exl</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">experimental_cross_link</span>
+
+            <span class="c1"># Get residues</span>
+            <span class="n">r1</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym1</span><span class="o">.</span><span class="n">residue</span><span class="p">(</span><span class="n">exl</span><span class="o">.</span><span class="n">residue1</span><span class="o">.</span><span class="n">seq_id</span><span class="p">)</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym2</span><span class="o">.</span><span class="n">residue</span><span class="p">(</span><span class="n">exl</span><span class="o">.</span><span class="n">residue2</span><span class="o">.</span><span class="n">seq_id</span><span class="p">)</span>
+
+            <span class="c1"># Get residue names</span>
+            <span class="n">r1n</span> <span class="o">=</span> <span class="n">r1</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">id</span>
+            <span class="n">r2n</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">comp</span><span class="o">.</span><span class="n">id</span>
+
+            <span class="c1"># Select atoms</span>
+            <span class="k">if</span> <span class="n">xl</span><span class="o">.</span><span class="n">granularity</span> <span class="o">==</span> <span class="s1">&#39;by-atom&#39;</span><span class="p">:</span>
+                <span class="n">a1n</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">atom1</span>
+                <span class="n">a2n</span> <span class="o">=</span> <span class="n">xl</span><span class="o">.</span><span class="n">atom2</span>
+
+            <span class="k">elif</span> <span class="n">xl</span><span class="o">.</span><span class="n">granularity</span> <span class="o">==</span> <span class="s1">&#39;by-residue&#39;</span><span class="p">:</span>
+                <span class="c1"># Crosslink applied to the specific residue</span>
+                <span class="c1"># represented by the alpha carbon atom</span>
+                <span class="n">a1n</span> <span class="o">=</span> <span class="s1">&#39;CA&#39;</span>
+                <span class="n">a2n</span> <span class="o">=</span> <span class="s1">&#39;CA&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;Unsupported xl granularity&#39;</span><span class="p">))</span>
+                <span class="k">continue</span>
+
+            <span class="n">intra_chain</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym1</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym2</span><span class="o">.</span><span class="n">id</span><span class="p">:</span>
+                <span class="n">intra_chain</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">intra_entity</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">if</span> <span class="n">r1</span><span class="o">.</span><span class="n">asym</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">description</span> <span class="o">==</span> <span class="n">r2</span><span class="o">.</span><span class="n">asym</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">description</span><span class="p">:</span>
+                <span class="n">intra_entity</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="n">r_</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;chemistry&#39;</span><span class="p">:</span> <span class="n">restraint</span><span class="o">.</span><span class="n">linker</span><span class="o">.</span><span class="n">auth_name</span><span class="p">,</span>
+                <span class="s1">&#39;restraint_id&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="s1">&#39;group_id&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">group_id</span><span class="p">,</span>
+                <span class="s1">&#39;chain1&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym1</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="s1">&#39;resnum1&#39;</span><span class="p">:</span> <span class="n">r1</span><span class="o">.</span><span class="n">seq_id</span><span class="p">,</span>
+                <span class="s1">&#39;resnum1_auth&#39;</span><span class="p">:</span> <span class="n">r1</span><span class="o">.</span><span class="n">auth_seq_id</span><span class="p">,</span>
+                <span class="s1">&#39;resname1&#39;</span><span class="p">:</span> <span class="n">r1n</span><span class="p">,</span>
+                <span class="s1">&#39;name1&#39;</span><span class="p">:</span> <span class="n">a1n</span><span class="p">,</span>
+                <span class="s1">&#39;chain2&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">asym2</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="s1">&#39;resnum2&#39;</span><span class="p">:</span> <span class="n">r2</span><span class="o">.</span><span class="n">seq_id</span><span class="p">,</span>
+                <span class="s1">&#39;resnum2_auth&#39;</span><span class="p">:</span> <span class="n">r2</span><span class="o">.</span><span class="n">auth_seq_id</span><span class="p">,</span>
+                <span class="s1">&#39;resname2&#39;</span><span class="p">:</span> <span class="n">r2n</span><span class="p">,</span>
+                <span class="s1">&#39;name2&#39;</span><span class="p">:</span> <span class="n">a2n</span><span class="p">,</span>
+                <span class="s1">&#39;distance_limit&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">distance</span><span class="p">,</span>
+                <span class="s1">&#39;distance_lower_limit&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">distance_lower_limit</span><span class="p">,</span>
+                <span class="s1">&#39;distance_upper_limit&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">distance_upper_limit</span><span class="p">,</span>
+                <span class="s1">&#39;restraint_type&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">restraint_type</span><span class="p">,</span>
+                <span class="s1">&#39;psi&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">psi</span><span class="p">,</span>
+                <span class="s1">&#39;sigma1&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">sigma1</span><span class="p">,</span>
+                <span class="s1">&#39;sigma2&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">sigma2</span><span class="p">,</span>
+                <span class="s1">&#39;group_restraint_all&#39;</span><span class="p">:</span> <span class="n">xl</span><span class="o">.</span><span class="n">restrain_all</span><span class="p">,</span>
+                <span class="s1">&#39;entity_name1&#39;</span><span class="p">:</span> <span class="n">r1</span><span class="o">.</span><span class="n">asym</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                <span class="s1">&#39;entity_name2&#39;</span><span class="p">:</span> <span class="n">r2</span><span class="o">.</span><span class="n">asym</span><span class="o">.</span><span class="n">entity</span><span class="o">.</span><span class="n">description</span><span class="p">,</span>
+                <span class="s1">&#39;intra_chain&#39;</span><span class="p">:</span> <span class="n">intra_chain</span><span class="p">,</span>
+                <span class="s1">&#39;intra_entity&#39;</span><span class="p">:</span> <span class="n">intra_entity</span><span class="p">,</span>
+                <span class="c1"># New property to distinguish restraint types</span>
+                <span class="s1">&#39;restraint_enum&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="c1"># New property to select restraint group/threshold types</span>
+                <span class="s1">&#39;restraint_rtd&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="c1"># Geom properties</span>
+                <span class="s1">&#39;state_group&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s1">&#39;model_group&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s1">&#39;model_number&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+                <span class="s1">&#39;distance_euclidean&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">allr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+        <span class="c1"># Convert data to pandas dataframe</span>
+        <span class="n">allr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">allr</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">allr</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_quality_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check consistency of crosslink restraints&quot;&quot;&quot;</span>
+        <span class="n">gids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">]))</span>
+
+        <span class="k">for</span> <span class="n">gid</span> <span class="ow">in</span> <span class="n">gids</span><span class="p">:</span>
+            <span class="n">data_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">gid</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_conditional_flag</span><span class="p">(</span><span class="n">data_</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_conditional_flag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check consistency of conditional flags in a restraint group&quot;&quot;&quot;</span>
+        <span class="n">gid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">conditional_flags</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_restraint_all&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">conditional_flags</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Mixed conditional flags in crosslink restraint group </span><span class="si">{</span><span class="n">gid</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">number_of_restraints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">number_of_restraint_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">nrg</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="n">nrg</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_rtdtype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Determine crosslink types: Self/Heteromeric; Upper/Lower/Harmonic; Threshold&#39;&#39;&#39;</span>
+        <span class="n">rt</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;restraint_type&#39;</span><span class="p">]</span>
+
+        <span class="n">lt</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;intra_entity&#39;</span><span class="p">]:</span>
+            <span class="n">lt</span> <span class="o">=</span> <span class="s1">&#39;Self-links&#39;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lt</span> <span class="o">=</span> <span class="s1">&#39;Heteromeric links&#39;</span>
+
+        <span class="k">if</span> <span class="n">rt</span> <span class="o">==</span> <span class="s1">&#39;upper bound&#39;</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_upper_limit&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">rt</span> <span class="o">==</span> <span class="s1">&#39;lower bound&#39;</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_lower_limit&#39;</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">rt</span> <span class="o">==</span> <span class="s1">&#39;harmonic&#39;</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_limit&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Wrong restraint type&#39;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">rt</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">lt</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_ertype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Get extended restraint type, that includes linker, residue names, atom names&#39;&#39;&#39;</span>
+        <span class="n">r1n</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;resname1&#39;</span><span class="p">]</span>
+        <span class="n">a1n</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;name1&#39;</span><span class="p">]</span>
+        <span class="n">r2n</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;resname2&#39;</span><span class="p">]</span>
+        <span class="n">a2n</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span>
+
+        <span class="c1"># Sort names of residues and atoms</span>
+        <span class="p">(</span><span class="n">r1n_</span><span class="p">,</span> <span class="n">a1n_</span><span class="p">),</span> <span class="p">(</span><span class="n">r2n_</span><span class="p">,</span> <span class="n">a2n_</span><span class="p">)</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+            <span class="p">[(</span><span class="n">r1n</span><span class="p">,</span> <span class="n">a1n</span><span class="p">),</span> <span class="p">(</span><span class="n">r2n</span><span class="p">,</span> <span class="n">a2n</span><span class="p">)]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Construct the extended restraint type</span>
+        <span class="n">rtype_</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">&#39;chemistry&#39;</span><span class="p">],</span>
+            <span class="n">r1n_</span><span class="p">,</span> <span class="n">a1n_</span><span class="p">,</span> <span class="n">r2n_</span><span class="p">,</span> <span class="n">a2n_</span><span class="p">,</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">&#39;restraint_type&#39;</span><span class="p">],</span>
+            <span class="c1"># row[&#39;distance_lower_limit&#39;],</span>
+            <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_limit&#39;</span><span class="p">],</span>
+            <span class="c1"># row[&#39;distance_upper_limit&#39;],</span>
+         <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">rtype_</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ertypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Get all extendend restraint types&#39;&#39;&#39;</span>
+        <span class="n">ertypes</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># enumerate restraints types</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">rtype_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ertype</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">rtype_</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ertypes</span><span class="p">:</span>
+                <span class="n">ertypes</span><span class="p">[</span><span class="n">rtype_</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ertypes</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ertypes</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">rtdtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Get all crosslink types&#39;&#39;&#39;</span>
+        <span class="n">ertypes</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># enumerate restraints types</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">rtype_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rtdtype</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">rtype_</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ertypes</span><span class="p">:</span>
+                <span class="n">ertypes</span><span class="p">[</span><span class="n">rtype_</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ertypes</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ertypes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_assign_ertypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Assign extended restraint types&#39;&#39;&#39;</span>
+        <span class="n">ertypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ertypes</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">rtype_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ertype</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <span class="n">ertype_</span> <span class="o">=</span> <span class="n">ertypes</span><span class="p">[</span><span class="n">rtype_</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;restraint_enum&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ertype_</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_assign_rtdtypes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Assign crosslink types&#39;&#39;&#39;</span>
+        <span class="n">rtdtypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtdtypes</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">rtype_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_rtdtype</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <span class="n">ertype_</span> <span class="o">=</span> <span class="n">rtdtypes</span><span class="p">[</span><span class="n">rtype_</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;restraint_rtd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ertype_</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ertypes_df</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Exctract subset of data as restraint types</span>
+        <span class="n">fields_</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s1">&#39;Linker&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Residue 1&#39;</span><span class="p">,</span> <span class="s1">&#39;Atom 1&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Residue 2&#39;</span><span class="p">,</span> <span class="s1">&#39;Atom 2&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;Restraint type&#39;</span><span class="p">,</span>
+            <span class="c1"># &#39;Lower_limit, Å&#39;,</span>
+            <span class="s1">&#39;Distance, Å&#39;</span><span class="p">,</span>
+            <span class="c1"># &#39;Upper_limit, Å&#39;</span>
+        <span class="p">]</span>
+
+        <span class="n">ertypes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ertypes</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+            <span class="n">index</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ertypes</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span>
+            <span class="n">columns</span><span class="o">=</span><span class="n">fields_</span><span class="p">)</span>
+
+        <span class="n">ertypes</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">ertypes</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="p">[</span><span class="s1">&#39;restraint_enum&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">index</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">ertypes</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+
+        <span class="k">return</span> <span class="n">ertypes</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_measure_restraints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="n">restraints</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+            <span class="n">m_</span> <span class="o">=</span> <span class="n">get_hierarchy_from_model</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_restraints</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+                <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure_restraint</span><span class="p">(</span><span class="n">m_</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span>
+
+                <span class="n">ndata</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="c1"># Store as much information as we can</span>
+                    <span class="s1">&#39;distance_euclidean&#39;</span><span class="p">:</span> <span class="n">d</span><span class="p">,</span>
+                    <span class="s1">&#39;model_number&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">_id</span><span class="p">),</span>
+                <span class="p">}</span>
+
+                <span class="n">nrow</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+                <span class="n">nrow</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ndata</span><span class="p">)</span>
+                <span class="n">restraints</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">nrow</span><span class="p">)</span>
+
+        <span class="n">restraints</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">restraints</span><span class="p">)</span>
+
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">restraints</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+
+            <span class="c1"># Drop missing restraints</span>
+            <span class="n">count_missing</span> <span class="o">=</span> <span class="n">restraints</span><span class="p">[</span>
+                <span class="s1">&#39;distance_euclidean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Dropped </span><span class="si">{</span><span class="n">count_missing</span><span class="si">}</span><span class="s1"> crosslink restraints with &#39;</span>
+                <span class="s1">&#39;empty distances&#39;</span>
+            <span class="p">)</span>
+            <span class="n">restraints</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span>
+                <span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;distance_euclidean&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">restraints</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_measure_restraint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+        <span class="c1"># Check that we have all necessary atoms</span>
+        <span class="n">chid</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;chain1&#39;</span><span class="p">]</span>
+        <span class="n">rid</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;resnum1&#39;</span><span class="p">]</span>
+        <span class="n">an</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;name1&#39;</span><span class="p">]</span>
+
+        <span class="n">a1</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">chid</span><span class="p">][</span><span class="n">rid</span><span class="p">][</span><span class="n">an</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">supported_particles</span><span class="p">:</span>
+            <span class="n">a1</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">a1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Atom </span><span class="si">{</span><span class="n">chid</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">rid</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">an</span><span class="si">}</span><span class="s1"> is empty&#39;</span><span class="p">)</span>
+
+        <span class="n">chid</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;chain2&#39;</span><span class="p">]</span>
+        <span class="n">rid</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;resnum2&#39;</span><span class="p">]</span>
+        <span class="n">an</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;name2&#39;</span><span class="p">]</span>
+
+        <span class="n">a2</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="n">chid</span><span class="p">][</span><span class="n">rid</span><span class="p">][</span><span class="n">an</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">supported_particles</span><span class="p">:</span>
+            <span class="n">a2</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">a2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Atom </span><span class="si">{</span><span class="n">chid</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">rid</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">an</span><span class="si">}</span><span class="s1"> is empty&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">a1</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">a2</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Calculate distance</span>
+            <span class="n">a1_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a1</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a1</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">a1</span><span class="o">.</span><span class="n">z</span><span class="p">])</span>
+            <span class="n">a2_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">a2</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">a2</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">a2</span><span class="o">.</span><span class="n">z</span><span class="p">])</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">a2_</span> <span class="o">-</span> <span class="n">a1_</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+
+<div class="viewcode-block" id="CXMSValidator.validate_model">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator.validate_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure_restraints</span><span class="p">([</span><span class="n">model</span><span class="p">])</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_satisfaction_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">return</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CXMSValidator.validate_ensemble">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator.validate_ensemble">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_ensemble</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">models</span><span class="p">:</span> <span class="nb">list</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+
+        <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measure_restraints</span><span class="p">(</span><span class="n">models</span><span class="p">)</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_satisfaction_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_satisfaction_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_restraint_groups</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">stats</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">pct</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">count</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pct</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;Satisfied&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.0</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Satisfaction&#39;</span><span class="p">:</span> <span class="n">pct</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">:</span> <span class="n">count</span><span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_restraint_groups</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;entity&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="n">rgs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">])</span>
+
+        <span class="n">stats</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;All&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;Satisfied&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+
+        <span class="k">for</span> <span class="n">rgs_</span> <span class="ow">in</span> <span class="n">rgs</span><span class="p">:</span>
+            <span class="n">good_</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">rg_chain_type</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">rg_entity_type</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">data_</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">rgs_</span><span class="p">]</span>
+            <span class="n">rg_chain_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_restraint_group_chain_type</span><span class="p">(</span><span class="n">data_</span><span class="p">)</span>
+            <span class="n">rg_entity_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_restraint_group_entity_type</span><span class="p">(</span><span class="n">data_</span><span class="p">)</span>
+
+            <span class="k">assert</span> <span class="n">rg_chain_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">assert</span> <span class="n">rg_entity_type</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">rg_entity_type</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">rg_chain_type</span><span class="si">}</span><span class="s1">&#39;</span>
+
+            <span class="c1"># Check per model</span>
+            <span class="n">models</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data_</span><span class="p">[</span><span class="s1">&#39;model_number&#39;</span><span class="p">]))</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+                <span class="n">data__</span> <span class="o">=</span> <span class="n">data_</span><span class="p">[</span><span class="n">data_</span><span class="p">[</span><span class="s1">&#39;model_number&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">model</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_restraint_group_satisfied</span><span class="p">(</span><span class="n">data__</span><span class="p">):</span>
+                    <span class="n">good__</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">good__</span> <span class="o">=</span> <span class="mi">0</span>
+
+                <span class="n">good_</span> <span class="o">=</span> <span class="n">good_</span> <span class="ow">or</span> <span class="n">good__</span>
+
+            <span class="k">if</span> <span class="n">rg_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+                <span class="n">stats</span><span class="p">[</span><span class="n">rg_type</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Satisfied&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Count&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}</span>
+
+            <span class="n">stats</span><span class="p">[</span><span class="n">rg_type</span><span class="p">][</span><span class="s1">&#39;Satisfied&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">good_</span>
+            <span class="n">stats</span><span class="p">[</span><span class="n">rg_type</span><span class="p">][</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">][</span><span class="s1">&#39;Satisfied&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="n">good_</span>
+            <span class="n">stats</span><span class="p">[</span><span class="s1">&#39;All&#39;</span><span class="p">][</span><span class="s1">&#39;Count&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">return</span> <span class="n">stats</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_is_restraint_group_satisfied</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="c1"># Verify, that there is only one type of restraints in the group</span>
+        <span class="n">satisfied_restraints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+        <span class="n">conditional_flag_all</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;group_restraint_all&#39;</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">row</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">iterrows</span><span class="p">()):</span>
+            <span class="n">rtype</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;restraint_type&#39;</span><span class="p">]</span>
+            <span class="n">ed</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_euclidean&#39;</span><span class="p">]</span>
+            <span class="n">threshold</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;distance_limit&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">rtype</span> <span class="o">==</span> <span class="s1">&#39;upper bound&#39;</span><span class="p">:</span>
+                <span class="n">cmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">ed</span> <span class="o">-</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">rtype</span> <span class="o">==</span> <span class="s1">&#39;lower bound&#39;</span><span class="p">:</span>
+                <span class="n">cmp</span> <span class="o">=</span> <span class="p">(</span><span class="n">ed</span> <span class="o">-</span> <span class="n">threshold</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span>
+            <span class="c1"># Check with Ben</span>
+            <span class="k">elif</span> <span class="n">rtype</span> <span class="o">==</span> <span class="s1">&#39;harmonic&#39;</span><span class="p">:</span>
+                <span class="n">cmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span>
+                    <span class="n">ed</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span>
+                    <span class="n">rtol</span><span class="o">=</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;psi&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;sigma1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;sigma2&#39;</span><span class="p">]</span>
+                <span class="p">)</span>
+
+            <span class="n">satisfied_restraints</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmp</span>
+
+        <span class="k">if</span> <span class="n">conditional_flag_all</span><span class="p">:</span>
+            <span class="n">satisfied</span> <span class="o">=</span> <span class="n">satisfied_restraints</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">satisfied</span> <span class="o">=</span> <span class="n">satisfied_restraints</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">satisfied</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_restraint_group_chain_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">rg_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_chain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Intramolecular&#39;</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="o">~</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_chain&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Intermolecular&#39;</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_chain&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="o">~</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_chain&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Ambiguous&#39;</span>
+
+        <span class="k">return</span> <span class="n">rg_type</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_restraint_group_entity_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">rg_type</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_entity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Self-links&#39;</span>
+        <span class="k">elif</span> <span class="p">(</span><span class="o">~</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_entity&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Heteromeric links&#39;</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_entity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">and</span> <span class="p">(</span><span class="o">~</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;intra_entity&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+            <span class="n">rg_type</span> <span class="o">=</span> <span class="s1">&#39;Ambiguous entity&#39;</span>
+
+        <span class="k">return</span> <span class="n">rg_type</span></div>
+
+
+
+<div class="viewcode-block" id="StereoChemistryValidator">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">StereoChemistryValidator</span><span class="p">(</span><span class="n">Validator</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<div class="viewcode-block" id="StereoChemistryValidator.validate_model">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator.validate_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">validate_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;Validate the model against the data&#39;&#39;&#39;</span>
+        <span class="k">if</span> <span class="n">is_model_atomic</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+            <span class="k">pass</span>
+        <span class="k">pass</span></div>
+</div>
+
+
+
+<span class="c1"># asym_id, seq_id, atom_id</span>
+<div class="viewcode-block" id="get_hierarchy_from_atoms">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_atoms">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hierarchy_from_atoms</span><span class="p">(</span><span class="n">atoms</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">infinite_defaultdict</span><span class="p">():</span> <span class="k">return</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">infinite_defaultdict</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">infinite_defaultdict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">atoms</span><span class="p">:</span>
+        <span class="n">root</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">a</span><span class="o">.</span><span class="n">seq_id</span><span class="p">][</span><span class="n">a</span><span class="o">.</span><span class="n">atom_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">return</span> <span class="n">root</span></div>
+
+
+
+<span class="c1"># asym_id, seq_id, atom_id</span>
+<div class="viewcode-block" id="get_hierarchy_from_model">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_model">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hierarchy_from_model</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">infinite_defaultdict</span><span class="p">():</span> <span class="k">return</span> <span class="n">defaultdict</span><span class="p">(</span><span class="n">infinite_defaultdict</span><span class="p">)</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="n">infinite_defaultdict</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">get_atoms</span><span class="p">():</span>
+        <span class="n">root</span><span class="p">[</span><span class="n">a</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">a</span><span class="o">.</span><span class="n">seq_id</span><span class="p">][</span><span class="n">a</span><span class="o">.</span><span class="n">atom_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
+
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">representation</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">granularity</span> <span class="o">==</span> <span class="s1">&#39;by-residue&#39;</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">seq_id_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                           <span class="n">r</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">seq_id_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">root</span><span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">asym</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;CA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">get_spheres</span><span class="p">():</span>
+        <span class="c1"># Consider only by-residue spheres</span>
+        <span class="n">seq_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">seq_id_range</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seq_ids</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="n">seq_id</span> <span class="o">=</span> <span class="n">seq_ids</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">root</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">seq_id</span><span class="p">][</span><span class="s1">&#39;CA&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">root</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">asym_unit</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="n">seq_id</span><span class="p">][</span><span class="s1">&#39;CA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+
+    <span class="k">return</span> <span class="n">root</span></div>
+
+
+<div class="viewcode-block" id="is_model_mixed">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.is_model_mixed">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_model_mixed</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if model is atomic&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">granularities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">granularity</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">representation</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">granularities</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="is_model_atomic">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.is_model_atomic">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_model_atomic</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if model is atomic&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">granularities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">granularity</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">representation</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">granularities</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;by-atom&#39;</span><span class="p">]):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="is_model_cg">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.futures.is_model_cg">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_model_cg</span><span class="p">(</span><span class="n">model</span><span class="p">:</span> <span class="n">ihm</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">Model</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if model is atomic&quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">granularities</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="n">r</span><span class="o">.</span><span class="n">granularity</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">representation</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">granularities</span> <span class="o">==</span> <span class="nb">set</span><span class="p">([</span><span class="s1">&#39;by-residue&#39;</span><span class="p">,</span> <span class="s1">&#39;by-feature&#39;</span><span class="p">]):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="n">result</span></div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Arthur Zalevsky, Sai Ganesan, Benjamin M. Webb, Brinda Vallat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

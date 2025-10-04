@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ihm_validation.molprobity_convert &mdash; IHMValidation 3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=110ea713"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            IHMValidation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Documentation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#pdb-ihm-validation-system">PDB-IHM Validation System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#local-deployment">Local deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#building-runtime-image">Building runtime image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#running-the-pipeline">Running the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#interpreting-the-report">Interpreting the report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ihm_validation.html">ihm_validation package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.cx">ihm_validation.cx module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.cx.CxValidation"><code class="docutils literal notranslate"><span class="pre">CxValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.em">ihm_validation.em module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.em.EMValidation"><code class="docutils literal notranslate"><span class="pre">EMValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.excludedvolume">ihm_validation.excludedvolume module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.excludedvolume.GetExcludedVolume"><code class="docutils literal notranslate"><span class="pre">GetExcludedVolume</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.format_checker">ihm_validation.format_checker module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_exception"><code class="docutils literal notranslate"><span class="pre">check_all_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_all_log"><code class="docutils literal notranslate"><span class="pre">check_all_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_entities_histidines"><code class="docutils literal notranslate"><span class="pre">check_entities_histidines()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_exception"><code class="docutils literal notranslate"><span class="pre">check_file_exception()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_file_log"><code class="docutils literal notranslate"><span class="pre">check_file_log()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.check_models"><code class="docutils literal notranslate"><span class="pre">check_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.format_checker.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.futures">ihm_validation.futures module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.CXMSValidator"><code class="docutils literal notranslate"><span class="pre">CXMSValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.StereoChemistryValidator"><code class="docutils literal notranslate"><span class="pre">StereoChemistryValidator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.Validator"><code class="docutils literal notranslate"><span class="pre">Validator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_atomic"><code class="docutils literal notranslate"><span class="pre">is_model_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_cg"><code class="docutils literal notranslate"><span class="pre">is_model_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.futures.is_model_mixed"><code class="docutils literal notranslate"><span class="pre">is_model_mixed()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.generate_static_html_pages">ihm_validation.generate_static_html_pages module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.generate_static_html_pages.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.get_plots">ihm_validation.get_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.get_plots.Plots"><code class="docutils literal notranslate"><span class="pre">Plots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.ihm_validator">ihm_validation.ihm_validator module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.createdirs"><code class="docutils literal notranslate"><span class="pre">createdirs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.load_json_plot"><code class="docutils literal notranslate"><span class="pre">load_json_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_html"><code class="docutils literal notranslate"><span class="pre">write_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_json"><code class="docutils literal notranslate"><span class="pre">write_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_pdf"><code class="docutils literal notranslate"><span class="pre">write_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.ihm_validator.write_supplementary_table"><code class="docutils literal notranslate"><span class="pre">write_supplementary_table()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.images">ihm_validation.images module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.mmcif_io">ihm_validation.mmcif_io module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.GetInputInformation"><code class="docutils literal notranslate"><span class="pre">GetInputInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.IHMVAvailableModes"><code class="docutils literal notranslate"><span class="pre">IHMVAvailableModes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.mmcif_io.get_operational_mode"><code class="docutils literal notranslate"><span class="pre">get_operational_mode()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity">ihm_validation.molprobity module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.AtomSiteVariant"><code class="docutils literal notranslate"><span class="pre">AtomSiteVariant</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.GetMolprobityInformation"><code class="docutils literal notranslate"><span class="pre">GetMolprobityInformation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity.MyModelDumper"><code class="docutils literal notranslate"><span class="pre">MyModelDumper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.molprobity_convert">ihm_validation.molprobity_convert module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.get_atom_tuple"><code class="docutils literal notranslate"><span class="pre">get_atom_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.molprobity_convert.rota_rama_result_to_tuple"><code class="docutils literal notranslate"><span class="pre">rota_rama_result_to_tuple()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.precision">ihm_validation.precision module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.precision.PRISM"><code class="docutils literal notranslate"><span class="pre">PRISM</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.report">ihm_validation.report module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.report.WriteReport"><code class="docutils literal notranslate"><span class="pre">WriteReport</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas">ihm_validation.sas module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas.SasValidation"><code class="docutils literal notranslate"><span class="pre">SasValidation</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.sas_plots">ihm_validation.sas_plots module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.sas_plots.SasValidationPlots"><code class="docutils literal notranslate"><span class="pre">SasValidationPlots</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation.utility">ihm_validation.utility module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.all_same"><code class="docutils literal notranslate"><span class="pre">all_same()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.calc_optimal_range"><code class="docutils literal notranslate"><span class="pre">calc_optimal_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.cat_list_string"><code class="docutils literal notranslate"><span class="pre">cat_list_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.check_for_dataset_type"><code class="docutils literal notranslate"><span class="pre">check_for_dataset_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.clean_all"><code class="docutils literal notranslate"><span class="pre">clean_all()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.compress_cx_stats"><code class="docutils literal notranslate"><span class="pre">compress_cx_stats()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.dict_to_JSlist_rows"><code class="docutils literal notranslate"><span class="pre">dict_to_JSlist_rows()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.encode_img"><code class="docutils literal notranslate"><span class="pre">encode_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_RB_text"><code class="docutils literal notranslate"><span class="pre">format_RB_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_flex_text"><code class="docutils literal notranslate"><span class="pre">format_flex_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_list_text"><code class="docutils literal notranslate"><span class="pre">format_list_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_range"><code class="docutils literal notranslate"><span class="pre">format_range()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_tuple"><code class="docutils literal notranslate"><span class="pre">format_tuple()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_id"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.format_wwpdb_url"><code class="docutils literal notranslate"><span class="pre">format_wwpdb_url()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_RB"><code class="docutils literal notranslate"><span class="pre">get_RB()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_all_files"><code class="docutils literal notranslate"><span class="pre">get_all_files()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_alphafolddb_link"><code class="docutils literal notranslate"><span class="pre">get_alphafolddb_link()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_bead_size"><code class="docutils literal notranslate"><span class="pre">get_bead_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_copy"><code class="docutils literal notranslate"><span class="pre">get_copy()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_cx_data_fits"><code class="docutils literal notranslate"><span class="pre">get_cx_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets"><code class="docutils literal notranslate"><span class="pre">get_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_datasets_summary"><code class="docutils literal notranslate"><span class="pre">get_datasets_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_flex"><code class="docutils literal notranslate"><span class="pre">get_flex()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_atoms"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_atoms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_hierarchy_from_model"><code class="docutils literal notranslate"><span class="pre">get_hierarchy_from_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_key_from_val"><code class="docutils literal notranslate"><span class="pre">get_key_from_val()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_larget_assembly_model"><code class="docutils literal notranslate"><span class="pre">get_larget_assembly_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_name"><code class="docutils literal notranslate"><span class="pre">get_method_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_method_type"><code class="docutils literal notranslate"><span class="pre">get_method_type()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_name"><code class="docutils literal notranslate"><span class="pre">get_name()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_json"><code class="docutils literal notranslate"><span class="pre">get_output_file_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_output_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_output_file_temp_html"><code class="docutils literal notranslate"><span class="pre">get_output_file_temp_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_python_ihm_version"><code class="docutils literal notranslate"><span class="pre">get_python_ihm_version()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_restraints_info"><code class="docutils literal notranslate"><span class="pre">get_restraints_info()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data"><code class="docutils literal notranslate"><span class="pre">get_rg_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_rg_data_fits"><code class="docutils literal notranslate"><span class="pre">get_rg_data_fits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_software"><code class="docutils literal notranslate"><span class="pre">get_software()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_subunits"><code class="docutils literal notranslate"><span class="pre">get_subunits()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_html"><code class="docutils literal notranslate"><span class="pre">get_supp_file_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_supp_file_pdf"><code class="docutils literal notranslate"><span class="pre">get_supp_file_pdf()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_unique_datasets"><code class="docutils literal notranslate"><span class="pre">get_unique_datasets()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.get_val_from_key"><code class="docutils literal notranslate"><span class="pre">get_val_from_key()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_atomic"><code class="docutils literal notranslate"><span class="pre">is_atomic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.is_cg"><code class="docutils literal notranslate"><span class="pre">is_cg()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.islistempty"><code class="docutils literal notranslate"><span class="pre">islistempty()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.load_img"><code class="docutils literal notranslate"><span class="pre">load_img()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.mp_readable_format"><code class="docutils literal notranslate"><span class="pre">mp_readable_format()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.order_of_magnitude"><code class="docutils literal notranslate"><span class="pre">order_of_magnitude()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.parse_ihm_cif"><code class="docutils literal notranslate"><span class="pre">parse_ihm_cif()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.pretty_print_representations"><code class="docutils literal notranslate"><span class="pre">pretty_print_representations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.ranges"><code class="docutils literal notranslate"><span class="pre">ranges()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel"><code class="docutils literal notranslate"><span class="pre">runInParallel()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.runInParallel_noargs"><code class="docutils literal notranslate"><span class="pre">runInParallel_noargs()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_entities"><code class="docutils literal notranslate"><span class="pre">summarize_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.summarize_segments"><code class="docutils literal notranslate"><span class="pre">summarize_segments()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ihm_validation.html#ihm_validation.utility.timeout"><code class="docutils literal notranslate"><span class="pre">timeout</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../ihm_validation.html#module-ihm_validation">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://validate.pdb-ihm.org/">PDB-IHM Validation System</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/validation_help.html">Validation Reports</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pdb-ihm.org/">PDB-IHM</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://data.pdb-ihm.org/">PDB-IHM Deposition System</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">IHMValidation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">ihm_validation.molprobity_convert</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for ihm_validation.molprobity_convert</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/bin/env python3</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<div class="viewcode-block" id="get_atom_tuple">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.molprobity_convert.get_atom_tuple">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_atom_tuple</span><span class="p">(</span><span class="n">atom</span><span class="p">):</span>
+    <span class="n">chain</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">chain_id</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">resid</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">resname</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">resname</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">atom</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="n">r_</span> <span class="o">=</span> <span class="p">(</span><span class="n">chain</span><span class="p">,</span> <span class="n">resid</span><span class="p">,</span> <span class="n">resname</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r_</span></div>
+
+
+<div class="viewcode-block" id="rota_rama_result_to_tuple">
+<a class="viewcode-back" href="../../ihm_validation.html#ihm_validation.molprobity_convert.rota_rama_result_to_tuple">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">rota_rama_result_to_tuple</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">chid</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">chain_id</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">resid</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">resid</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">resname</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">resname</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span>
+
+    <span class="n">r_</span> <span class="o">=</span> <span class="p">(</span><span class="n">chid</span><span class="p">,</span> <span class="n">resid</span><span class="p">,</span> <span class="n">resname</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">r_</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--input&#39;</span><span class="p">,</span>
+                    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span>
+                    <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">input</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">clashscore</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">clashes</span><span class="o">.</span><span class="n">clashscore</span>
+
+    <span class="n">clashes_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">clashes</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+        <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">atoms_info</span>
+        <span class="n">a1_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">a2_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">overlap</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">overlap</span><span class="p">)</span>
+
+        <span class="n">r_</span> <span class="o">=</span> <span class="p">(</span><span class="n">a1_</span><span class="p">,</span> <span class="n">a2_</span><span class="p">,</span> <span class="n">overlap</span><span class="p">)</span>
+        <span class="n">clashes_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+    <span class="n">bonds_total</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">bonds</span><span class="o">.</span><span class="n">n_total</span>
+    <span class="n">bonds_outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">bonds</span><span class="o">.</span><span class="n">n_outliers</span>
+
+    <span class="n">bonds_outliers_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">bonds</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+        <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">atoms_info</span>
+        <span class="n">a1_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">a2_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">ideal</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">target</span>
+        <span class="n">observed</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">model</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span>
+
+        <span class="n">r_</span> <span class="o">=</span> <span class="p">(</span><span class="n">a1_</span><span class="p">,</span> <span class="n">a2_</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">ideal</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+        <span class="n">bonds_outliers_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+    <span class="n">angles_total</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">n_total</span>
+    <span class="n">angles_outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">n_outliers</span>
+
+    <span class="n">angles_outliers_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">restraints</span><span class="o">.</span><span class="n">angles</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+        <span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">atoms_info</span>
+        <span class="n">a1_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+        <span class="n">a2_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+        <span class="n">a3_</span> <span class="o">=</span> <span class="n">get_atom_tuple</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
+        <span class="n">ideal</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">target</span>
+        <span class="n">observed</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">model</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">score</span>
+
+        <span class="n">r_</span> <span class="o">=</span> <span class="p">(</span><span class="n">a1_</span><span class="p">,</span> <span class="n">a2_</span><span class="p">,</span> <span class="n">a3_</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">ideal</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+        <span class="n">angles_outliers_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+    <span class="n">rama_total</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ramalyze</span><span class="o">.</span><span class="n">n_total</span>
+    <span class="n">rama_favored</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ramalyze</span><span class="o">.</span><span class="n">n_favored</span>
+    <span class="n">rama_allowed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ramalyze</span><span class="o">.</span><span class="n">n_allowed</span>
+    <span class="n">rama_outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">ramalyze</span><span class="o">.</span><span class="n">n_outliers</span>
+
+    <span class="n">rama_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">ramalyze</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">is_outlier</span><span class="p">():</span>
+            <span class="n">r_</span> <span class="o">=</span> <span class="n">rota_rama_result_to_tuple</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">rama_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+    <span class="n">rota_total</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rotalyze</span><span class="o">.</span><span class="n">n_total</span>
+    <span class="n">rota_favored</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rotalyze</span><span class="o">.</span><span class="n">n_favored</span>
+    <span class="n">rota_allowed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rotalyze</span><span class="o">.</span><span class="n">n_allowed</span>
+    <span class="n">rota_outliers</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">rotalyze</span><span class="o">.</span><span class="n">n_outliers</span>
+
+    <span class="n">rota_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">rotalyze</span><span class="o">.</span><span class="n">results</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">is_outlier</span><span class="p">():</span>
+            <span class="n">r_</span> <span class="o">=</span> <span class="n">rota_rama_result_to_tuple</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+            <span class="n">rota_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">r_</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;clash&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;clashscore&#39;</span><span class="p">:</span> <span class="n">clashscore</span><span class="p">,</span>
+            <span class="s1">&#39;clashes_list&#39;</span><span class="p">:</span> <span class="n">clashes_list</span><span class="p">,</span>
+        <span class="p">},</span>
+
+        <span class="s1">&#39;bonds&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">bonds_total</span><span class="p">,</span>
+            <span class="s1">&#39;outliers&#39;</span><span class="p">:</span> <span class="n">bonds_outliers</span><span class="p">,</span>
+            <span class="s1">&#39;outliers_list&#39;</span><span class="p">:</span> <span class="n">bonds_outliers_list</span><span class="p">,</span>
+        <span class="p">},</span>
+
+        <span class="s1">&#39;angles&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">angles_total</span><span class="p">,</span>
+            <span class="s1">&#39;outliers&#39;</span><span class="p">:</span> <span class="n">angles_outliers</span><span class="p">,</span>
+            <span class="s1">&#39;outliers_list&#39;</span><span class="p">:</span> <span class="n">angles_outliers_list</span><span class="p">,</span>
+        <span class="p">},</span>
+
+        <span class="s1">&#39;rama&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">rama_total</span><span class="p">,</span>
+            <span class="s1">&#39;favored&#39;</span><span class="p">:</span> <span class="n">rama_favored</span><span class="p">,</span>
+            <span class="s1">&#39;allowed&#39;</span><span class="p">:</span> <span class="n">rama_allowed</span><span class="p">,</span>
+            <span class="s1">&#39;outliers&#39;</span><span class="p">:</span> <span class="n">rama_outliers</span><span class="p">,</span>
+            <span class="s1">&#39;outliers_list&#39;</span><span class="p">:</span> <span class="n">rama_list</span><span class="p">,</span>
+        <span class="p">},</span>
+
+        <span class="s1">&#39;rota&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;total&#39;</span><span class="p">:</span> <span class="n">rota_total</span><span class="p">,</span>
+            <span class="s1">&#39;favored&#39;</span><span class="p">:</span> <span class="n">rota_favored</span><span class="p">,</span>
+            <span class="s1">&#39;allowed&#39;</span><span class="p">:</span> <span class="n">rota_allowed</span><span class="p">,</span>
+            <span class="s1">&#39;outliers&#39;</span><span class="p">:</span> <span class="n">rota_outliers</span><span class="p">,</span>
+            <span class="s1">&#39;outliers_list&#39;</span><span class="p">:</span> <span class="n">rota_list</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Arthur Zalevsky, Sai Ganesan, Benjamin M. Webb, Brinda Vallat.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
