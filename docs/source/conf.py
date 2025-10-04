@@ -52,3 +52,4 @@ html_theme_options = {
 import os
 import sys
 sys.path.insert(0, os.environ['READTHEDOCS_REPOSITORY_PATH'])
+sys.path.insert(0, os.path.join(os.environ['READTHEDOCS_REPOSITORY_PATH'], 'ihm_validation'))
